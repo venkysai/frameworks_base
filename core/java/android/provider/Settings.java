@@ -2877,6 +2877,12 @@ public final class Settings {
          */
         @Deprecated
         public static final String ADB_ENABLED = Global.ADB_ENABLED;
+		
+		/**
+		 * Whether to display the ADB notification.
+		 * @hide
+		 */
+		 public static final String ADB_NOTIFY = "adb_notify";
 
         /**
          * @deprecated Use {@link android.provider.Settings.Secure#ANDROID_ID} instead
