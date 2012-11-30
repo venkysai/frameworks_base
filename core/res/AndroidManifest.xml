@@ -25,6 +25,8 @@
     <!-- Special broadcasts that only the system can send -->
     <!-- ================================================ -->
     <eat-comment />
+    <permission android:name="android.permission.PREVENT_POWER_KEY"
+            android:protectionLevel="signature|privileged" />
 
     <protected-broadcast android:name="android.intent.action.SCREEN_OFF" />
     <protected-broadcast android:name="android.intent.action.SCREEN_ON" />
