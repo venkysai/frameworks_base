@@ -56,5 +56,8 @@
     
     <!-- USB_PREFERENCES: Notification for when no USB options chosen. This is the title -->
     <string name="usb_choose_notification_title">Touch for choose USB options.</string>
+    
+    <!-- In WiFi AP notification -->
+    <string name="notify_turn_wifi_ap_off_title">Turn Wi-Fi AP off</string>
 
 </resources>
