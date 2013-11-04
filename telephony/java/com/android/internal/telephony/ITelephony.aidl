@@ -1189,4 +1189,9 @@ interface ITelephony {
      * @hide
      */
      void toggle2G(boolean on);
+
+    /**
+     * Return if the current radio is LTE on GSM
+     */
+    int getLteOnGsmMode();
 }
