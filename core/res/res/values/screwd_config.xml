@@ -85,4 +85,7 @@
     <!-- The duration (in milliseconds) of recent app screen exit animation. -->
     <integer name="config_recentExitDur">450</integer>
 
+    <!-- Boolean to enable stk functionality on Samsung phones -->
+    <bool name="config_samsung_stk">false</bool>
+
 </resources>
