@@ -163,5 +163,10 @@
 
   <!-- LED pulse -->
   <java-symbol type="bool" name="config_ledCanPulse" />
+  
+  <!-- On-The-Go -->
+  <java-symbol type="string" name="global_action_onthego" />
+  <java-symbol type="drawable" name="ic_lock_onthego" />
+  <java-symbol type="drawable" name="ic_lock_onthego_alpha" />
 
 </resources>
