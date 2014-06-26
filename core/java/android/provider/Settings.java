@@ -2674,6 +2674,12 @@ public final class Settings {
          */
         @Deprecated
         public static final String POWER_SOUNDS_ENABLED = Global.POWER_SOUNDS_ENABLED;
+		
+		/**
+         * Check the proximity sensor during wakeup
+         * @hide
+         */
+        public static final String PROXIMITY_ON_WAKE = "proximity_on_wake";
 
         /**
          * @deprecated Use {@link android.provider.Settings.Global#DOCK_SOUNDS_ENABLED}
