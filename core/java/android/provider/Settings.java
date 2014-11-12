@@ -3659,6 +3659,12 @@ public final class Settings {
          * Screw'd Settings start
          */
 
+       /**
+         * Enable/Disable screenshot sound
+         * @hide
+         */
+        public static final String SCREENSHOT_SOUND = "screenshot_sound";
+
 
         /**
          *  Enable flashlight notification
