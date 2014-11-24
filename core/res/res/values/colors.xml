@@ -158,8 +158,5 @@
     <color name="user_icon_8">#ffff5722</color><!-- deep orange 500 -->
     <color name="user_icon_default_gray">#ff9e9e9e</color><!-- gray 500 -->
     <color name="user_icon_default_white">#ffffffff</color><!-- white -->
-
-    <!-- TRDS colors -->
-    <color name="trds_background">#ffffffff</color>
-    <color name="trds_text">#ff000000</color>
 </resources>
+
