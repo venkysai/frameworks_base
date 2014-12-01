@@ -187,6 +187,7 @@
 
   <!-- Hardware key binding -->
   <java-symbol type="integer" name="config_deviceHardwareKeys" />
+  <java-symbol type="integer" name="config_deviceHardwareWakeKeys" />
 
   <!-- On-The-Go -->
   <java-symbol type="string" name="global_action_onthego" />
