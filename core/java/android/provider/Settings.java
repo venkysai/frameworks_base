@@ -4440,6 +4440,12 @@ public final class Settings {
         public static final String STATUS_BAR_SHOW_WEATHER_TEMP = "status_bar_show_weather_temp";
 
         /**
+         * Show the pending notification counts as overlays on the status bar
+         * @hide
+         */
+        public static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";				
+
+				/**
          * Status bar carrier label
          * 0: Hide
          * 1: Display on keyguard status bar
