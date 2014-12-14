@@ -18,6 +18,8 @@ package com.android.systemui.statusbar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.ChaosLab;
+import android.annotation.ChaosLab.Classification;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -48,6 +50,7 @@ import android.content.ServiceConnection;
 import android.database.ContentObserver;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.hardware.SensorManager;
@@ -116,6 +119,7 @@ import com.android.systemui.RecentsComponent;
 import com.android.systemui.SwipeHelper;
 import com.android.systemui.SystemUI;
 import com.android.systemui.assist.AssistManager;
+import com.android.systemui.chaos.lab.gestureanywhere.GestureAnywhereView;
 import com.android.systemui.navigation.Navigator;
 import com.android.systemui.recents.Recents;
 import com.android.systemui.statusbar.NotificationData.Entry;
@@ -282,6 +286,10 @@ public abstract class BaseStatusBar extends SystemUI implements
     // App sidebar
     protected AppSidebar mAppSidebar;
 	protected int mSidebarPosition;
+
+    // Gesture Anywhere
+    @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_FIELD)
+    protected GestureAnywhereView mGestureAnywhereView;
 
     // which notification is currently being longpress-examined by the user
     private NotificationGuts mNotificationGutsExposed;
@@ -2981,6 +2989,40 @@ public abstract class BaseStatusBar extends SystemUI implements
         if (mAssistManager != null) {
             mAssistManager.startAssist(args);
         }
+    }
+
+    @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_METHOD)
+    protected void addGestureAnywhereView() {
+        mGestureAnywhereView = (GestureAnywhereView)View.inflate(
+                mContext, R.layout.gesture_anywhere_overlay, null);
+        mWindowManager.addView(mGestureAnywhereView, getGestureAnywhereViewLayoutParams(Gravity.LEFT));
+        mGestureAnywhereView.setStatusBar(this);
+    }
+
+    @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_METHOD)
+    protected void removeGestureAnywhereView() {
+        if (mGestureAnywhereView != null)
+            mWindowManager.removeView(mGestureAnywhereView);
+    }
+
+    @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_METHOD)
+    protected WindowManager.LayoutParams getGestureAnywhereViewLayoutParams(int gravity) {
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.TYPE_STATUS_BAR_SUB_PANEL,
+                0
+                | WindowManager.LayoutParams.FLAG_TOUCHABLE_WHEN_WAKING
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
+                | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH,
+                PixelFormat.TRANSLUCENT);
+        lp.privateFlags |= WindowManager.LayoutParams.PRIVATE_FLAG_NO_MOVE_ANIMATION;
+        lp.gravity = Gravity.TOP | gravity;
+        lp.setTitle("GestureAnywhereView");
+
+        return lp;
     }
 
     Runnable mKillTask = new Runnable() {
