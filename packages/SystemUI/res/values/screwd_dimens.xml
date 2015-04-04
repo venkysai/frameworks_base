@@ -65,4 +65,7 @@
 
     <dimen name="qs_panel_footer_height">40dp</dimen>
 
+    <!-- Membar spacing -->
+    <dimen name="recents_membar_spacing">12dp</dimen>
+
 </resources>
