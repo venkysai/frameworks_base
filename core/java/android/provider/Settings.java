@@ -4721,6 +4721,12 @@ public final class Settings {
          */
         public static final String BATTERY_BAR_USE_GRADIENT_COLOR = "battery_bar_use_gradient_color";
 
+        /**
+         * Toast icon
+         * @hide
+         */
+        public static final String TOAST_ICON = "toast_icon";
+
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -4923,6 +4929,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_COLUMNS_PORTRAIT);
             PRIVATE_SETTINGS.add(QS_COLUMNS_LANDSCAPE);
             PRIVATE_SETTINGS.add(QS_TILE_TITLE_VISIBILITY);
+            PRIVATE_SETTINGS.add(TOAST_ICON);
         }
 
         /**
