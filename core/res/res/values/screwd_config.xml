@@ -32,6 +32,7 @@
         <item>advanced</item>
         <item>screenshot</item>
         <item>airplane</item>
+        <item>onthego</item>
     </string-array>
 
     <!-- The list of components which should be automatically disabled. -->
