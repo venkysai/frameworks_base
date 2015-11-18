@@ -169,4 +169,9 @@
   <java-symbol type="drawable" name="ic_lock_onthego" />
   <java-symbol type="drawable" name="ic_lock_onthego_alpha" />
 
+  <!-- Unlink notification volume -->
+  <java-symbol type="drawable" name="ic_audio_notification_new" />
+  <java-symbol type="drawable" name="ic_audio_notification_mute_new" />
+  <java-symbol type="drawable" name="ic_audio_notification_mute_alpha" />
+
 </resources>
