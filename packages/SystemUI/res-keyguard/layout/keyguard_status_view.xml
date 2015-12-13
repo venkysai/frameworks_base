@@ -75,6 +75,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/keyguard_status_area" />
 
+        <include layout="@layout/keyguard_shortcuts"
+            android:id="@+id/shortcuts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/keyguard_status_area"/>
+
         <TextView
             android:id="@+id/owner_info"
             android:layout_marginLeft="16dp"
@@ -90,10 +98,6 @@
             android:ellipsize="marquee"
             android:singleLine="true" />
 
-         <include layout="@layout/keyguard_shortcuts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 </com.android.keyguard.KeyguardStatusView>
