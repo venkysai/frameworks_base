@@ -142,4 +142,8 @@
   <java-symbol type="anim" name="last_app_in" />
   <java-symbol type="anim" name="last_app_out" />
 
+  <!-- Power menu Animations  -->
+  <java-symbol type="style" name="PowerMenuBottomAnimation" />
+  <java-symbol type="style" name="PowerMenuTopAnimation" />
+
 </resources>
