@@ -5280,6 +5280,12 @@ public final class Settings {
          * @hide
          */
         public static final String QSFOOTER_SHOW_SERVICES = "qs_footer_show_services";
+        
+        /**
+         *  Enable/Disable screenshot sound
+         * @hide
+         */
+        public static final String SCREENSHOT_SOUND = "screenshot_sound";
 
         /**
          * Whether to wake the screen with the home key, the value is boolean.
