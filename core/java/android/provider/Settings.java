@@ -4179,6 +4179,12 @@ public final class Settings {
         public static final String QUICK_SETTINGS_TILES_VIBRATE = "quick_settings_vibrate";
 
         /**
+         * Whether to show Brightness Icon On Brightness Slider
+         * @hide
+         */
+        public static final String QS_SHOW_BRIGHTNESS_ICON = "qs_show_brightness_icon";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -7018,7 +7024,7 @@ public final class Settings {
         public static final String ADB_PORT = "adb_port";
 
         /**
-         * Whether to use one tap tile action to enable or disable data 
+         * Whether to use one tap tile action to enable or disable data
          * @hide
          */
         public static final String QS_DATA_ADVANCED = "qs_data_advanced";
