@@ -72,4 +72,7 @@
     <!-- External QS tile tint color -->
     <color name="external_qs_tile_tint_color">@android:color/white</color>
 
+    <!-- app sidebar trigger region color -->
+    <color name="trigger_region_color">#8015a0e5</color>
+
 </resources>
