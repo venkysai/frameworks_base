@@ -73,6 +73,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)material/ringtones/Callisto.ogg:system/media/audio/ringtones/Callisto.ogg \
     $(LOCAL_PATH)material/ringtones/Dione.ogg:system/media/audio/ringtones/Dione.ogg \
     $(LOCAL_PATH)material/ringtones/Ganymede.ogg:system/media/audio/ringtones/Ganymede.ogg \
+    $(LOCAL_PATH)material/ringtones/June27.ogg:system/media/audio/ringtones/June27.ogg \
     $(LOCAL_PATH)material/ringtones/Luna.ogg:system/media/audio/ringtones/Luna.ogg \
     $(LOCAL_PATH)material/ringtones/Oberon.ogg:system/media/audio/ringtones/Oberon.ogg \
     $(LOCAL_PATH)material/ringtones/Phobos.ogg:system/media/audio/ringtones/Phobos.ogg \
