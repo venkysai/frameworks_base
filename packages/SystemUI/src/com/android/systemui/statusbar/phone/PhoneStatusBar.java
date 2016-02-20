@@ -66,6 +66,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.inputmethodservice.InputMethodService;
 import android.media.AudioAttributes;
@@ -404,6 +405,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private ImageView mScrewdLogoRight;
     private ImageView mScrewdLogoLeft;
     private int mScrewdLogoStyle;
+    AnimationDrawable screwdAnimationLeft, screwdAnimationRight;
 
     private int mNavigationBarWindowState = WINDOW_STATE_SHOWING;
 
@@ -3768,6 +3770,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     public void showScrewdLogo(boolean show, int color, int style) {
         if (mStatusBarView == null) return;
+        screwdAnimationLeft = (AnimationDrawable) mScrewdLogoLeft.getDrawable();
+        screwdAnimationRight = (AnimationDrawable) mScrewdLogoRight.getDrawable();
         if (!show) {
             mScrewdLogoRight.setVisibility(View.GONE);
             mScrewdLogoLeft.setVisibility(View.GONE);
@@ -3783,9 +3787,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         if (style == 0) {
             mScrewdLogoRight.setVisibility(View.GONE);
             mScrewdLogoLeft.setVisibility(View.VISIBLE);
+            screwdAnimationLeft.start();
+            screwdAnimationRight.stop();
         } else {
             mScrewdLogoLeft.setVisibility(View.GONE);
             mScrewdLogoRight.setVisibility(View.VISIBLE);
+            screwdAnimationLeft.stop();
+            screwdAnimationRight.start();
         }
     }
 

@@ -1,0 +1,19 @@
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  
+<!-- This is the animation of the Screw'D Logo in statusbar... 
+	Use this animation first because changing anything to see how it works-->
+
+<!-- android:duration is how fast in milliseconds each .png will be displayed for -->
+
+    <item android:duration="3000" android:drawable="@drawable/ic_statusbar_screwd1" /> <!-- This is the first .png, the screw with eyes wide open -->
+    <item android:duration="200" android:drawable="@drawable/ic_statusbar_screwd2" /> <!-- This is the second .png, the screw with eyes half open -->
+    <item android:duration="200" android:drawable="@drawable/ic_statusbar_screwd3" /> <!-- This is the third .png, the screw with eyes closed -->
+    <item android:duration="200" android:drawable="@drawable/ic_statusbar_screwd2" />
+    <item android:duration="1200" android:drawable="@drawable/ic_statusbar_screwd1" />
+	
+	<!-- So by calling each .png in that order above, essentially you will get a smooth transition of the screw closing his eyes, then half opening them and to wide open again...
+		The value of 2000 should be kept as this ensures how long in between each blink you want. So right now its at 2 seconds. The 100 value will be fast, obviously haven't tested it yet,
+		so you may need to speed it up, by lowering the value, or slowing it down, by raising the value. -->
+		
+</animation-list>
