@@ -4556,7 +4556,7 @@ public final class Settings {
           * @hide
           */
          public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current";
- 
+
         /**
          * Pie toggles torch
          * @hide
@@ -4661,6 +4661,12 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_TICKER_FONT_SIZE = "status_bar_ticker_font_size";
+
+        /**
+         * Heads up timeout configuration
+         * @hide
+         */
+        public static final String HEADS_UP_TIMEOUT = "heads_up_timeout";
 
         /**
          * Whether the user has enabled headsup (Default 1)
