@@ -4845,6 +4845,13 @@ public final class Settings {
                 "volume_keys_control_media_stream";
 
         /**
+         * Transition effect in ScrewdSettings tabs
+         *
+         * @hide
+         */
+        public static final String SCREWD_SETTINGS_TABS_EFFECT = "screwd_settings_tabs_effect";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
