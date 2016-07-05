@@ -4350,6 +4350,13 @@ public final class Settings {
         public static final String LOCKSCREEN_SHORTCUTS_LONGPRESS = "lockscreen_shortcuts_longpress";
 
         /**
+         * Transition effect in ScrewdSettings tabs
+         *
+         * @hide
+         */
+        public static final String SCREWD_SETTINGS_TABS_EFFECT = "screwd_settings_tabs_effect";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
