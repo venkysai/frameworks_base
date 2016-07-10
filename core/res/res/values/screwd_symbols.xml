@@ -215,4 +215,7 @@
   <!-- Config.xml entries -->
   <java-symbol type="bool" name="config_samsung_stk" />
 
+  <!-- Whether device has dash charging support -->
+  <java-symbol type="bool" name="config_hasDashCharger" />
+
 </resources>
