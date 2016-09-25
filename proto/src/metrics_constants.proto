@@ -2211,12 +2211,13 @@ message MetricsEvent {
     //   SUBTYPE: sub settings classname
     ACTION_SETTING_HELP_AND_FEEDBACK = 496;
 
+    // Quick setting tiles
+    QUICK_SETTINGS = 497;
+
     // ---- End N-MR1 Constants, all N-MR1 constants go above this line ----
 
     //Swangin in the rain
     SCREWD = 713;
 
-    // Add new aosp constants above this line.
-    // END OF AOSP CONSTANTS
   }
 }
