@@ -76,13 +76,13 @@ public class BarTransitions {
         return mMode;
     }
 
-    public void setWarningColor(int color) {
+    public void updateResources(NavbarOverlayResources resourceMap) {}
+
+    public void setBatterySaverColor(int color) {
         if (mBarBackground != null) {
-            mBarBackground.setWarningColor(color);
+            mBarBackground.setBatterySaverColor(color);
         }
     }
-
-    public void updateResources(NavbarOverlayResources resourceMap) {}
 
     /**
      * @param alwaysOpaque if {@code true}, the bar's background will always be opaque, regardless
@@ -218,7 +218,7 @@ public class BarTransitions {
             mGradient.setBounds(bounds);
         }
 
-        public void setWarningColor(int color) {
+        public void setBatterySaverColor(int color) {
             if (!DEBUG_COLORS) {
                 mWarning = color;
             }
