@@ -66,7 +66,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-	
+
 import com.android.internal.R;
 
 import com.android.internal.util.screwd.Helpers;
@@ -260,7 +260,8 @@ public final class ShutdownThread extends Thread {
             closer.dialog = sConfirmDialog;
             sConfirmDialog.setOnDismissListener(closer);
             WindowManager.LayoutParams attrs = sConfirmDialog.getWindow().getAttributes();
-         
+            attrs.alpha = setRebootDialogAlpha(context);
+
             boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
             int powermenuAnimations = isPrimary ? getPowermenuAnimations(context) : 0;
 
@@ -308,6 +309,7 @@ public final class ShutdownThread extends Thread {
                 attrs.gravity = Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL;
             }
             sConfirmDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+            sConfirmDialog.getWindow().setDimAmount(setRebootDialogDim(context));
             sConfirmDialog.show();
         } else {
             beginShutdownSequence(context);
@@ -317,6 +319,23 @@ public final class ShutdownThread extends Thread {
     private static int getPowermenuAnimations(Context context) {
         return Settings.System.getInt(context.getContentResolver(),
                 Settings.System.POWER_MENU_ANIMATIONS, 0);
+    }
+
+    private static float setRebootDialogAlpha(Context context) {
+        int mRebootDialogAlpha = Settings.System.getInt(
+                context.getContentResolver(),
+                Settings.System.TRANSPARENT_POWER_MENU, 100);
+        double dAlpha = mRebootDialogAlpha / 100.0;
+        float alpha = (float) dAlpha;
+        return alpha;
+    }
+
+    private static float setRebootDialogDim(Context context) {
+        int mRebootDialogDim = Settings.System.getInt(context.getContentResolver(),
+                Settings.System.TRANSPARENT_POWER_DIALOG_DIM, 50);
+        double dDim = mRebootDialogDim / 100.0;
+        float dim = (float) dDim;
+        return dim;
     }
 
     private static void doSoftReboot() {
@@ -504,6 +523,9 @@ public final class ShutdownThread extends Thread {
             attrs.windowAnimations = R.style.PowerMenuTranslucentAnimation;
             attrs.gravity = Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL;
         }
+
+        attrs.alpha = setRebootDialogAlpha(context);
+        pd.getWindow().setDimAmount(setRebootDialogDim(context));
 
         pd.show();
 
