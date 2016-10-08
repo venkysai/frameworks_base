@@ -27,6 +27,7 @@ import android.content.res.Resources;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
+import android.net.ConnectivityManager;
 import android.os.UserHandle;
 
 import java.util.Locale;
@@ -81,7 +82,13 @@ public class screwdUtils {
         return isPackageInstalled(context, pkg, true);
     }
 
-     public static boolean isLeanTrolling(Context context) {
+    public static boolean isWifiOnly(Context context) {
+        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+        return (cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE) == false);
+    }
+
+    public static boolean isLeanTrolling(Context context) {
         final ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             if (service.service.getClassName().equals(LEAN_PACKAGE_NAME + ".services.LDTrollService")) {
