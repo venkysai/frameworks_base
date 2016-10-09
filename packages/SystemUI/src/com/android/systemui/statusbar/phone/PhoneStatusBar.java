@@ -398,6 +398,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private TextView mCarrierLabel;
     boolean mExpandedVisible;
 
+    // Screw'd logo
+    private boolean mScrewdLogo;
+    private int mScrewdLogoColor;
+    private ImageView mScrewdLogoRight;
+    private ImageView mScrewdLogoLeft;
+    private int mScrewdLogoStyle;
+
     private int mNavigationBarWindowState = WINDOW_STATE_SHOWING;
 
     // the tracker view
@@ -550,6 +557,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_CARRIER), false, this,
                     UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_SCREWD_LOGO),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_SCREWD_LOGO_COLOR),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_SCREWD_LOGO_STYLE),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -601,6 +617,16 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             ContentResolver resolver = mContext.getContentResolver();
             mShowCarrierLabel = Settings.System.getIntForUser(resolver,
                     Settings.System.STATUS_BAR_SHOW_CARRIER, 1, UserHandle.USER_CURRENT);
+            mScrewdLogoStyle = Settings.System.getIntForUser(
+                    resolver, Settings.System.STATUS_BAR_SCREWD_LOGO_STYLE, 0,
+                    UserHandle.USER_CURRENT);
+            mScrewdLogo = Settings.System.getIntForUser(resolver,
+                    Settings.System.STATUS_BAR_SCREWD_LOGO, 0, mCurrentUserId) == 1;
+            mScrewdLogoColor = Settings.System.getIntForUser(resolver,
+                    Settings.System.STATUS_BAR_SCREWD_LOGO_COLOR, 0xFFFFFFFF, mCurrentUserId);
+            mScrewdLogoLeft = (ImageView) mStatusBarView.findViewById(R.id.left_screwd_logo);
+            mScrewdLogoRight = (ImageView) mStatusBarView.findViewById(R.id.screwd_logo);
+            showScrewdLogo(mScrewdLogo, mScrewdLogoColor, mScrewdLogoStyle);
          }
     }
 
@@ -3738,6 +3764,29 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 return deferred;
             }
         }, cancelAction, afterKeyguardGone);
+    }
+
+    public void showScrewdLogo(boolean show, int color, int style) {
+        if (mStatusBarView == null) return;
+        if (!show) {
+            mScrewdLogoRight.setVisibility(View.GONE);
+            mScrewdLogoLeft.setVisibility(View.GONE);
+            return;
+        }
+        if (color != 0xFFFFFFFF) {
+            mScrewdLogoRight.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            mScrewdLogoLeft.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        } else {
+            mScrewdLogoRight.clearColorFilter();
+            mScrewdLogoLeft.clearColorFilter();
+        }
+        if (style == 0) {
+            mScrewdLogoRight.setVisibility(View.GONE);
+            mScrewdLogoLeft.setVisibility(View.VISIBLE);
+        } else {
+            mScrewdLogoLeft.setVisibility(View.GONE);
+            mScrewdLogoRight.setVisibility(View.VISIBLE);
+        }
     }
 
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {

@@ -94,6 +94,10 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
 
     private TextView mCarrierLabel;
 
+     // statusbar logo
+    private ImageView mScrewdLogoRight;
+    private ImageView mScrewdLogoLeft;
+
     private int mIconSize;
     private int mIconHPadding;
 
@@ -161,6 +165,8 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mDarkModeIconColorSingleTone = context.getColor(R.color.dark_mode_icon_color_single_tone);
         mLightModeIconColorSingleTone = context.getColor(R.color.light_mode_icon_color_single_tone);
         mHandler = new Handler();
+        mScrewdLogoRight = (ImageView) statusBar.findViewById(R.id.screwd_logo);
+        mScrewdLogoLeft = (ImageView) statusBar.findViewById(R.id.left_screwd_logo);
         loadDimens();
 
         TunerService.get(mContext).addTunable(this, ICON_BLACKLIST);
@@ -577,6 +583,12 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mCclock.setTextColor(getTint(mTintArea, mCclock, mIconTint));
         mNetworkTraffic.setDarkIntensity(mDarkIntensity);
         mCarrierLabel.setTextColor(getTint(mTintArea, mCarrierLabel, mIconTint));
+        if (Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.STATUS_BAR_SCREWD_LOGO_COLOR, 0xFFFFFFFF,
+                UserHandle.USER_CURRENT) == 0xFFFFFFFF) {
+            mScrewdLogoRight.setImageTintList(ColorStateList.valueOf(mIconTint));
+            mScrewdLogoLeft.setImageTintList(ColorStateList.valueOf(mIconTint));
+        }
     }
 
     public void appTransitionPending() {
