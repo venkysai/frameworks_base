@@ -5043,6 +5043,12 @@ public final class Settings {
         public static final String HIDE_LOCKSCREEN_ALARM = "hide_lockscreen_alarm";
 
         /**
+          * SS activity custom summary text
+          * @hide
+          */
+        public static final String SS_SETTINGS_SUMMARY= "ss_settings_summary";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
