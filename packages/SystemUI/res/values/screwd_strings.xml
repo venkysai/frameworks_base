@@ -166,4 +166,11 @@
     <string name="pref_crop_behavior_summary">Use the cropped image even if the original one hasn\'t actually been cropped with the crop action</string>
     <string name="action_ok">OK</string>
     <string name="action_edit">Edit</string>
+
+    <!-- Navigation bar Tile -->
+    <string name="quick_settings_navigation_bar">Navigation bar</string>
+    <string name="quick_settings_smartbar">SmartBar</string>
+    <string name="quick_settings_fling">Fling</string>
+    <string name="quick_settings_navigation_default">Stock</string>
+    <string name="quick_settings_navigation_disabled">Disabled</string>
 </resources>
