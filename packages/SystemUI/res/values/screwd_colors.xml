@@ -39,4 +39,7 @@
     <!-- Volume panel border coler -->
     <color name="volume_panel_border_color">#ff8000ff</color><!-- Screw'd purple -->
 
+    <!-- Status bar battery level text color -->
+    <color name="status_bar_battery_level_text_color">#ffffff</color>
+
 </resources>

@@ -6384,7 +6384,7 @@ public final class Settings {
          * @hide
          */
         public static final String PULSE_LAVALAMP_SOLID_SPEED = "lava_lamp_solid_speed";
- 
+
         /**
          * A flag containing settings used for biometric weak
          * @hide
@@ -7831,6 +7831,15 @@ public final class Settings {
         public static final String BRIGHTNESS_USE_TWILIGHT = "brightness_use_twilight";
 
         /**
+         * Status bar battery %
+         * 0: Hide the battery percentage
+         * 1: Display the battery percentage inside the icon
+         * 2: Display the battery percentage next to the icon
+         * @hide
+         */
+        public static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+
+        /**
          * Names of the service components that the current user has explicitly allowed to
          * be a VR mode listener, separated by ':'.
          *
@@ -8078,7 +8087,8 @@ public final class Settings {
             QS_TILES,
             DOZE_ENABLED,
             DOZE_PULSE_ON_PICK_UP,
-            DOZE_PULSE_ON_DOUBLE_TAP
+            DOZE_PULSE_ON_DOUBLE_TAP,
+            STATUS_BAR_SHOW_BATTERY_PERCENT
         };
 
         /**
