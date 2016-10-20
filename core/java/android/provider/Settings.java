@@ -4393,6 +4393,11 @@ public final class Settings {
          */
         public static final String STATUS_BAR_SCREWD_LOGO_STYLE = "status_bar_screwd_logo_style";
 
+        /**
+         * @hide
+         */
+        public static final String STATUS_BAR_SCREWD_LOGO_ANIMATED = "status_bar_screwd_logo_animated";
+
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
