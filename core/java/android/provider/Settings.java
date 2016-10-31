@@ -4235,6 +4235,12 @@ public final class Settings {
         public static final String USE_SLIM_RECENTS = "use_slim_recents";
 
         /**
+         * Number of qs columns on landscape orientation
+         * @hide
+         */
+        public static final String QS_LAYOUT_COLUMNS_LANDSCAPE = "qs_layout_columns_landscape";
+
+        /**
          * Amount of apps to show in recents
          * @hide
          */
@@ -4306,6 +4312,11 @@ public final class Settings {
          * @hide
          */
         public static final String RECENTS_ICON_PACK = "recents_icon_pack";
+
+        /**
+         * @hide
+         */
+        public static final String QS_LAYOUT_COLUMNS = "qs_layout_columns";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
