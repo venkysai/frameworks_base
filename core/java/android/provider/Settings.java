@@ -4846,6 +4846,12 @@ public final class Settings {
         public static final String SS_SETTINGS_SUMMARY= "ss_settings_summary";
 
         /**
+          * SS activity random summary text
+          * @hide
+          */
+        public static final String SS_SETTINGS_RANDOM_SUMMARY= "ss_settings_random_summary";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
