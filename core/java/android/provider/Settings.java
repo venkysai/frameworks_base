@@ -4329,33 +4329,6 @@ public final class Settings {
          */
         public static final String KEYGUARD_TOGGLE_TORCH = "keyguard_toggle_torch";
 
-        /**
-         * Number of rows used for the Quick Settings (portrait)
-         *
-         * @hide
-         */
-        public static final String QS_ROWS_PORTRAIT = "qs_rows_portrait";
-
-        /**
-         * Number of columns used for the Quick Settings (portrait)
-         *
-         * @hide
-         */
-        public static final String QS_COLUMNS_PORTRAIT = "qs_columns_portrait";
-
-        /**
-         * Number of rows used for the Quick Settings (landscape)
-         *
-         * @hide
-         */
-        public static final String QS_ROWS_LANDSCAPE = "qs_rows_landscape";
-
-        /**
-         * Number of columns used for the Quick Settings (landscape)
-         *
-         * @hide
-         */
-        public static final String QS_COLUMNS_LANDSCAPE = "qs_columns_landscape";
 
         /**
          * Alternative recent apps integration using OmniSwitch
@@ -7947,6 +7920,28 @@ public final class Settings {
          */
         public static final String SYSTEM_NAVIGATION_KEYS_ENABLED =
                 "system_navigation_keys_enabled";
+
+
+        /**
+         * Number of rows used for the Quick Settings (portrait)
+         *
+         * @hide
+         */
+        public static final String QS_ROWS_PORTRAIT = "qs_rows_portrait";
+
+        /**
+         * Number of rows used for the Quick Settings (landscape)
+         *
+         * @hide
+         */
+        public static final String QS_ROWS_LANDSCAPE = "qs_rows_landscape";
+
+        /**
+         * Number of columns used for the Quick Settings
+         *
+         * @hide
+         */
+        public static final String QS_COLUMNS = "qs_columns";
 
         /**
          * Holds comma separated list of ordering of QS tiles.

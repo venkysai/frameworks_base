@@ -15,9 +15,6 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-    <integer name="config_qs_num_rows_landscape_default">2</integer>
-    <integer name="config_qs_num_columns_landscape_default">5</integer>
     
     <!-- Enable PA Pie relocation to either stick to a physical side or default to the right side -->
     <bool name="config_relocatePieOnRotation">true</bool>
