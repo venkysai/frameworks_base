@@ -393,6 +393,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     View mExpandedContents;
     TextView mNotificationPanelDebugText;
 
+
+    private int mQsLayoutColumns;
+
     // settings
     private QSPanel mQSPanel;
 
@@ -606,15 +609,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.BATTERY_SAVER_MODE_COLOR),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.Secure.getUriFor(
-                   Settings.Secure.QS_ROWS_PORTRAIT),
-                   false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.Secure.getUriFor(
-                   Settings.Secure.QS_ROWS_LANDSCAPE),
-                   false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.Secure.getUriFor(
-                   Settings.Secure.QS_COLUMNS),
-                   false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_LAYOUT_COLUMNS),
+                    false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_CARRIER), false, this,
                     UserHandle.USER_ALL);
@@ -718,14 +715,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                         mBatterySaverWarningColor = mContext.getResources()
                                 .getColor(com.android.internal.R.color.battery_saver_mode_color);
                     }
-            } else if (uri.equals(Settings.Secure.getUriFor(
-                    Settings.Secure.QS_ROWS_PORTRAIT))
-                    || uri.equals(Settings.Secure.getUriFor(
-                    Settings.Secure.QS_ROWS_LANDSCAPE))) {
-                    updateResources();
-            } else if (uri.equals(Settings.Secure.getUriFor(
-                    Settings.Secure.QS_COLUMNS))) {
-                    updateResources();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_CARRIER))) {
                 update();
@@ -853,6 +842,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 mSidebarPosition = sidebarPosition;
                 removeSidebarView();
                 addSidebarView();
+            }
+
+            mQsLayoutColumns = Settings.System.getIntForUser(resolver,
+                    Settings.System.QS_LAYOUT_COLUMNS, 3, mCurrentUserId);
+
+            if (mHeader != null) {
+                mHeader.updateSettings();
             }
 
             // update recents
