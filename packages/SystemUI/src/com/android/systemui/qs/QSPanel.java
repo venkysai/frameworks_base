@@ -757,5 +757,8 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
                 configureTile(r.tile, r.tileView);
             }
         }
+        if (mCustomizePanel != null) {
+            mCustomizePanel.updateSettings();
+        }
     }
 }
