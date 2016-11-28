@@ -16,8 +16,6 @@
 -->
 <resources>
 
-
-
     <!-- Lockscreen shortcuts -->
     <dimen name="lockscreen_icon_side_padding">10dp</dimen>
     <dimen name="lockscreen_icon_size">35dp</dimen>
@@ -51,4 +49,8 @@
     <dimen name="pie_touch_offset">15dp</dimen>
     <dimen name="pie_tab_title_height">24dp</dimen>
     <dimen name="pie_panel_padding">20dp</dimen>
+
+    <!-- Qs visibility -->
+    <dimen name="qs_tile_height_wo_label">48dp</dimen>
+
 </resources>
