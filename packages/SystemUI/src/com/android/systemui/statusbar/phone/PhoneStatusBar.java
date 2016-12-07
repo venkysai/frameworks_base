@@ -124,6 +124,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.internal.logging.MetricsLogger;
@@ -1701,27 +1702,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         if (DEBUG) Log.v(TAG, "addNavigationBar: about to add " + mNavigationController.getBar());
         if (mNavigationController.getBar() == null) return;
 
-        try {
-            WindowManagerGlobal.getWindowManagerService()
-                    .watchRotation(new IRotationWatcher.Stub() {
-                @Override
-                public void onRotationChanged(int rotation) throws RemoteException {
-                    // We need this to be scheduled as early as possible to beat the redrawing of
-                    // window in response to the orientation change.
-                    Message msg = Message.obtain(mHandler, () -> {
-                        if (mNavigationBarView != null
-                                && mNavigationBarView.needsReorient(rotation)) {
-                            repositionNavigationBar();
-                        }
-                    });
-                    msg.setAsynchronous(true);
-                    mHandler.sendMessageAtFrontOfQueue(msg);
-                }
-            });
-        } catch (RemoteException e) {
-            throw e.rethrowFromSystemServer();
-        }
-
         prepareNavigationBarView();
 
         mWindowManager.addView(mNavigationController.getBar().getBaseView(), getNavigationBarLayoutParams());
@@ -1751,12 +1731,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
                     | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH
                     | WindowManager.LayoutParams.FLAG_SLIPPERY,
-                    | WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                 PixelFormat.TRANSLUCENT);
         // this will allow the navbar to run in an overlay on devices that support this
-/*        if (ActivityManager.isHighEndGfx()) {
+        if (ActivityManager.isHighEndGfx()) {
             lp.flags |= WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED;
-        }*/ //*Keep for possible future use.
+        }
 
         lp.setTitle("NavigationBar");
         lp.windowAnimations = 0;
@@ -4969,10 +4948,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             previousView.makeInactive(true /* animate */);
         }
         mStackScroller.setActivatedChild(view);
-    }
-
-    public ButtonDispatcher getHomeButton() {
-        return mNavigationBarView.getHomeButton();
     }
 
     /**

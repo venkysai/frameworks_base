@@ -362,7 +362,7 @@ public class LockPatternUtils {
             throws RequestThrottledException {
         try {
             VerifyCredentialResponse response =
-                    getLockSettings().checkPattern(patternToString(pattern, userId), userId);
+                    getLockSettings().checkPattern(patternToString(pattern, userId), userId,
                             wrapCallback(progressCallback));
 
             if (response.getResponseCode() == VerifyCredentialResponse.RESPONSE_OK) {
@@ -452,7 +452,6 @@ public class LockPatternUtils {
     public boolean checkPassword(String password, int userId,
             @Nullable CheckCredentialProgressCallback progressCallback)
             throws RequestThrottledException {
-        throwIfCalledOnMainThread();
         try {
             VerifyCredentialResponse response =
                     getLockSettings().checkPassword(password, userId, wrapCallback(progressCallback));
