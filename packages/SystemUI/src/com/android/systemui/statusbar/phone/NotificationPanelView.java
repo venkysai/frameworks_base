@@ -462,7 +462,6 @@ public class NotificationPanelView extends PanelView implements
         BlurTask.setBlurEngine(BlurUtils.BlurEngine.RenderScriptBlur);
 
         new BlurTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-      }
     }
 
     @Override
