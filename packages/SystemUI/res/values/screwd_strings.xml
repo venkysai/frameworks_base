@@ -116,6 +116,10 @@
     <string name="accessibility_quick_settings_pulse_changed_off">Pulse turned off</string>
     <string name="accessibility_quick_settings_pulse_changed_on">Pulse turned on</string>
 
+    <!-- Language\Locale Tile -->
+    <string name="quick_settings_locale_label">Language</string>
+    <string name="quick_settings_locale_more_locales_toast">Please configure multiple languages to enable toggle functionality</string>
+
     <!-- PA Pie controls -->
     <string name="pie_date_format" translatable="false">ccc, dd MMM yyyy</string>
     <string name="pie_hour_format_12">hh:mm</string>
