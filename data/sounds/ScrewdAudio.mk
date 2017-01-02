@@ -16,3 +16,7 @@ LOCAL_PATH := frameworks/base/data/sounds/
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)screwd/ringtones/June27.ogg:system/media/audio/ringtones/June27.ogg \
+    $(LOCAL_PATH)screwd/ringtones/ChunkUpTheDeuce.ogg:system/media/audio/ringtones/ChunkUpTheDeuce.ogg \
+    $(LOCAL_PATH)screwd/ringtones/DrankUpInMyCup.ogg:system/media/audio/ringtones/DrankUpInMyCup.ogg \
+    $(LOCAL_PATH)screwd/ringtones/Mann.ogg:system/media/audio/ringtones/Mann.ogg \
+    $(LOCAL_PATH)screwd/ringtones/SittinSideways.ogg:system/media/audio/ringtones/SittinSideways.ogg \
