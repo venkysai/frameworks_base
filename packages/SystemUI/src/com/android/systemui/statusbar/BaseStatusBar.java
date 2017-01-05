@@ -152,8 +152,7 @@ import static android.service.notification.NotificationListenerService.Ranking.i
 public abstract class BaseStatusBar extends SystemUI implements
         CommandQueue.Callbacks, ActivatableNotificationView.OnActivatedListener,
         ExpandableNotificationRow.ExpansionLogger, NotificationData.Environment,
-        ExpandableNotificationRow.OnExpandClickListener,
-        OnGutsClosedListener {
+        ExpandableNotificationRow.OnExpandClickListener {
     public static final String TAG = "StatusBar";
     public static final boolean DEBUG = false;
     public static final boolean MULTIUSER_DEBUG = false;
@@ -1217,7 +1216,12 @@ public abstract class BaseStatusBar extends SystemUI implements
         PackageManager pmUser = getPackageManagerForUser(mContext, sbn.getUser().getIdentifier());
         row.setTag(sbn.getPackageName());
         final NotificationGuts guts = row.getGuts();
-        guts.setClosedListener(this);
+        guts.setClosedListener((NotificationGuts g) -> {
+            if (!row.isRemoved()) {
+                mStackScroller.onHeightChanged(row, !isPanelFullyCollapsed() /* needsAnimation */);
+            }
+            mNotificationGutsExposed = null;
+        });
         final String pkg = sbn.getPackageName();
         String appname = pkg;
         Drawable pkgicon = null;
@@ -1355,7 +1359,7 @@ public abstract class BaseStatusBar extends SystemUI implements
                         guts.setExposed(true /* exposed */,
                                 mState == StatusBarState.KEYGUARD /* needsFalsingProtection */);
                         row.closeRemoteInput();
-                        mStackScroller.onHeightChanged(null, true /* needsAnimation */);
+                        mStackScroller.onHeightChanged(row, true /* needsAnimation */);
                         mNotificationGutsExposed = guts;
                     }
                 });
@@ -1386,12 +1390,6 @@ public abstract class BaseStatusBar extends SystemUI implements
         if (resetGear) {
             mStackScroller.resetExposedGearView(animate, true /* force */);
         }
-    }
-
-    @Override
-    public void onGutsClosed(NotificationGuts guts) {
-        mStackScroller.onHeightChanged(null, true /* needsAnimation */);
-        mNotificationGutsExposed = null;
     }
 
     @Override
