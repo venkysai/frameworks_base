@@ -818,6 +818,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
             RecentsActivity.updateBlurColors(mBlurDarkColorFilter,mBlurMixedColorFilter,mBlurLightColorFilter);
             RecentsActivity.updateRadiusScale(mScaleRecents,mRadiusRecents);
+            }
 
             int sidebarPosition = Settings.System.getInt(resolver,
                     Settings.System.APP_SIDEBAR_POSITION,
@@ -826,7 +827,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 mSidebarPosition = sidebarPosition;
                 removeSidebarView();
                 addSidebarView();
-            }
             }
          }
     }
@@ -1249,6 +1249,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mTickerEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.STATUS_BAR_SHOW_TICKER, 0, UserHandle.USER_CURRENT) == 1;
         initTickerView();
+
+        addSidebarView();
 
         // set the initial view visibility
         setAreThereNotifications();
