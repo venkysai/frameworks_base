@@ -95,7 +95,16 @@
   <string name="quick_settings_fling">Fling</string>
   <string name="quick_settings_fling_off">Fling off</string>
   <!-- Pulse Tile -->
+  <string name="quick_settings_pulse_enabled">Pulse Attivata</string>
+  <string name="quick_settings_pulse_disabled">Nessun visualizzatore</string>
+  <string name="quick_settings_pulse_label">Pulse</string>
+  <string name="accessibility_quick_settings_pulse_off">Pulse disattiva</string>
+  <string name="accessibility_quick_settings_pulse_on">Pulse attiva</string>
+  <string name="accessibility_quick_settings_pulse_changed_off">Pulse disattivata</string>
+  <string name="accessibility_quick_settings_pulse_changed_on">Pulse attivata</string>
   <!-- Language\Locale Tile -->
+  <string name="quick_settings_locale_label">Lingua</string>
+  <string name="quick_settings_locale_more_locales_toast">Si prega di configurare più lingue per abilitare la funzionalità toggle</string>
   <!-- PA Pie controls -->
   <string name="pie_hour_format_12">hh:mm</string>
   <string name="pie_hour_format_24">HH:mm</string>
@@ -106,6 +115,36 @@
   <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s </xliff:g> - Notifiche peeking stanno dormendo per 1 minuto.</string>
   <string name="heads_up_snooze_message"><xliff:g id="string">%s</xliff:g> - Notifiche peeking stanno dormendo per <xliff:g id="number">%d</xliff:g> minuti.</string>
   <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
+  <string name="cm_power_notification_controls_description">Con i controlli di accensione notifica, tu puoi settare un livello di priorità da 0 a 6 per le notifiche delle applicazioni.
+        \n\n<b>Livello 6</b>
+        \n- Mostra in cima alla lista di notifica
+        \n- Permetti interruzione a schermo intero
+        \n- Sempre peek
+        \n\n<b>Livello 5</b>
+        \n- Previeni interruzione a schermo intero
+        \n- Sempre peek
+        \n\n<b>Livello 4</b>
+        \n- Previeni interruzione a schermo intero
+        \n- Mai peek
+        \n\n<b>Livello 3</b>
+        \n- Previeni interruzione a schermo intero
+        \n- Mai peek
+        \n- Non effettuare mai suono e vibrazione
+        \n\n<b>Livello 2</b>
+        \n- Previeni interruzione a schermo intero
+        \n- Mai peek
+        \n- Non effettuare mai suono e vibrazione
+        \n- Nascondi da schermata di blocco
+        \n- Mostra in fondo alla lista di notifica
+        \n\n<b>Livello 1</b>
+        \n- Previeni interruzione a schermo intero
+        \n- Mai peek
+        \n- Non effettuare mai suono e vibrazione
+        \n- Nascondi da schermata di blocco e barra di stato
+        \n- Mostra in fondo alla lista di notifica
+        \n\n<b>Livello 0</b>
+        \n- Blocca tutte le notifiche dalle app
+    </string>
   <!-- Notification importance level title-->
   <string name="importance_level_title">Importanza: Livello %1$d</string>
   <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
@@ -133,5 +172,10 @@
   <!-- Path data for big circle battery -->
   <!-- Path data for circle battery -->
   <!-- Recents Membar -->
+  <string name="recents_free_ram">RAM LIBERA</string>
   <!-- Ambient display and lift gesture Tile -->
+  <string name="quick_settings_doze_notifications_label">Notifiche doze</string>
+  <string name="quick_settings_doze_notifications_user">Notifiche doze</string>
+  <string name="quick_settings_doze_notifications_off">Nessuna notifica doze</string>
+  <!-- NFC Tile -->
 </resources>
