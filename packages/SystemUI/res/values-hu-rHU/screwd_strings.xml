@@ -20,6 +20,8 @@
   <string name="statusbar_icons_blacklist">Állapotsor ikonok</string>
   <!-- notification controls -->
   <string name="tuner_notification_control">Teljes körű értesítésvezérlők</string>
+  <!-- vpn icon switch -->
+  <!-- data saver icon switch -->
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">Zseblámpa be</string>
   <string name="quick_settings_tile_flashlight_not_summary">Kikapcsoláshoz érintse meg</string>
@@ -178,4 +180,8 @@
   <string name="quick_settings_doze_notifications_user">Doze értesítések</string>
   <string name="quick_settings_doze_notifications_off">Nincs doze értesítés</string>
   <!-- NFC Tile -->
+  <string name="quick_settings_nfc_label">NFC</string>
+  <string name="quick_settings_nfc_off">NFC ki</string>
+  <string name="quick_settings_nfc_on">NFC be</string>
+  <!-- App sidebar -->
 </resources>

@@ -20,6 +20,8 @@
   <string name="statusbar_icons_blacklist">Icone barra di stato</string>
   <!-- notification controls -->
   <string name="tuner_notification_control">Comandi di accensione notifica</string>
+  <!-- vpn icon switch -->
+  <!-- data saver icon switch -->
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">Torcia attiva</string>
   <string name="quick_settings_tile_flashlight_not_summary">Tocca per spegnere</string>
@@ -178,4 +180,5 @@
   <string name="quick_settings_doze_notifications_user">Notifiche doze</string>
   <string name="quick_settings_doze_notifications_off">Nessuna notifica doze</string>
   <!-- NFC Tile -->
+  <!-- App sidebar -->
 </resources>

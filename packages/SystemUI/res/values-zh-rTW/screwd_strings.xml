@@ -18,6 +18,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- statusbar items tuner -->
   <!-- notification controls -->
+  <!-- vpn icon switch -->
+  <!-- data saver icon switch -->
   <!-- Notification which notifies user flashlight is enabled -->
   <!-- Screenrecord Notification Ticker -->
   <!-- Screenrecord notification title -->
@@ -56,4 +58,5 @@
   <!-- Recents Membar -->
   <!-- Ambient display and lift gesture Tile -->
   <!-- NFC Tile -->
+  <!-- App sidebar -->
 </resources>

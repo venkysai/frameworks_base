@@ -20,6 +20,8 @@
   <string name="statusbar_icons_blacklist">Statusbalk iconen</string>
   <!-- notification controls -->
   <string name="tuner_notification_control">Power notificatie controle</string>
+  <!-- vpn icon switch -->
+  <!-- data saver icon switch -->
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">Zaklamp is aan</string>
   <string name="quick_settings_tile_flashlight_not_summary">Tik om uit te schakelen</string>
@@ -165,4 +167,5 @@
   <!-- Recents Membar -->
   <!-- Ambient display and lift gesture Tile -->
   <!-- NFC Tile -->
+  <!-- App sidebar -->
 </resources>
