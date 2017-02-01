@@ -21,7 +21,9 @@
   <!-- notification controls -->
   <string name="tuner_notification_control">Teljes körű értesítésvezérlők</string>
   <!-- vpn icon switch -->
+  <string name="status_bar_vpn">VPN</string>
   <!-- data saver icon switch -->
+  <string name="status_bar_datasaver">Adatmentő</string>
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">Zseblámpa be</string>
   <string name="quick_settings_tile_flashlight_not_summary">Kikapcsoláshoz érintse meg</string>
@@ -184,4 +186,11 @@
   <string name="quick_settings_nfc_off">NFC ki</string>
   <string name="quick_settings_nfc_on">NFC be</string>
   <!-- App sidebar -->
+  <string name="default_folder_text">Mappa</string>
+  <string name="title_activity_sidebar_configuration">Alkalmazássáv tartalmának beállítása</string>
+  <string name="action_save">Mentés</string>
+  <string name="toast_items_saved">Alkalmazássáv elemek mentése megtörtént.</string>
+  <string name="content_setup_instructions">Az alkalmazássávhoz hozzáadhat elemeket azokat nyomva tartva, majd az alkalmazássávra húzva.\n\nMappába rendezheti őket, ha egymásra húzza őket az alkalmazássávon.\n\nEgy elem eltávolításához egyszerűen húzza az alkalmazássávon kívülre.</string>
+  <string name="content_setup_dismiss">Folytatás</string>
+  <string name="toast_not_installed">Az alkalmazás nincs telepítve</string>
 </resources>
