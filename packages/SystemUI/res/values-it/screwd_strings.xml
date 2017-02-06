@@ -21,7 +21,9 @@
   <!-- notification controls -->
   <string name="tuner_notification_control">Comandi di accensione notifica</string>
   <!-- vpn icon switch -->
+  <string name="status_bar_vpn">VPN</string>
   <!-- data saver icon switch -->
+  <string name="status_bar_datasaver">Risparmio dati</string>
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">Torcia attiva</string>
   <string name="quick_settings_tile_flashlight_not_summary">Tocca per spegnere</string>
@@ -180,5 +182,15 @@
   <string name="quick_settings_doze_notifications_user">Notifiche doze</string>
   <string name="quick_settings_doze_notifications_off">Nessuna notifica doze</string>
   <!-- NFC Tile -->
+  <string name="quick_settings_nfc_label">NFC</string>
+  <string name="quick_settings_nfc_off">NFC disattivo</string>
+  <string name="quick_settings_nfc_on">NFC attivo</string>
   <!-- App sidebar -->
+  <string name="default_folder_text">Cartella</string>
+  <string name="title_activity_sidebar_configuration">Configura contenuto AppBar</string>
+  <string name="action_save">Salva</string>
+  <string name="toast_items_saved">Gli elementi dell\' Appbar sono stati salvati.</string>
+  <string name="content_setup_instructions">Aggiungi elementi nell\'Appbar tenendo premuto qualsiasi elemento e trascinandolo sull\'Appbar.\n\nInserisci gli elementi in cartelle trascinandoli sopra un elemento già esistente nell\'Appbar.\n\nPer rimuovere un elemento basta trascinarlo fuori dall\' \@appbar.</string>
+  <string name="content_setup_dismiss">Continua</string>
+  <string name="toast_not_installed">L\'app non è installata</string>
 </resources>
