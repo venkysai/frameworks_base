@@ -27,7 +27,6 @@
   <java-symbol type="string" name="system_error_vendorprint" />
 
   <!-- Reboot - Advanced Reboot -->
-  <java-symbol type="string" name="reboot_confirm" />
   <java-symbol type="string" name="reboot_title" />
   <java-symbol type="string" name="reboot_progress" />
   <java-symbol type="string" name="global_action_reboot" />
