@@ -207,4 +207,7 @@
   <!-- Config IME switcher -->
   <java-symbol type="bool" name="config_show_IMESwitcher" />
 
+  <!-- High Brightness Mode -->
+  <java-symbol type="bool" name="config_supportHighBrightness" />
+
 </resources>

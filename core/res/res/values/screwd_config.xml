@@ -79,6 +79,10 @@
     <integer name="config_qs_num_rows_landscape_default">2</integer>
 
     <!-- Config IME switcher -->
-   <bool name="config_show_IMESwitcher">true</bool>
+    <bool name="config_show_IMESwitcher">true</bool>
+
+    <!-- High Brightness Mode -->
+    <add-resource type="bool" name="config_supportHighBrightness"></add-resource>
+    <bool name="config_supportHighBrightness">false</bool>
 
 </resources>
