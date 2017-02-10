@@ -218,6 +218,10 @@
     <!-- Ambient display and lift gesture Tile -->
     <string name="quick_settings_doze_notifications_label">Doze notifications</string>
 
+    <!-- High Brightness Mode Tile -->
+    <string name="quick_settings_high_brightness">High brightness</string>
+    <string name="high_brightness_warning">HBM activated, overriding current brightness settings</string>
+
     <!-- NFC Tile -->
     <string name="quick_settings_nfc_label">NFC</string>
     <string name="quick_settings_nfc_off">NFC off</string>
