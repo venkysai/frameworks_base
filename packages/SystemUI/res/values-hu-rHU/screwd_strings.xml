@@ -193,4 +193,5 @@
   <string name="content_setup_instructions">Az alkalmazássávhoz hozzáadhat elemeket azokat nyomva tartva, majd az alkalmazássávra húzva.\n\nMappába rendezheti őket, ha egymásra húzza őket az alkalmazássávon.\n\nEgy elem eltávolításához egyszerűen húzza az alkalmazássávon kívülre.</string>
   <string name="content_setup_dismiss">Folytatás</string>
   <string name="toast_not_installed">Az alkalmazás nincs telepítve</string>
+  <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
 </resources>

@@ -193,4 +193,5 @@
   <string name="content_setup_instructions">Aggiungi elementi nell\'Appbar tenendo premuto qualsiasi elemento e trascinandolo sull\'Appbar.\n\nInserisci gli elementi in cartelle trascinandoli sopra un elemento già esistente nell\'Appbar.\n\nPer rimuovere un elemento basta trascinarlo fuori dall\' \@appbar.</string>
   <string name="content_setup_dismiss">Continua</string>
   <string name="toast_not_installed">L\'app non è installata</string>
+  <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
 </resources>
