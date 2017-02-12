@@ -16,21 +16,58 @@
      limitations under the License. 
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="default_string">Voreinstellung</string>
   <!-- Vendor mismatched fingerprint warning [CHAR LIMIT=NONE] -->
+  <string name="system_error_vendorprint">Ihre Anbieter-Partition entspricht nicht dem System. Bitte flashen sie die <xliff:g id="string">%s</xliff:g> Anbieter-Partition für ihr Gerät</string>
   <!-- Reboot menu -->
   <!-- label for item that reboots the phone in phone options dialog -->
+  <string name="global_action_reboot">Neustart</string>
   <!-- Button to reboot the phone, within the Reboot Options dialog -->
+  <string name="reboot_reboot">Neustart</string>
   <!-- Button to reboot the phone into recovery, within the Reboot Options dialog -->
+  <string name="reboot_recovery">Recovery</string>
   <!-- Button to reboot the phone into bootloader, within the Reboot Options dialog -->
+  <string name="reboot_bootloader">Bootloader</string>
   <!-- Button to reboot the phone into download, within the Reboot Options dialog -->
+  <string name="reboot_download">Download</string>
   <!-- Button to soft reboot the device, within the Reboot Options dialog -->
+  <string name="reboot_soft">Schneller Neustart</string>
   <!-- Button to soft reboot the device, within the Reboot Options dialog -->
+  <string name="reboot_systemui">SystemUI neustarten</string>
   <!-- Title of dialog to confirm rebooting. -->
+  <string name="reboot_title">Neustart</string>
   <!-- Reboot Confirmation Dialog.  When the user chooses to reboot the device, there will
          be a confirmation dialog.  This is the message. -->
+  <string name="reboot_confirm" product="tablet">Dein Tablet wird neu gestartet.</string>
+  <string name="reboot_confirm" product="default">Ihr Telefon wird neu gestartet.</string>
   <!-- Reboot Progress Dialog. This is shown if the user chooses to reboot the phone. -->
+  <string name="reboot_progress">Gerät wird neu gestartet\u2026</string>
   <!-- Global Actions -->
+  <string name="global_action_screenshot">Bildschirmfoto</string>
+  <string name="global_action_search">Suche</string>
+  <string name="global_action_torch">Taschenlampe</string>
+  <string name="global_action_voicesearch">Sprachsuche</string>
+  <string name="global_action_screenrecord">Bildschirmaufnahme</string>
   <!-- AOKP custom system animations -->
+  <string name="animation_fade">Verblassen</string>
+  <string name="animation_slide_right">Von rechts kommend</string>
+  <string name="animation_slide_left">Von links kommend</string>
+  <string name="animation_slide_right_no_fade">Von rechts kommend (ohne verblassen)</string>
+  <string name="animation_slide_left_no_fade">Von links kommend (ohne verblassen)</string>
+  <string name="animation_slide_up">Von unten kommend</string>
+  <string name="animation_slide_down">Von oben kommend</string>
+  <string name="animation_default">Voreinstellung</string>
+  <string name="animation_translucent">Transluzent</string>
+  <string name="animation_grow_shrink">Hereinwachsen (Oben)</string>
+  <string name="animation_grow_shrink_center">Hereinwachsen (Mitte)</string>
+  <string name="animation_grow_shrink_bottom">Hereinwachsen (Unten)</string>
+  <string name="animation_grow_shrink_left">Hereinwachsen (Links)</string>
+  <string name="animation_grow_shrink_right">Hereinwachsen (Rechts)</string>
+  <string name="action_null">Leer</string>
   <!-- ADB over network -->
+  <string name="adb_net_active_notification_title">ADB über Netzwerk aktiviert</string>
+  <string name="adb_both_active_notification_title">ADB über USB &amp; Netzwerk aktiviert</string>
+  <string name="adb_active_generic_notification_message">Berühren, um Debugging zu deaktivieren.</string>
   <!-- label for item that takes On-The-Go in the phone options dialog -->
+  <string name="global_action_onthego">On-The-Go-Modus</string>
 </resources>
