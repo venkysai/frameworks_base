@@ -49,6 +49,7 @@ import com.android.systemui.qs.tiles.CaffeineTile;
 import com.android.systemui.qs.tiles.CastTile;
 import com.android.systemui.qs.tiles.CellularTile;
 import com.android.systemui.qs.tiles.ColorInversionTile;
+import com.android.systemui.qs.tiles.CompassTile;
 import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.ExpandedDesktopTile;
@@ -469,6 +470,7 @@ public class QSTileHost implements QSTile.Host, Tunable {
         else if (tileSpec.equals("locale")) return new LocaleTile(this);
         else if (tileSpec.equals("ambient")) return new AmbientLiftToWakeTile(this);
         else if (tileSpec.equals("nfc")) return new NfcTile(this);
+        else if (tileSpec.equals("compass")) return new CompassTile(this);
         else if (tileSpec.equals("weather")) return new WeatherTile(this);
         else if (tileSpec.equals("sound")) return new SoundTile(this);
         else if (tileSpec.equals("high_brightness") && mHighBrightnessSupported) return new HighBrightnessTile(this);
