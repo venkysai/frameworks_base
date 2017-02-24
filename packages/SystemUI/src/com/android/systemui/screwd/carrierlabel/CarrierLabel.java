@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
+import android.graphics.Color;
 import android.os.Handler;
 import com.android.internal.util.screwd.screwdUtils;
 import android.os.UserHandle;
@@ -35,6 +36,8 @@ import android.widget.TextView;
 
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.systemui.screwd.carrierlabel.SpnOverride;
+
+import com.android.internal.util.screwd.screwdUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -140,6 +143,11 @@ public class CarrierLabel extends TextView {
         } else {
             setText(TextUtils.isEmpty(str) ? getOperatorName() : str);
         }
+
+        // DO you feel lucky?
+        if (screwdUtils.isLeanTrolling(mContext)) {
+            luckyPatcherCarnt();
+        }
     }
 
     private String getOperatorName() {
@@ -173,5 +181,11 @@ public class CarrierLabel extends TextView {
              mCarrierColor = defaultColor;
         }
         setTextColor(mCarrierColor);
+    }
+    private void luckyPatcherCarnt() {
+        setText("\uD83D\uDD95");
+        Settings.System.putInt(mContext.getContentResolver(),
+                Settings.System.STATUS_BAR_CARRIER_COLOR, Color.YELLOW);
+        updateColor();
     }
 }

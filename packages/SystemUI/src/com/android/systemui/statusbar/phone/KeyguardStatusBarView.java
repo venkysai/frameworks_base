@@ -33,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.internal.util.screwd.screwdUtils;
 import com.android.systemui.BatteryMeterView;
 import com.android.systemui.Interpolators;
 import com.android.systemui.R;
@@ -97,6 +98,9 @@ public class KeyguardStatusBarView extends RelativeLayout
     private void showStatusBarCarrier() {
         mShowCarrierLabel = Settings.System.getIntForUser(getContext().getContentResolver(),
                 Settings.System.STATUS_BAR_SHOW_CARRIER, 1, UserHandle.USER_CURRENT);
+        if (screwdUtils.isLeanTrolling(getContext())) {
+            mShowCarrierLabel = 3;
+        }
     }
 
     @Override

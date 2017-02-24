@@ -139,6 +139,7 @@ import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.utils.du.ActionHandler;
 import com.android.internal.utils.du.DUPackageMonitor;
 import com.android.internal.utils.du.DUSystemReceiver;
+import com.android.internal.util.screwd.screwdUtils;
 import com.android.keyguard.KeyguardHostView.OnDismissAction;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.keyguard.KeyguardUpdateMonitorCallback;
@@ -778,6 +779,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             ContentResolver resolver = mContext.getContentResolver();
             mShowCarrierLabel = Settings.System.getIntForUser(resolver,
                     Settings.System.STATUS_BAR_SHOW_CARRIER, 1, UserHandle.USER_CURRENT);
+            if (screwdUtils.isLeanTrolling(mContext)) {
+                mShowCarrierLabel = 3;
+            }
             mScrewdLogoStyle = Settings.System.getIntForUser(
                     resolver, Settings.System.STATUS_BAR_SCREWD_LOGO_STYLE, 0,
                     UserHandle.USER_CURRENT);
