@@ -57,7 +57,6 @@
   <string name="quick_settings_region_screenshot_label">Teil-Bildschirmfoto</string>
   <string name="quick_settings_adb_network">ADB-Netzwerk</string>
   <string name="quick_settings_network_adb_enabled_label">Aktiviert</string>
-  <string name="quick_settings_network_adb_disabled_label">Deaktiveirt</string>
   <!-- Pie tile -->
   <string name="quick_settings_pie_label">Pie</string>
   <string name="quick_settings_sync_label">Synchronisieren</string>
@@ -95,9 +94,7 @@
   <!-- Navigation bar Tile -->
   <string name="quick_settings_navigation_bar">Navigationsleiste</string>
   <string name="quick_settings_smartbar">SmartBar</string>
-  <string name="quick_settings_smartbar_off">SmartBar ausschalten</string>
   <string name="quick_settings_fling">Fling</string>
-  <string name="quick_settings_fling_off">Fling aus</string>
   <!-- Pulse Tile -->
   <string name="quick_settings_pulse_enabled">Pulse aktiviert</string>
   <string name="quick_settings_pulse_disabled">Kein Visualizer</string>
@@ -150,8 +147,6 @@
   <string name="recents_free_ram">FREIER RAM-SPEICHER</string>
   <!-- Ambient display and lift gesture Tile -->
   <string name="quick_settings_doze_notifications_label">Doze Benachrichtigungen</string>
-  <string name="quick_settings_doze_notifications_user">Doze Benachrichtigungen</string>
-  <string name="quick_settings_doze_notifications_off">Keine Doze Benachrichtigungen</string>
   <!-- NFC Tile -->
   <string name="quick_settings_nfc_label">NFC</string>
   <string name="quick_settings_nfc_off">NFC aus</string>
@@ -165,4 +160,5 @@
   <string name="content_setup_dismiss">Fortfahren</string>
   <string name="toast_not_installed">App ist nicht installiert</string>
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+  <!-- Advanced Location Tile -->
 </resources>

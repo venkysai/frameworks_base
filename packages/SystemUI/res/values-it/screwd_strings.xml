@@ -57,7 +57,6 @@
   <string name="quick_settings_region_screenshot_label">Screenshot parziale</string>
   <string name="quick_settings_adb_network">ADB via rete</string>
   <string name="quick_settings_network_adb_enabled_label">Attivato</string>
-  <string name="quick_settings_network_adb_disabled_label">Disattivato</string>
   <!-- Pie tile -->
   <string name="quick_settings_pie_label">Pie</string>
   <string name="quick_settings_sync_label">Sincro</string>
@@ -95,9 +94,7 @@
   <!-- Navigation bar Tile -->
   <string name="quick_settings_navigation_bar">Barra di navigazione</string>
   <string name="quick_settings_smartbar">SmartBar</string>
-  <string name="quick_settings_smartbar_off">SmartBar disattiva</string>
   <string name="quick_settings_fling">Fling</string>
-  <string name="quick_settings_fling_off">Fling off</string>
   <!-- Pulse Tile -->
   <string name="quick_settings_pulse_enabled">Pulse Attivata</string>
   <string name="quick_settings_pulse_disabled">Nessun visualizzatore</string>
@@ -179,8 +176,6 @@
   <string name="recents_free_ram">RAM LIBERA</string>
   <!-- Ambient display and lift gesture Tile -->
   <string name="quick_settings_doze_notifications_label">Notifiche doze</string>
-  <string name="quick_settings_doze_notifications_user">Notifiche doze</string>
-  <string name="quick_settings_doze_notifications_off">Nessuna notifica doze</string>
   <!-- NFC Tile -->
   <string name="quick_settings_nfc_label">NFC</string>
   <string name="quick_settings_nfc_off">NFC disattivo</string>
@@ -194,4 +189,17 @@
   <string name="content_setup_dismiss">Continua</string>
   <string name="toast_not_installed">L\'app non è installata</string>
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_running_services">Apri schermata servizi in esecuzione.</string>
+  <!-- Advanced Location Tile -->
+  <string name="accessibility_quick_settings_location_battery_saving">Geolocalizzazione: modalità risparmio energetico.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Geolocalizzazione: modalità solo dispositivo.</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">Geolocalizzazione: modalità alta precisione.</string>
+  <string name="accessibility_quick_settings_location_changed_battery_saving">Geolocalizzazione cambiata in modalità risparmio energetico.</string>
+  <string name="accessibility_quick_settings_location_changed_gps_only">Geolocalizzazione cambiata in modalità solo dispositivo.</string>
+  <string name="accessibility_quick_settings_location_changed_high_accuracy">Geolocalizzazione cambiata in modalità alta precisione.</string>
+  <string name="quick_settings_location_detail_title">Geolocalizzazione</string>
+  <string name="quick_settings_location_battery_saving_label">Risparmio energetico</string>
+  <string name="quick_settings_location_gps_only_label">Solo dispositivo</string>
+  <string name="quick_settings_location_high_accuracy_label">Alta precisione</string>
+  <string name="quick_settings_location_off_custom_label">Posizione</string>
 </resources>

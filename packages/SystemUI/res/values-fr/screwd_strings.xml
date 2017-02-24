@@ -55,7 +55,6 @@
   <string name="quick_settings_region_screenshot_label">Capture d’écran partielle</string>
   <string name="quick_settings_adb_network">Réseau ADB</string>
   <string name="quick_settings_network_adb_enabled_label">Activé</string>
-  <string name="quick_settings_network_adb_disabled_label">Désactivé</string>
   <!-- Pie tile -->
   <string name="quick_settings_pie_label">Pie</string>
   <string name="quick_settings_sync_label">Synchronisation</string>
@@ -93,9 +92,7 @@
   <!-- Navigation bar Tile -->
   <string name="quick_settings_navigation_bar">Barre de navigation</string>
   <string name="quick_settings_smartbar">SmartBar</string>
-  <string name="quick_settings_smartbar_off">SmartBar désactivée</string>
   <string name="quick_settings_fling">Fling</string>
-  <string name="quick_settings_fling_off">Fling désactivé</string>
   <!-- Pulse Tile -->
   <!-- Language\Locale Tile -->
   <!-- PA Pie controls -->
@@ -168,4 +165,5 @@
   <!-- NFC Tile -->
   <!-- App sidebar -->
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+  <!-- Advanced Location Tile -->
 </resources>

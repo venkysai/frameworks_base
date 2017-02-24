@@ -55,7 +55,6 @@
   <string name="quick_settings_region_screenshot_label">範囲を指定してスクリーンショット</string>
   <string name="quick_settings_adb_network">ADBネットワーク</string>
   <string name="quick_settings_network_adb_enabled_label">有効</string>
-  <string name="quick_settings_network_adb_disabled_label">無効</string>
   <!-- Pie tile -->
   <string name="quick_settings_pie_label">Pie</string>
   <string name="quick_settings_sync_label">同期</string>
@@ -93,9 +92,7 @@
   <!-- Navigation bar Tile -->
   <string name="quick_settings_navigation_bar">ナビゲーションバー</string>
   <string name="quick_settings_smartbar">スマートバー</string>
-  <string name="quick_settings_smartbar_off">スマートバーはオフです</string>
   <string name="quick_settings_fling">Fling</string>
-  <string name="quick_settings_fling_off">Flingはオフです</string>
   <!-- Pulse Tile -->
   <string name="quick_settings_pulse_enabled">Pulseは有効</string>
   <string name="quick_settings_pulse_disabled">ビジュアライザーはありません</string>
@@ -149,4 +146,5 @@
   <string name="quick_settings_nfc_on">NFC オン</string>
   <!-- App sidebar -->
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+  <!-- Advanced Location Tile -->
 </resources>
