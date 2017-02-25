@@ -254,4 +254,7 @@
     <string name="omnijaws_detail_header">Weather</string>
     <string name="omnijaws_label_default">Weather</string>
     <string name="omnijaws_current_text">Now</string>
+
+    <!-- Sim recents on keyguard -->
+    <string name="slim_recent_keyguard">Unlock your device to view recents</string>
 </resources>
