@@ -5367,7 +5367,7 @@ public final class Settings {
          *
          * @hide
          */
-        public static final String RECENT_CARD_TEXT_COLOR = "recent_card_text_color";
+        //public static final String RECENT_CARD_TEXT_COLOR = "recent_card_text_color";
 
         /**
          * @hide
