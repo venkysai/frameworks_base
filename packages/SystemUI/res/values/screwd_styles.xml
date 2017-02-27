@@ -136,4 +136,8 @@
         <item name="android:textColor">#ffffff</item>
     </style>
 
+     <style name="SlimRecentsCardOptionsButton">
+        <item name="android:padding">2dp</item>
+    </style>
+
 </resources>
