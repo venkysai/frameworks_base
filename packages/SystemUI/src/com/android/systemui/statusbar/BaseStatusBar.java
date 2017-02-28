@@ -397,7 +397,6 @@ public abstract class BaseStatusBar extends SystemUI implements
 
         if (slimRecents) {
             mSlimRecents = new RecentController(mContext, mLayoutDirection);
-            //mSlimRecents.setCallback(this);
             mRecents = null;
             rebuildRecentsScreen();
         } else {
