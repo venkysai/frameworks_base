@@ -65,8 +65,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.cards.recyclerview.view.CardRecyclerView;
-
 import com.android.systemui.R;
 import com.android.systemui.RecentsComponent;
 import com.android.systemui.recents.misc.Utilities;
@@ -182,8 +180,8 @@ public class RecentController implements RecentPanelView.OnExitListener,
         mRecentWarningContent =
                 (LinearLayout) mRecentContainer.findViewById(R.id.recent_warning_content);
 
-        final CardRecyclerView cardRecyclerView =
-                (CardRecyclerView) mRecentContainer.findViewById(R.id.recent_list);
+        final RecyclerView cardRecyclerView =
+                (RecyclerView) mRecentContainer.findViewById(R.id.recent_list);
 
         cardRecyclerView.setHasFixedSize(true);
         CacheMoreCardsLayoutManager llm = new CacheMoreCardsLayoutManager(context, mWindowManager);
@@ -505,10 +503,8 @@ public class RecentController implements RecentPanelView.OnExitListener,
             mIsToggled = false;
             mIsShowing = false;
             mRecentPanelView.setTasksLoaded(false);
-            mRecentPanelView.dismissPopup();
             if (forceHide) {
                 if (DEBUG) Log.d(TAG, "force hide recent window");
-                CacheController.getInstance(mContext).setRecentScreenShowing(false);
                 mAnimationState = ANIMATION_STATE_NONE;
                 mHandler.removeCallbacks(mRecentRunnable);
                 mWindowManager.removeViewImmediate(mParentView);
@@ -533,7 +529,6 @@ public class RecentController implements RecentPanelView.OnExitListener,
         sendCloseSystemWindows(BaseStatusBar.SYSTEM_DIALOG_REASON_RECENT_APPS);
         mAnimationState = ANIMATION_STATE_NONE;
         mHandler.removeCallbacks(mRecentRunnable);
-        CacheController.getInstance(mContext).setRecentScreenShowing(true);
         mWindowManager.addView(mParentView, generateLayoutParameter());
         mRecentPanelView.scrollToFirst();
 
@@ -580,7 +575,6 @@ public class RecentController implements RecentPanelView.OnExitListener,
         public void run() {
             if (mAnimationState == ANIMATION_STATE_OUT) {
                 if (DEBUG) Log.d(TAG, "out animation finished");
-                CacheController.getInstance(mContext).setRecentScreenShowing(false);
             }
             mAnimationState = ANIMATION_STATE_NONE;
         }
@@ -616,6 +610,12 @@ public class RecentController implements RecentPanelView.OnExitListener,
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.RECENT_SHOW_RUNNING_TASKS),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.Global.getUriFor(
+                    Settings.Global.SINGLE_HAND_MODE),
+                    false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.RECENT_CARD_BG_COLOR),
                     false, this, UserHandle.USER_ALL);
             update();
         }
@@ -653,15 +653,20 @@ public class RecentController implements RecentPanelView.OnExitListener,
             if (mRecentPanelView != null) {
                 mRecentPanelView.setScaleFactor(mScaleFactor);
                 mRecentPanelView.setExpandedMode(Settings.System.getIntForUser(
-                    resolver, Settings.System.RECENT_PANEL_EXPANDED_MODE,
-                    mRecentPanelView.EXPANDED_MODE_AUTO,
-                    UserHandle.USER_CURRENT));
+                        resolver, Settings.System.RECENT_PANEL_EXPANDED_MODE,
+                        mRecentPanelView.EXPANDED_MODE_AUTO,
+                        UserHandle.USER_CURRENT));
                 mRecentPanelView.setShowTopTask(Settings.System.getIntForUser(
-                    resolver, Settings.System.RECENT_PANEL_SHOW_TOPMOST, 0,
-                    UserHandle.USER_CURRENT) == 1);
+                        resolver, Settings.System.RECENT_PANEL_SHOW_TOPMOST, 0,
+                        UserHandle.USER_CURRENT) == 1);
                 mRecentPanelView.setShowOnlyRunningTasks(Settings.System.getIntForUser(
-                    resolver, Settings.System.RECENT_SHOW_RUNNING_TASKS, 0,
-                    UserHandle.USER_CURRENT) == 1);
+                        resolver, Settings.System.RECENT_SHOW_RUNNING_TASKS, 0,
+                        UserHandle.USER_CURRENT) == 1);
+                mRecentPanelView.setOneHandMode(Settings.Global.getString(
+                        resolver, Settings.Global.SINGLE_HAND_MODE));
+                mRecentPanelView.setCardColor(Settings.System.getIntForUser(
+                        resolver, Settings.System.RECENT_CARD_BG_COLOR, 0x00ffffff,
+                        UserHandle.USER_CURRENT));
             }
 
             mRecentContent.setElevation(50);
@@ -696,10 +701,10 @@ public class RecentController implements RecentPanelView.OnExitListener,
 
         // Views we need and are passed trough the constructor.
         private LinearLayout mRecentWarningContent;
-        private CardRecyclerView mCardRecyclerView;
+        private RecyclerView mCardRecyclerView;
 
         RecentListOnScaleGestureListener(
-                LinearLayout recentWarningContent, CardRecyclerView cardRecyclerView) {
+                LinearLayout recentWarningContent, RecyclerView cardRecyclerView) {
             mRecentWarningContent = recentWarningContent;
             mCardRecyclerView = cardRecyclerView;
         }
@@ -833,7 +838,7 @@ public class RecentController implements RecentPanelView.OnExitListener,
         }
    }
 
-    public void startMultiWin() {
+    public void startMultiWindow() {
         SystemServicesProxy ssp = SystemServicesProxy.getInstance(mContext);
         ActivityManager.RunningTaskInfo runningTask = ssp.getRunningTask();
         int createMode = ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT;
@@ -853,9 +858,11 @@ public class RecentController implements RecentPanelView.OnExitListener,
         final ActivityManager am =
                 (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
         ActivityManager.RunningTaskInfo lastTask = getLastTask(am);
-        if (lastTask != null) {//user already ran another app in this session, we can dock it to the other side
+        if (lastTask != null) {
+            //user already ran another app in this session, we can dock it to the other side
             taskid = lastTask.id;
-        } else {//no last app for this session, let's search in the previous session recent apps
+        } else {
+            //no last app for this session, let's search in the previous session recent apps
             List<ActivityManager.RecentTaskInfo> recentTasks =
                     am.getRecentTasksForUser(ActivityManager.getMaxRecentTasksStatic(),
                     ActivityManager.RECENT_IGNORE_HOME_STACK_TASKS
@@ -867,7 +874,8 @@ public class RecentController implements RecentPanelView.OnExitListener,
             if (recentTasks != null && recentTasks.size() > 1) {
                 ActivityManager.RecentTaskInfo recentInfo = recentTasks.get(1);
                 taskid = recentInfo.persistentId;
-            } else  {//user cleared all apps, we don't have any taskid to choose
+            } else  {
+                //user cleared all apps, we don't have any taskid to choose
                 doWeHaveAtask = false;
             }
         }
@@ -875,7 +883,7 @@ public class RecentController implements RecentPanelView.OnExitListener,
             try {
                 ActivityOptions options = ActivityOptions.makeBasic();
                 ActivityManagerNative.getDefault()
-                .startActivityFromRecents(taskid, options.toBundle());
+                        .startActivityFromRecents(taskid, options.toBundle());
             } catch (RemoteException e) {}
         } else {
             Toast noLastapp = Toast.makeText(mContext, R.string.recents_multiwin_nolastapp, Toast.LENGTH_LONG);
@@ -905,19 +913,6 @@ public class RecentController implements RecentPanelView.OnExitListener,
 
         if (lastTask != null) {
             am.moveTaskToFront(lastTask.id, ActivityManager.MOVE_TASK_NO_USER_ACTION, animations.toBundle());
-        } else {
-            List<ActivityManager.RecentTaskInfo> recentTasks =
-                    am.getRecentTasksForUser(ActivityManager.getMaxRecentTasksStatic(),
-                    ActivityManager.RECENT_IGNORE_HOME_STACK_TASKS
-                            | ActivityManager.RECENT_INGORE_DOCKED_STACK_TOP_TASK
-                            | ActivityManager.RECENT_INGORE_PINNED_STACK_TASKS
-                            | ActivityManager.RECENT_IGNORE_UNAVAILABLE
-                            | ActivityManager.RECENT_INCLUDE_PROFILES,
-                            UserHandle.CURRENT.getIdentifier());
-            if (recentTasks != null && recentTasks.size() > 2) {
-                ActivityManager.RecentTaskInfo recentInfo = recentTasks.get(1);
-                am.moveTaskToFront(recentInfo.persistentId, ActivityManager.MOVE_TASK_NO_USER_ACTION, animations.toBundle());
-            }
         }
     }
 
@@ -965,6 +960,16 @@ public class RecentController implements RecentPanelView.OnExitListener,
             display.getSize(size);
             int screenHeight = size.y;
             return screenHeight;
+        }
+
+        /**
+         * Disable predictive animations. There is a bug in RecyclerView which causes views that
+         * are being reloaded to pull invalid ViewHolders from the internal recycler stack if the
+         * adapter size has decreased since the ViewHolder was recycled.
+         */
+        @Override
+        public boolean supportsPredictiveItemAnimations() {
+            return false;
         }
     }
 
