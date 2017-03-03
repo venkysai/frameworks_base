@@ -270,4 +270,7 @@
     <string name="shortcut_clear_notifications">Clear notifications</string>
     <string name="shortcut_toggle_title">Action to perform</string>
 
+    <string name="pirate_label">Aaarrrggghhh</string>
+    <string name="pirate_spec">pirate</string>
+
 </resources>
