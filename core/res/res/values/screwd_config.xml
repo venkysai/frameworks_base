@@ -69,9 +69,6 @@
     backgrounds (requires config_allowNotificationIconTextTinting to be true)-->
     <bool name="config_useDarkBgNotificationIconTextTinting">false</bool>
 
-    <!-- Whether doze feature is enabled by default in settings. -->
-    <bool name="config_doze_enabled_by_default">false</bool>
-
     <!-- The duration (in milliseconds) of recent app screen animation. -->
     <integer name="config_recentDefaultDur">300</integer>
 
