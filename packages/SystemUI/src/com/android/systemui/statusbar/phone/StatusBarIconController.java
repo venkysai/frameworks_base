@@ -101,6 +101,10 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
     private ImageView mScrewdLogoRight;
     private ImageView mScrewdLogoLeft;
 
+    // Statusbar weather
+    private TextView mWeatherTextView;
+    private ImageView mWeatherImageView;
+
     private int mIconSize;
     private int mIconHPadding;
 
@@ -175,6 +179,8 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mScrewdLogoRight = (ImageView) statusBar.findViewById(R.id.screwd_logo);
         mScrewdLogoLeft = (ImageView) statusBar.findViewById(R.id.left_screwd_logo);
         mBatteryLevelView = (BatteryLevelTextView) statusBar.findViewById(R.id.battery_level);
+        mWeatherTextView = (TextView) statusBar.findViewById(R.id.weather_temp);
+        mWeatherImageView = (ImageView) statusBar.findViewById(R.id.weather_image);
         loadDimens();
 
         mClock.setStatusBarIconController(this);
@@ -624,6 +630,8 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
             mScrewdLogoRight.setImageTintList(ColorStateList.valueOf(mIconTint));
             mScrewdLogoLeft.setImageTintList(ColorStateList.valueOf(mIconTint));
         }
+        mWeatherTextView.setTextColor(mIconTint);
+        mWeatherImageView.setImageTintList(ColorStateList.valueOf(mIconTint));
     }
 
     public void appTransitionPending() {
