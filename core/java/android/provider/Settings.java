@@ -8126,6 +8126,12 @@ public final class Settings {
          */
         public static final String QS_WIFI_EASY_TOGGLE = "qs_wifi_easy_toggle";
 
+        /**
+         * Enable single click to turn Location on or off.
+         * @hide
+         */
+        public static final String QS_LOCATION_EASY_TOGGLE = "qs_location_easy_toggle";
+
        /**
          * Whether to show the keyguard visualizer.
          * Boolean setting. 0 = off, 1 = on.
