@@ -2715,10 +2715,8 @@ public abstract class BaseStatusBar extends SystemUI implements
         }
     }
 
-    protected abstract void haltTicker();
     protected abstract void setAreThereNotifications();
     protected abstract void updateNotifications();
-    protected abstract void tick(StatusBarNotification n, boolean firstTime);
     public abstract boolean shouldDisableNavbarGestures();
 
     public abstract void addNotification(StatusBarNotification notification,
@@ -2755,9 +2753,6 @@ public abstract class BaseStatusBar extends SystemUI implements
                     + " shouldPeek=" + shouldPeek
                     + " alertAgain=" + alertAgain);
         }
-        boolean updateTicker = n.tickerText != null
-                && !TextUtils.equals(n.tickerText,
-                entry.notification.getNotification().tickerText);
 
         final StatusBarNotification oldNotification = entry.notification;
         entry.notification = notification;
@@ -2816,14 +2811,10 @@ public abstract class BaseStatusBar extends SystemUI implements
             mStackScroller.snapViewIfNeeded(entry.row);
         }
 
-        // Is this for you?
-        boolean isForCurrentUser = isNotificationForCurrentProfiles(notification);
-        Log.d(TAG, "notification is " + (isForCurrentUser ? "" : "not ") + "for you");
-
-        // Restart the ticker if it's still running
-        if (updateTicker && isForCurrentUser) {
-            haltTicker();
-            tick(notification, false);
+        if (DEBUG) {
+            // Is this for you?
+            boolean isForCurrentUser = isNotificationForCurrentProfiles(notification);
+            Log.d(TAG, "notification is " + (isForCurrentUser ? "" : "not ") + "for you");
         }
 
         setAreThereNotifications();
