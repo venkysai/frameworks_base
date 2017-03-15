@@ -79,6 +79,8 @@ public class MobileSignalController extends SignalController<
     // show lte/4g switch
     private boolean mShowLteFourGee;
 
+    private boolean mRoamingIconAllowed;
+
     // TODO: Reduce number of vars passed in, if we have the NetworkController, probably don't
     // need listener lists anymore.
     public MobileSignalController(Context context, Config config, boolean hasMobileData,
@@ -131,7 +133,10 @@ public class MobileSignalController extends SignalController<
            resolver.registerContentObserver(Settings.System.getUriFor(
                   Settings.System.SHOW_LTE_FOURGEE),
                   false, this, UserHandle.USER_ALL);
-           updateSettings();
+           resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.ROAMING_INDICATOR_ICON), false,
+                    this, UserHandle.USER_ALL);
+            updateSettings();
         }
 
         @Override
@@ -154,7 +159,13 @@ public class MobileSignalController extends SignalController<
         ContentResolver resolver = mContext.getContentResolver();
         boolean mShowLteFourGee = Settings.System.getIntForUser(resolver,
                 Settings.System.SHOW_LTE_FOURGEE, 0, UserHandle.USER_CURRENT) == 1;
+
+        mRoamingIconAllowed = Settings.System.getIntForUser(resolver,
+                Settings.System.ROAMING_INDICATOR_ICON, 1,
+                UserHandle.USER_CURRENT) == 1;
+
     }
+
 
     public void setConfiguration(Config config) {
         mConfig = config;
@@ -506,7 +517,7 @@ public class MobileSignalController extends SignalController<
         mCurrentState.dataConnected = mCurrentState.connected
                 && mDataState == TelephonyManager.DATA_CONNECTED;
 
-        mCurrentState.roaming = isRoaming();
+        mCurrentState.roaming = isRoaming() && mRoamingIconAllowed;
         if (isCarrierNetworkChangeActive()) {
             mCurrentState.iconGroup = TelephonyIcons.CARRIER_NETWORK_CHANGE;
         } else if (isDataDisabled()) {

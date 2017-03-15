@@ -5329,6 +5329,12 @@ public final class Settings {
          * @hide
          */
         public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
+         
+        /**
+         * Whether to display roaming indicator for roaming signal connection
+         * @hide
+         */
+        public static final String ROAMING_INDICATOR_ICON = "roaming_indicator_icon";
 
         /**
          * Select which lockscreen date style to display
