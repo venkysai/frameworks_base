@@ -487,6 +487,8 @@ public interface WindowManagerPolicy {
         public void shutdown(boolean confirm);
         public void rebootSafeMode(boolean confirm);
 
+        public void rebootTile();
+
         /**
          * Return the window manager lock needed to correctly call "Lw" methods.
          */
@@ -1451,4 +1453,11 @@ public interface WindowManagerPolicy {
      * freezeOrThawRotation(-1) is called or reboot the devcie.
      */
     public void freezeOrThawRotation(int rotation);
+
+    /**
+     * Toggle global menu
+     *
+     * @hide
+     */
+    public void toggleGlobalMenu();
 }
