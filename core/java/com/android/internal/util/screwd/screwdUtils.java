@@ -16,6 +16,8 @@
 
 package com.android.internal.util.screwd;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -29,6 +31,8 @@ import android.hardware.camera2.CameraManager;
 import java.util.Locale;
 
 public class screwdUtils {
+
+    public static final String LEAN_PACKAGE_NAME = "com.screwdaosp.lean";
 
     public static boolean deviceSupportsFlashLight(Context context) {
         CameraManager cameraManager = (CameraManager) context.getSystemService(
@@ -74,6 +78,16 @@ public class screwdUtils {
 
     public static boolean isPackageInstalled(Context context, String pkg) {
         return isPackageInstalled(context, pkg, true);
+    }
+
+     public static boolean isLeanTrolling(Context context) {
+        final ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (service.service.getClassName().equals(LEAN_PACKAGE_NAME + ".services.LDTrollService")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // Omni Switch Constants
