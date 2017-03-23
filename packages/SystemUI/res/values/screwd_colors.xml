@@ -101,4 +101,7 @@
 
     <!-- Separate QS text label tint from icon tint -->
     <color name="qs_tile_label_tint_unavailable">@color/qs_tile_tint_unavailable</color>
+
+    <!-- Recents Memory bar -->
+    <color name="recents_memory_text_color">@android:color/white</color>
 </resources>
