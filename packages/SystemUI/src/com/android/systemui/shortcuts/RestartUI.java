@@ -34,5 +34,6 @@ public class RestartUI extends Activity  {
     public void onResume() {
         super.onResume();
         Helpers.restartSystemUI();
+        this.finish();
     }
 }
