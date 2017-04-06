@@ -173,6 +173,7 @@ public class QSAnimator implements Callback, PageListener, Listener, OnLayoutCha
             if (count < mQuickQsPanel.getNumVisibleQuickTiles() && allowFancy(false)) {
                 // Quick tiles.
                 QSTileBaseView quickTileView = mQuickQsPanel.getTileView(tile);
+
                 if (quickTileView != null) {
                     lastX = loc1[0];
                     getRelativePosition(loc1, quickTileView.getIcon(), mQsContainer);
