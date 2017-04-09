@@ -4474,6 +4474,12 @@ public final class Settings {
         public static final String RECENTS_USE_OMNISWITCH = "recents_use_omniswitch";
 
         /**
+         * Use AOSP grid style recents
+         * @hide
+         */
+        public static final String RECENTS_USE_GRID = "recents_use_grid";
+
+        /**
          * Custom carrier label. The value is
          * String.
          */
