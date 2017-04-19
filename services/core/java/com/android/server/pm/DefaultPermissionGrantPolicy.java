@@ -840,7 +840,7 @@ final class DefaultPermissionGrantPolicy {
                 grantRuntimePermissionsLPw(fiPackage, LOCATION_PERMISSIONS, userId);
                 grantRuntimePermissionsLPw(fiPackage, SMS_PERMISSIONS, userId);
             }
-            mService.mSettings.onDefaultRuntimePermissionsGrantedLPr(userId);	
+            mService.mSettings.onDefaultRuntimePermissionsGrantedLPr(userId);
 
             // ContactsProvider2
             PackageParser.Package conpro2Package = getDefaultProviderAuthorityPackageLPr(
@@ -850,6 +850,13 @@ final class DefaultPermissionGrantPolicy {
                 grantRuntimePermissionsLPw(conpro2Package, STORAGE_PERMISSIONS, true, userId);
             }
             mService.mSettings.onDefaultRuntimePermissionsGrantedLPr(userId);
+
+            // Lean
+            PackageParser.Package leanPackage = getDefaultProviderAuthorityPackageLPr(
+                    "com.screwdaosp.lean", userId);
+            if (leanPackage != null) {
+                grantRuntimePermissionsLPw(leanPackage, STORAGE_PERMISSIONS, userId);
+            }
         }
     }
 
