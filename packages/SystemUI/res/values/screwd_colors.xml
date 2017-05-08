@@ -46,9 +46,6 @@
     <!-- Volume panel border coler -->
     <color name="volume_panel_border_color">#ff8000ff</color><!-- Screw'd purple -->
 
-    <!-- Status bar battery level text color -->
-    <color name="status_bar_battery_level_text_color">#ffffff</color>
-
     <!-- Floating action button -->
     <color name="fab_color">@*android:color/material_deep_teal_500</color>
     <color name="floating_action_button_icon_color">#ffffff</color>
@@ -98,8 +95,6 @@
 
     <!-- OmniJaws detailed view temperature text -->
     <color name="omni_jaws_detailed_temperature_color">@android:color/white</color>
-
-    <color name="batterymeter_frame_color_darkintensity">@color/dark_mode_icon_color_dual_tone_background</color>
 
    <!-- Navigation button ripple color -->
     <color name="navbutton_ripple_color">#FFFFFFFF</color>
