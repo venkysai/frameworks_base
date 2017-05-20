@@ -218,8 +218,4 @@ public interface TelephonyProperties
      */
     static final String PROPERTY_VIDEOCALL_AUDIO_OUTPUT = "persist.radio.call.audio.output";
 
-    /**
-     * {@see BaseCommands#getLteOnGsmMode()}
-     */
-    static final String PROPERTY_LTE_ON_GSM_DEVICE = "telephony.lteOnGsmDevice";
 }
