@@ -110,7 +110,6 @@ import com.android.internal.messages.SystemMessageProto.SystemMessage;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.util.screwd.screwdUtils;
-import com.android.internal.util.omni.OmniSwitchConstants;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.keyguard.KeyguardHostView.OnDismissAction;
 import com.android.keyguard.KeyguardUpdateMonitor;
@@ -322,6 +321,7 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected boolean mVrMode;
 
     private static final HashMap<String, Field> fieldCache = new HashMap<String, Field>();
+    protected boolean mOmniSwitchRecents;
 
     private Set<String> mNonBlockablePkgs;
 
@@ -379,6 +379,10 @@ public abstract class BaseStatusBar extends SystemUI implements
                     Settings.System.ALWAYS_HEADSUP_DIALER, 0, UserHandle.USER_CURRENT) == 1;
 
             updateLockscreenNotificationSetting();
+
+            mOmniSwitchRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.RECENTS_USE_OMNISWITCH, 0,
+                    UserHandle.USER_CURRENT) == 1;
         }
 
         @Override
@@ -837,6 +841,10 @@ public abstract class BaseStatusBar extends SystemUI implements
                 UserHandle.USER_ALL);
         mContext.getContentResolver().registerContentObserver(
                 Settings.System.getUriFor(Settings.System.ALWAYS_HEADSUP_DIALER), false,
+                mSettingsObserver,
+                UserHandle.USER_ALL);
+        mContext.getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.RECENTS_USE_OMNISWITCH), false,
                 mSettingsObserver,
                 UserHandle.USER_ALL);
 
@@ -1587,34 +1595,15 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     /** Proxy for RecentsComponent */
 
-    private boolean isOmniSwitchEnabled() {
-        int settingsValue = Settings.System.getIntForUser(
-                mContext.getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH, 0
-                , UserHandle.USER_CURRENT);
-        return (settingsValue == 1);
-    }
-
     protected void showRecents(boolean triggeredFromAltTab, boolean fromHome) {
-        if (isOmniSwitchEnabled()) {
-            if (!mScreenPinningEnabled) {
-                Intent showIntent = new Intent(screwdUtils.ACTION_SHOW_OVERLAY);
-                mContext.sendBroadcastAsUser(showIntent, UserHandle.CURRENT);
-            }
-        } else {
-            if (mRecents != null) {
-                sendCloseSystemWindows(SYSTEM_DIALOG_REASON_RECENT_APPS);
-                mRecents.showRecents(triggeredFromAltTab, fromHome);
-            }
+        if (mRecents != null) {
+            sendCloseSystemWindows(SYSTEM_DIALOG_REASON_RECENT_APPS);
+            mRecents.showRecents(triggeredFromAltTab, fromHome);
         }
     }
 
     protected void hideRecents(boolean triggeredFromAltTab, boolean triggeredFromHomeKey) {
-        if (isOmniSwitchEnabled()) {
-            if (!mScreenPinningEnabled) {
-                Intent showIntent = new Intent(screwdUtils.ACTION_HIDE_OVERLAY);
-                mContext.sendBroadcastAsUser(showIntent, UserHandle.CURRENT);
-            }
-        } else if (mSlimRecents != null) {
+        if (mSlimRecents != null) {
             mSlimRecents.hideRecents(triggeredFromHomeKey);
         } else if (mRecents != null) {
             mRecents.hideRecents(triggeredFromAltTab, triggeredFromHomeKey);
@@ -1622,11 +1611,8 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
 
     protected void toggleRecents() {
-        if (isOmniSwitchEnabled()) {
-            if (!mScreenPinningEnabled) {
-                Intent showIntent = new Intent(screwdUtils.ACTION_TOGGLE_OVERLAY);
-                mContext.sendBroadcastAsUser(showIntent, UserHandle.CURRENT);
-            }
+        if (mOmniSwitchRecents && !mScreenPinningEnabled) {
+            screwdUtils.toggleOmniSwitchRecents(mContext, UserHandle.CURRENT);
         } else if (mSlimRecents != null) {
             sendCloseSystemWindows(SYSTEM_DIALOG_REASON_RECENT_APPS);
             mSlimRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView());
@@ -1636,14 +1622,10 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
 
     protected void preloadRecents() {
-        if (!isOmniSwitchEnabled()) {
-            if (mRecents != null) {
-                mRecents.showNextAffiliatedTask();
-            }
+        if (!mOmniSwitchRecents && mRecents != null) {
+            mRecents.preloadRecents();
         } else if (mSlimRecents != null) {
             mSlimRecents.preloadRecentTasksList();
-        } else if (mRecents != null) {
-            mRecents.preloadRecents();
         }
     }
 
@@ -1656,30 +1638,22 @@ public abstract class BaseStatusBar extends SystemUI implements
     }
 
     protected void cancelPreloadingRecents() {
-        if (!isOmniSwitchEnabled()) {
-            if (mRecents != null) {
-                mRecents.showNextAffiliatedTask();
-            }
+        if (!mOmniSwitchRecents && mRecents != null) {
+            mRecents.cancelPreloadingRecents();
         } else if (mSlimRecents != null) {
             mSlimRecents.cancelPreloadingRecentTasksList();
-        } else if (mRecents != null) {
-            mRecents.cancelPreloadingRecents();
         }
     }
 
     protected void showRecentsNextAffiliatedTask() {
-        if (!isOmniSwitchEnabled()) {
-            if (mRecents != null) {
-                mRecents.showNextAffiliatedTask();
-            }
+        if (!mOmniSwitchRecents && mRecents != null) {
+            mRecents.showNextAffiliatedTask();
         }
     }
 
     protected void showRecentsPreviousAffiliatedTask() {
-        if (!isOmniSwitchEnabled()) {
-            if (mRecents != null) {
-                mRecents.showPrevAffiliatedTask();
-            }
+        if (!mOmniSwitchRecents && mRecents != null) {
+            mRecents.showPrevAffiliatedTask();
         }
     }
 

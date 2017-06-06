@@ -157,11 +157,11 @@ import com.android.internal.policy.IShortcutService;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.util.gesture.EdgeGesturePosition;
 import com.android.internal.util.gesture.EdgeServiceConstants;
-import com.android.internal.util.omni.OmniSwitchConstants;
 import com.android.internal.utils.du.DUActionUtils;
 import com.android.internal.util.ScreenShapeHelper;
 import com.android.internal.utils.du.ActionHandler;
 import com.android.internal.utils.du.DUSystemReceiver;
+import com.android.internal.util.screwd.screwdUtils;
 import com.android.internal.widget.PointerLocationView;
 import com.android.server.GestureLauncherService;
 import com.android.server.LocalServices;
@@ -4370,9 +4370,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private void showRecentApps(boolean triggeredFromAltTab, boolean fromHome) {
         if (mOmniSwitchRecents) {
             if (fromHome) {
-                OmniSwitchConstants.restoreHomeStack(mContext, UserHandle.CURRENT);
+                screwdUtils.restoreHomeStack(mContext, UserHandle.CURRENT);
             } else {
-                OmniSwitchConstants.toggleOmniSwitchRecents(mContext, UserHandle.CURRENT);
+                screwdUtils.toggleOmniSwitchRecents(mContext, UserHandle.CURRENT);
             }
         } else {
             mPreloadedRecentApps = false; // preloading no longer needs to be canceled
