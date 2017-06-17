@@ -385,6 +385,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     protected PhoneStatusBarView mStatusBarView;
     private int mStatusBarWindowState = WINDOW_STATE_SHOWING;
     protected StatusBarWindowManager mStatusBarWindowManager;
+    private TelecomManager mTm;
     private UnlockMethodCache mUnlockMethodCache;
     private DozeServiceHost mDozeServiceHost;
     private boolean mWakeUpComingFromTouch;
@@ -497,6 +498,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     int mLinger;
     int mInitialTouchX;
     int mInitialTouchY;
+
+    private boolean mSystemNavigationKeysEnabled;
+    private int mFpSwipeCallActions;
 
     private int mBatterySaverWarningColor;
 
@@ -742,6 +746,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                   Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN_FP),
                   false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.Secure.getUriFor(
+                  Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED),
+                  false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                  Settings.System.FP_SWIPE_CALL_ACTIONS),
+                  false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -861,6 +871,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
             mFingerprintQuickPulldown =  Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN_FP, 0, UserHandle.USER_CURRENT) == 1;
+
+            mSystemNavigationKeysEnabled = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                    Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
+            mFpSwipeCallActions = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.FP_SWIPE_CALL_ACTIONS, 0, UserHandle.USER_CURRENT);
 
             if (mNotificationPanel != null) {
                 mNotificationPanel.updateSettings();
@@ -1208,6 +1223,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         SettingsObserver observer = new SettingsObserver(mHandler);
         observer.observe();
+
+        mTm = mContext.getSystemService(TelecomManager.class);
     }
 
     protected void createIconController() {
@@ -2007,8 +2024,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     mBlockedThisTouch = false;
-                    TelecomManager telecomManager = mContext.getSystemService(TelecomManager.class);
-                    if (telecomManager != null && telecomManager.isRinging()) {
+                    if (mTm != null && mTm.isRinging()) {
                         if (mStatusBarKeyguardViewManager.isShowing()) {
                             Log.i(TAG, "Ignoring HOME; there's a ringing incoming call. " +
                                     "No heads up");
@@ -3422,26 +3438,44 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 com.android.internal.R.bool.config_needsFingerprintAxisInversion);
         final boolean isRotated = (mDisplay.getRotation() == Surface.ROTATION_90
                 || mDisplay.getRotation() == Surface.ROTATION_270) && needsAxisInversion;
+
         if (key ==  (!isRotated ? KeyEvent.KEYCODE_SYSTEM_NAVIGATION_UP
                 : KeyEvent.KEYCODE_SYSTEM_NAVIGATION_DOWN)) {
             MetricsLogger.action(mContext, !isRotated ? MetricsEvent.ACTION_SYSTEM_NAVIGATION_KEY_UP
                     : MetricsEvent.ACTION_SYSTEM_NAVIGATION_KEY_DOWN);
-            mNotificationPanel.collapse(false /* delayed */, 1.0f /* speedUpFactor */);
+            if (mTm != null && mTm.isRinging() && mFpSwipeCallActions != 0) {
+                mTm.acceptRingingCall();
+                return;
+            }
+            if (mSystemNavigationKeysEnabled) {
+                mNotificationPanel.collapse(false /* delayed */, 1.0f /* speedUpFactor */);
+            }
         } else if (key ==  (!isRotated ? KeyEvent.KEYCODE_SYSTEM_NAVIGATION_DOWN
                 : KeyEvent.KEYCODE_SYSTEM_NAVIGATION_UP)) {
             MetricsLogger.action(mContext, !isRotated ? MetricsEvent.ACTION_SYSTEM_NAVIGATION_KEY_DOWN
                     : MetricsEvent.ACTION_SYSTEM_NAVIGATION_KEY_DOWN);
-            if (mNotificationPanel.isFullyCollapsed()) {
-                if (mFingerprintQuickPulldown) {
-                    mNotificationPanel.expandWithQs();
-                    MetricsLogger.count(mContext, NotificationPanelView.COUNTER_PANEL_OPEN_QS, 1);
-                } else {
-                    mNotificationPanel.expand(true /* animate */);
-                    MetricsLogger.count(mContext, NotificationPanelView.COUNTER_PANEL_OPEN, 1);
+            if (mTm != null && mTm.isRinging() && mFpSwipeCallActions != 0) {
+                if (mFpSwipeCallActions == 1) {
+                    mTm.acceptRingingCall();
+                    return;
+                } else if (mFpSwipeCallActions == 2) {
+                    mTm.silenceRinger();
+                    return;
                 }
-            } else if (!mNotificationPanel.isInSettings() && !mNotificationPanel.isExpanding()){
-                mNotificationPanel.flingSettings(0 /* velocity */, true /* expand */);
-                MetricsLogger.count(mContext, NotificationPanelView.COUNTER_PANEL_OPEN_QS, 1);
+            }
+            if (mSystemNavigationKeysEnabled) {
+                if (mNotificationPanel.isFullyCollapsed()) {
+                    if (mFingerprintQuickPulldown) {
+                        mNotificationPanel.expandWithQs();
+                        MetricsLogger.count(mContext, NotificationPanelView.COUNTER_PANEL_OPEN_QS, 1);
+                    } else {
+                        mNotificationPanel.expand(true /* animate */);
+                        MetricsLogger.count(mContext, NotificationPanelView.COUNTER_PANEL_OPEN, 1);
+                    }
+                } else if (!mNotificationPanel.isInSettings() && !mNotificationPanel.isExpanding()){
+                    mNotificationPanel.flingSettings(0 /* velocity */, true /* expand */);
+                    MetricsLogger.count(mContext, NotificationPanelView.COUNTER_PANEL_OPEN_QS, 1);
+                }
             }
         }
     }
