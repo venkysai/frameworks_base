@@ -36,10 +36,6 @@
   <string name="reboot_systemui">SystemUI neustarten</string>
   <!-- Title of dialog to confirm rebooting. -->
   <string name="reboot_title">Neustart</string>
-  <!-- Reboot Confirmation Dialog.  When the user chooses to reboot the device, there will
-         be a confirmation dialog.  This is the message. -->
-  <string name="reboot_confirm" product="tablet">Dein Tablet wird neu gestartet.</string>
-  <string name="reboot_confirm" product="default">Ihr Telefon wird neu gestartet.</string>
   <!-- Reboot Progress Dialog. This is shown if the user chooses to reboot the phone. -->
   <string name="reboot_progress">Gerät wird neu gestartet\u2026</string>
   <!-- Global Actions -->
@@ -70,4 +66,6 @@
   <string name="adb_active_generic_notification_message">Berühren, um Debugging zu deaktivieren.</string>
   <!-- label for item that takes On-The-Go in the phone options dialog -->
   <string name="global_action_onthego">On-The-Go-Modus</string>
+  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
 </resources>

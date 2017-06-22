@@ -19,6 +19,7 @@
   <!-- Vendor mismatched fingerprint warning [CHAR LIMIT=NONE] -->
   <!-- Reboot menu -->
   <!-- label for item that reboots the phone in phone options dialog -->
+  <string name="global_action_reboot">Reiniciar</string>
   <!-- Button to reboot the phone, within the Reboot Options dialog -->
   <!-- Button to reboot the phone into recovery, within the Reboot Options dialog -->
   <!-- Button to reboot the phone into bootloader, within the Reboot Options dialog -->
@@ -26,11 +27,36 @@
   <!-- Button to soft reboot the device, within the Reboot Options dialog -->
   <!-- Button to soft reboot the device, within the Reboot Options dialog -->
   <!-- Title of dialog to confirm rebooting. -->
-  <!-- Reboot Confirmation Dialog.  When the user chooses to reboot the device, there will
-         be a confirmation dialog.  This is the message. -->
   <!-- Reboot Progress Dialog. This is shown if the user chooses to reboot the phone. -->
+  <string name="reboot_progress">Reiniciando</string>
   <!-- Global Actions -->
+  <string name="global_action_screenshot">Captura de pantalla</string>
+  <string name="global_action_search">Búscar</string>
+  <string name="global_action_torch">Linterna</string>
+  <string name="global_action_voicesearch">Búsqueda por voz</string>
+  <string name="global_action_screenrecord">Grabar pantalla</string>
   <!-- AOKP custom system animations -->
+  <string name="animation_fade">Desvanecer</string>
+  <string name="animation_slide_right">Deslizar a la derecha</string>
+  <string name="animation_slide_left">Deslizar a la izquierda</string>
+  <string name="animation_slide_right_no_fade">Deslizar a la derecha (Sin desvanecimiento)</string>
+  <string name="animation_slide_left_no_fade">Deslizar a la izquierda (Sin desvanecimiento)</string>
+  <string name="animation_slide_up">Deslizar desde abajo</string>
+  <string name="animation_slide_down">Deslizar desde arriba</string>
+  <string name="animation_default">Por defecto</string>
+  <string name="animation_translucent">Transparente</string>
+  <string name="animation_grow_shrink">Crecer (Arriba)</string>
+  <string name="animation_grow_shrink_center">Crecer (Centro)</string>
+  <string name="animation_grow_shrink_bottom">Crecer (Abajo)</string>
+  <string name="animation_grow_shrink_left">Crecer (Izquierda)</string>
+  <string name="animation_grow_shrink_right">Crecer (Derecha)</string>
+  <string name="action_null">En blanco</string>
   <!-- ADB over network -->
+  <string name="adb_net_active_notification_title">ADB por red activado</string>
+  <string name="adb_both_active_notification_title">ADB por USB y red activado</string>
+  <string name="adb_active_generic_notification_message">Toque para deshabilitar el modo de depuración.</string>
   <!-- label for item that takes On-The-Go in the phone options dialog -->
+  <string name="global_action_onthego">Modo On-The-Go</string>
+  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
 </resources>

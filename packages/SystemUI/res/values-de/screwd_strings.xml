@@ -115,12 +115,6 @@
   <!-- Heads up snooze toast -->
   <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s </xliff:g> - HeadsUp Benachrichtigung sind 1 Minute lang deaktiviert.</string>
   <string name="heads_up_snooze_message"><xliff:g id="string">%s </xliff:g> - HeadsUp Benachrichtigungen für <xliff:g id="number">%d </xliff:g> Minuten deaktiviert.</string>
-  <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
-  <string name="cm_power_notification_controls_description">Mit Power Benachrichtigung Steuerelemente können Sie eine Bedeutung von 0 bis 6 für eine App Benachrichtigungen einstellen.         \n\n <b>Level 6</b> \n-Show am oberen Rand der Benachrichtigung Liste \n-zulassen Vollbild Unterbrechung \n-immer Peek \n\n <b>Level 5</b> \n-Prevent Vollbild Unterbrechung \n-immer Peek \n\n <b>Level 4</b> \n-verhindern Vollbild Unterbrechung \n-nie Peek \n\n <b>Level 3</b> \n-Prevent Vollbild Unterbrechung \n-nie Peek \n-lassen nie klingen und Vibration \n\n <b>Level 2</b> \n-Prevent Vollbild Unterbrechung \n-nie peek \n-nie klingen oder vibrieren \n-Ausblenden von Sperre Bildschirm \n-Show am unteren Rand der Benachrichtigung Liste \n\n <b>Level 1</b> \n-Prevent Vollbild Unterbrechung \n-nie Peek \n-nie klingen oder vibrieren \n-ausblenden auf Sperrbildschirm und Status Bar \n-Show am unteren Rand der Benachrichtigung Liste \n\n <b>Ebene 0</b> \n-blockieren alle Benachrichtigungen von der app    </string>
-  <!-- Notification importance level title-->
-  <string name="importance_level_title">Bedeutung: Ebene %1$d</string>
-  <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">Kein Vollbild-Unterbrechung, HeadsUp, Ton oder Vibration. Ausblenden vom Sperrbildschirm.</string>
   <!-- On The Go -->
   <string name="onthego_notif_ticker">On-The-Go aktiviert</string>
   <string name="onthego_notif_title">On-The-Go ist aktiv</string>
@@ -147,6 +141,7 @@
   <string name="recents_free_ram">FREIER RAM-SPEICHER</string>
   <!-- Ambient display and lift gesture Tile -->
   <string name="quick_settings_doze_notifications_label">Doze Benachrichtigungen</string>
+  <!-- High Brightness Mode Tile -->
   <!-- NFC Tile -->
   <string name="quick_settings_nfc_label">NFC</string>
   <string name="quick_settings_nfc_off">NFC aus</string>
@@ -160,5 +155,24 @@
   <string name="content_setup_dismiss">Fortfahren</string>
   <string name="toast_not_installed">App ist nicht installiert</string>
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_running_services">Aktive Dienste Bildschirm öffnen.</string>
   <!-- Advanced Location Tile -->
+  <string name="accessibility_quick_settings_location_battery_saving">Standortmodus: Energiesparmodus</string>
+  <string name="accessibility_quick_settings_location_gps_only">Standortmodus: Nur Gerät</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">Standortmodus: Hohe Genauigkeit</string>
+  <string name="accessibility_quick_settings_location_changed_battery_saving">Standortmodus wechselt in den Energiesparmodus.</string>
+  <string name="accessibility_quick_settings_location_changed_gps_only">Standortmodus wechselt in den Modus \"Nur Gerät\"</string>
+  <string name="accessibility_quick_settings_location_changed_high_accuracy">Standortmodus wechselt in den Modus \"Hohe Genauigkeit\"</string>
+  <string name="quick_settings_location_detail_title">Standortmodus</string>
+  <string name="quick_settings_location_battery_saving_label">Energiesparmodus</string>
+  <string name="quick_settings_location_gps_only_label">Nur Gerät</string>
+  <string name="quick_settings_location_high_accuracy_label">Hohe Genauigkeit</string>
+  <string name="quick_settings_location_off_custom_label">Standort</string>
+  <!-- OmniJAWS -->
+  <!-- Weather string format in expanded statusbar header -->
+  <!-- Sound QS Tile -->
+  <!-- Compass QS Tile -->
+  <!-- Off/On/Toggle -->
+  <!-- Dialog Cancel/OK -->
+  <!-- Slim Shortcut Actions -->
 </resources>

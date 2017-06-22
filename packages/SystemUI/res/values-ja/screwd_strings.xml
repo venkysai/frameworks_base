@@ -111,11 +111,6 @@
   <!-- Kill app toast -->
   <string name="app_killed_message">アプリを終了しました</string>
   <!-- Heads up snooze toast -->
-  <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
-  <!-- Notification importance level title-->
-  <string name="importance_level_title">重要度: レベル %1$d</string>
-  <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">全画面表示、ポップアップ、音、バイブレーションを使用しない。ロック画面にも表示しない</string>
   <!-- On The Go -->
   <string name="onthego_notif_ticker">On-The-Goが有効になりました</string>
   <string name="onthego_notif_title">On-The-Goは有効です</string>
@@ -140,6 +135,7 @@
   <!-- Path data for circle battery -->
   <!-- Recents Membar -->
   <!-- Ambient display and lift gesture Tile -->
+  <!-- High Brightness Mode Tile -->
   <!-- NFC Tile -->
   <string name="quick_settings_nfc_label">NFC</string>
   <string name="quick_settings_nfc_off">NFC オフ</string>
@@ -147,4 +143,11 @@
   <!-- App sidebar -->
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
   <!-- Advanced Location Tile -->
+  <!-- OmniJAWS -->
+  <!-- Weather string format in expanded statusbar header -->
+  <!-- Sound QS Tile -->
+  <!-- Compass QS Tile -->
+  <!-- Off/On/Toggle -->
+  <!-- Dialog Cancel/OK -->
+  <!-- Slim Shortcut Actions -->
 </resources>

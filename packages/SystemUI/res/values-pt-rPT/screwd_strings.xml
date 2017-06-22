@@ -42,9 +42,6 @@
   <!-- PA Pie controls -->
   <!-- Kill app toast -->
   <!-- Heads up snooze toast -->
-  <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
-  <!-- Notification importance level title-->
-  <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
   <!-- On The Go -->
   <!-- To do: Add QS OnTheGo
     <string name="quick_settings_onthego_back">Rear Camera</string>
@@ -57,8 +54,16 @@
   <!-- Path data for circle battery -->
   <!-- Recents Membar -->
   <!-- Ambient display and lift gesture Tile -->
+  <!-- High Brightness Mode Tile -->
   <!-- NFC Tile -->
   <!-- App sidebar -->
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
   <!-- Advanced Location Tile -->
+  <!-- OmniJAWS -->
+  <!-- Weather string format in expanded statusbar header -->
+  <!-- Sound QS Tile -->
+  <!-- Compass QS Tile -->
+  <!-- Off/On/Toggle -->
+  <!-- Dialog Cancel/OK -->
+  <!-- Slim Shortcut Actions -->
 </resources>

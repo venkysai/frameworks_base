@@ -104,41 +104,6 @@
   <!-- Heads up snooze toast -->
   <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s</xliff:g> - Peeking notificatie aan het snoozen voor 1 minuut.</string>
   <string name="heads_up_snooze_message"><xliff:g id="string">%s</xliff:g> - Peeking notificaties aan het snoozen voor <xliff:g id="number">%d</xliff:g> minuten.</string>
-  <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
-  <string name="cm_power_notification_controls_description">Met power notificatie controle kan je een belangrijkheid niveau instellen van 0 tot 6 voor een app notificatie.
-        \n\n<b>Niveau 6</b>
-        \n- Laat bovenaan notificatielijst zien
-        \n- Sta volledig scherm onderbreking toe
-        \n- Altijd peek
-        \n\n<b>Niveau 5</b>
-        \n- Voorkom volledig scherm onderbreking
-        \n- Altijd peek
-        \n\n<b>Niveau 4</b>
-        \n- Voorkom volledig scherm onderbreking
-        \n- Nooit peek
-        \n\n<b>Niveau 3</b>
-        \n- Voorkom volledig scherm onderbreking
-        \n- Nooit peek
-        \n- Maak nooit geluid en tril nooit
-        \n\n<b>Niveau 2</b>
-        \n- Voorkom volledig scherm onderbreking
-        \n- Nooit peek
-        \n- Maak nooit geluid en tril nooit
-        \n- Verberg op vergrendelscherm
-        \n- Laat onderaan notificatielijst zien
-        \n\n<b>Niveau 1</b>
-        \n- Voorkom volledig scherm onderbreking
-        \n- Nooit peek
-        \n- Maak nooit geluid en tril nooit
-        \n- Verberg op vergrendelscherm en statusbalk
-        \n- Laat onderaan notificatielijst zien
-        \n\n<b>Niveau 0</b>
-        \n- Blokkeer alle notificaties van de app
-    </string>
-  <!-- Notification importance level title-->
-  <string name="importance_level_title">Belangrijkheid: Niveau %1$d</string>
-  <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">Geen volledig scherm onderbreking, en geen peeking, geluid of trillen. Verberg op vergrendelscherm.</string>
   <!-- On The Go -->
   <string name="onthego_notif_ticker">On-The-Go geactiveerd</string>
   <string name="onthego_notif_title">On-The-Go is actief</string>
@@ -163,8 +128,16 @@
   <!-- Path data for circle battery -->
   <!-- Recents Membar -->
   <!-- Ambient display and lift gesture Tile -->
+  <!-- High Brightness Mode Tile -->
   <!-- NFC Tile -->
   <!-- App sidebar -->
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
   <!-- Advanced Location Tile -->
+  <!-- OmniJAWS -->
+  <!-- Weather string format in expanded statusbar header -->
+  <!-- Sound QS Tile -->
+  <!-- Compass QS Tile -->
+  <!-- Off/On/Toggle -->
+  <!-- Dialog Cancel/OK -->
+  <!-- Slim Shortcut Actions -->
 </resources>

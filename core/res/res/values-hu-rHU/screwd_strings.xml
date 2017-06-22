@@ -36,10 +36,6 @@
   <string name="reboot_systemui">SystemUI újraindítása</string>
   <!-- Title of dialog to confirm rebooting. -->
   <string name="reboot_title">Újraindítás</string>
-  <!-- Reboot Confirmation Dialog.  When the user chooses to reboot the device, there will
-         be a confirmation dialog.  This is the message. -->
-  <string name="reboot_confirm" product="tablet">A táblagép újraindul.</string>
-  <string name="reboot_confirm" product="default">A telefon újraindul.</string>
   <!-- Reboot Progress Dialog. This is shown if the user chooses to reboot the phone. -->
   <string name="reboot_progress">Újraindítás\u2026</string>
   <!-- Global Actions -->
@@ -70,4 +66,8 @@
   <string name="adb_active_generic_notification_message">Érintse meg a hibakeresés letiltásához.</string>
   <!-- label for item that takes On-The-Go in the phone options dialog -->
   <string name="global_action_onthego">On-The-Go mód</string>
+  <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_resetBatteryStats">akkumulátor használati statisztika törlése</string>
+  <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_resetBatteryStats">Lehetővé teszi az alkalmazás számára, hogy törölhesse az akkumulátor használati adatokat.</string>
 </resources>

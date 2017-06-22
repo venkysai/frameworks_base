@@ -104,40 +104,6 @@
   <!-- Heads up snooze toast -->
   <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s </xliff:g> - Une notification rapide sonnera pendant 1 minute.</string>
   <string name="heads_up_snooze_message"><xliff:g id="string">%s</xliff:g> - Les notifications rapides sonneront pendant <xliff:g id="number">%d</xliff:g> minutes.</string>
-  <!-- [CHAR LIMIT=NONE] Importance Tuner setting title -->
-  <string name="cm_power_notification_controls_description">Grâce aux contrpôles des notifications, vous pouvez définir un niveau de priorité allant d\'1 à 6 suivant l\'application sélectionnée.
-        \n\n<b>Niveau 6.</b>
-        \n- Afficher en haut de la liste des notifications
-        \n- Autoriser une interruption en plein écran
-        \n- Toujours afficher une notification \"rapide\"
-        \n\n<b>Niveau 5</b>
-        \n- Empêcher une interruption en plein écran
-        \n- Toujours afficher une notification \"rapide\"
-        \n\n<b>Niveau 4</b>
-        \n- Empêcher une interruption en plein écran
-        \n- Ne jamais afficher une notification \"rapide\"
-        \n\n<b>Niveau 3</b>
-        \n- Empêcher une interruption en plein écran
-        \n- Ne jamais afficher une notification \"rapide\"
-        \n- Ne jamais faire un son ou vibration 
-        \n\n<b>Niveau 2</b>
-        \n- Empêcher une interruption en plein écran
-        \n- Ne jamais afficher une notification \"rapide\"
-        \n- Ne jamais sonner ou vibrer 
-        \n- Masquer sur l\'écran de déverouillage
-        \n- Afficher à la fin de la liste de notifications
-        \n\n<b>Niveau 1</b>
-        \n- Empêcher une interruption en plein écran
-        \n- Ne jamais afficher une notification \"rapide\"
-        \n- Ne jamais sonner ou vibrer 
-        \n- Masquer sur l\'écran de déverouillage et la barre d\'état
-        \n- Afficher à la fin de la liste de notifications
-        \n\n<b>Level 0</b>
-        \n- Bloquer toutes les notifications de cette application    </string>
-  <!-- Notification importance level title-->
-  <string name="importance_level_title">Niveau d\'importance : %1$d</string>
-  <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-  <string name="notification_importance_very_low">Aucune interruption en plein écran, par une notification, par sonnerie ou vibration. Masquer sur l\'écran de déverrouillage.</string>
   <!-- On The Go -->
   <string name="onthego_notif_ticker">On-The-Go activé</string>
   <string name="onthego_notif_title">On-The-Go est actif</string>
@@ -162,8 +128,16 @@
   <!-- Path data for circle battery -->
   <!-- Recents Membar -->
   <!-- Ambient display and lift gesture Tile -->
+  <!-- High Brightness Mode Tile -->
   <!-- NFC Tile -->
   <!-- App sidebar -->
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
   <!-- Advanced Location Tile -->
+  <!-- OmniJAWS -->
+  <!-- Weather string format in expanded statusbar header -->
+  <!-- Sound QS Tile -->
+  <!-- Compass QS Tile -->
+  <!-- Off/On/Toggle -->
+  <!-- Dialog Cancel/OK -->
+  <!-- Slim Shortcut Actions -->
 </resources>
