@@ -43,8 +43,6 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Lockscreen shortcuts -->
-  <string name="left_shortcut_hint">Veeg naar rechts voor %1$s</string>
-  <string name="right_shortcut_hint">Veeg naar links voor %1$s</string>
   <string name="lockscreen_message">Tik op een icon links of rechts om een vergrendelscherm snelkoppeling tot te wijzen.</string>
   <string name="lockscreen_default_target">Standaard</string>
   <string name="select_application">App selecteren</string>
@@ -140,4 +138,5 @@
   <!-- Off/On/Toggle -->
   <!-- Dialog Cancel/OK -->
   <!-- Slim Shortcut Actions -->
+  <!-- Kill button in notification guts -->
 </resources>

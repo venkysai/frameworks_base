@@ -45,8 +45,6 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Lockscreen shortcuts -->
-  <string name="left_shortcut_hint">Wische nach rechts für %1$s</string>
-  <string name="right_shortcut_hint">Wische nach links für %1$s</string>
   <string name="lockscreen_message">Tippen Sie ein Symbol auf der linken oder rechten Seite an, um eine Verknüpfung auf dem Sperrbildschirm zu erstellen.</string>
   <string name="lockscreen_default_target">Voreinstellung</string>
   <string name="select_application">Anwendung auswählen</string>
@@ -175,4 +173,5 @@
   <!-- Off/On/Toggle -->
   <!-- Dialog Cancel/OK -->
   <!-- Slim Shortcut Actions -->
+  <!-- Kill button in notification guts -->
 </resources>
