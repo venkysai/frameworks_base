@@ -45,6 +45,7 @@
          values/config.xml) and must be truncated.
          [CHAR LIMIT=4] -->
   <!-- Lockscreen shortcuts -->
+  <string name="shortcut_hint">Csúsztasson az ikonról ezért: %1$s</string>
   <string name="lockscreen_message">Érintsen meg egy ikont jobb vagy bal oldalt a zárképernyő hivatkozások ismételt hozzárendeléséhez.</string>
   <string name="lockscreen_default_target">Alapértelmezett</string>
   <string name="select_application">Alkalmazás kiválasztása</string>
@@ -223,5 +224,9 @@
   <string name="pirate_label">Aaarrrggghhh</string>
   <string name="pirate_spec">kalóz</string>
   <!-- Kill button in notification guts -->
+  <string name="force_stop_dlg_title">Kényszeríti a leállítást?</string>
+  <string name="force_stop_dlg_text">Ha egy alkalmazást leállásra kényszerít, lehetséges, hogy az hibásan fog működni.</string>
   <string name="dlg_ok">Ok</string>
+  <string name="dlg_cancel">Mégse</string>
+  <string name="kill">Alkalmazás kilövése</string>
 </resources>

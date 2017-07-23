@@ -21,7 +21,9 @@
   <!-- notification controls -->
   <string name="tuner_notification_control">Power notificatie controle</string>
   <!-- vpn icon switch -->
+  <string name="status_bar_vpn">VPN</string>
   <!-- data saver icon switch -->
+  <string name="status_bar_datasaver">Databesparing</string>
   <!-- Notification which notifies user flashlight is enabled -->
   <string name="quick_settings_tile_flashlight_not_title">Zaklamp is aan</string>
   <string name="quick_settings_tile_flashlight_not_summary">Tik om uit te schakelen</string>
@@ -92,7 +94,16 @@
   <string name="quick_settings_smartbar">SmartBar</string>
   <string name="quick_settings_fling">Fling</string>
   <!-- Pulse Tile -->
+  <string name="quick_settings_pulse_enabled">Pulse ingeschakeld</string>
+  <string name="quick_settings_pulse_disabled">Geen Visualizer</string>
+  <string name="quick_settings_pulse_label">Pulse</string>
+  <string name="accessibility_quick_settings_pulse_off">Pulse uit</string>
+  <string name="accessibility_quick_settings_pulse_on">Pulse aan</string>
+  <string name="accessibility_quick_settings_pulse_changed_off">Pulse uitgeschakeld</string>
+  <string name="accessibility_quick_settings_pulse_changed_on">Pulse ingeschakeld</string>
   <!-- Language\Locale Tile -->
+  <string name="quick_settings_locale_label">Taal</string>
+  <string name="quick_settings_locale_more_locales_toast">Configureer meerdere talen om schakelaar functionaliteit in te schakelen</string>
   <!-- PA Pie controls -->
   <string name="pie_hour_format_12">uu:mm</string>
   <string name="pie_hour_format_24">UU:mm</string>
@@ -125,12 +136,36 @@
   <!-- Path data for big circle battery -->
   <!-- Path data for circle battery -->
   <!-- Recents Membar -->
+  <string name="recents_free_ram">Vrije RAM</string>
   <!-- Ambient display and lift gesture Tile -->
+  <string name="quick_settings_doze_notifications_label">Doze notificaties</string>
   <!-- High Brightness Mode Tile -->
   <!-- NFC Tile -->
+  <string name="quick_settings_nfc_label">NFC</string>
+  <string name="quick_settings_nfc_off">NFC uit</string>
+  <string name="quick_settings_nfc_on">NFC aan</string>
   <!-- App sidebar -->
+  <string name="default_folder_text">Map</string>
+  <string name="title_activity_sidebar_configuration">Appbar inhoud instellen</string>
+  <string name="action_save">Opslaan</string>
+  <string name="toast_items_saved">Appbar items zijn opgeslagen.</string>
+  <string name="content_setup_instructions">Voeg items toe aan de Appbar door een item vanaf rechts er naartoe te slepen.\n\nCombineer items in een map door een item naar een bestaand item te slepen.\n\nVerwijder een item door deze uit de Appbar te slepen.</string>
+  <string name="content_setup_dismiss">Ga verder</string>
+  <string name="toast_not_installed">App is niet geïnstalleerd</string>
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_running_services">Open scherm met services die worden uitgevoerd.</string>
   <!-- Advanced Location Tile -->
+  <string name="accessibility_quick_settings_location_battery_saving">Locatie rapportage: Accubesparing.</string>
+  <string name="accessibility_quick_settings_location_gps_only">Locatie rapportage: Alleen apparaat.</string>
+  <string name="accessibility_quick_settings_location_high_accuracy">Locatie rapportage: Grote nauwkeurigheid.</string>
+  <string name="accessibility_quick_settings_location_changed_battery_saving">Locatie rapportage gewijzigd in accubesparingsmodus.</string>
+  <string name="accessibility_quick_settings_location_changed_gps_only">Locatie rapportage gewijzigd in alleen sensors modus.</string>
+  <string name="accessibility_quick_settings_location_changed_high_accuracy">Locatie rapportage gewijzigd in hoge nauwkeurigheidsmodus.</string>
+  <string name="quick_settings_location_detail_title">Locatie modus</string>
+  <string name="quick_settings_location_battery_saving_label">Accubesparing</string>
+  <string name="quick_settings_location_gps_only_label">Alleen apparaat</string>
+  <string name="quick_settings_location_high_accuracy_label">Grote nauwkeurigheid</string>
+  <string name="quick_settings_location_off_custom_label">Locatie</string>
   <!-- OmniJAWS -->
   <!-- Weather string format in expanded statusbar header -->
   <!-- Sound QS Tile -->
