@@ -875,6 +875,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
         public final int maxChargingCurrent;
         public final int maxChargingVoltage;
         public final int maxChargingWattage;
+        public final boolean dashChargeStatus;
         public final int temperature;
         public BatteryStatus(int status, int level, int plugged, int health,
                 int maxChargingCurrent, int maxChargingVoltage, int maxChargingWattage,
