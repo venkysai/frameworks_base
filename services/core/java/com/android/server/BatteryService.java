@@ -172,6 +172,10 @@ public final class BatteryService extends SystemService {
     private int mBatteryReallyFullARGB;
     private boolean mMultiColorLed;
 
+    //Battery light on DND
+    private boolean mAllowBatteryLightOnDnd;
+    private boolean mIsDndActive;
+
     private boolean mSentLowBatteryBroadcast = false;
 
     private ActivityManagerInternal mActivityManagerInternal;
@@ -988,7 +992,7 @@ public final class BatteryService extends SystemService {
             int lightColor = mBatteryLowARGB;
             boolean pulseColor = false;
 
-            if (!mLightEnabled) {
+            if (!mLightEnabled || (mIsDndActive && !mAllowBatteryLightOnDnd)) {
                 // No lights if explicitly disabled
                 lightEnabled = false;
             } else if (level < mLowBatteryWarningLevel) {
@@ -1143,6 +1147,12 @@ public final class BatteryService extends SystemService {
                 resolver.registerContentObserver(Settings.System.getUriFor(
                         Settings.System.BATTERY_LIGHT_REALLY_FULL_COLOR), false, this,
                         UserHandle.USER_ALL);
+                resolver.registerContentObserver(
+                        Settings.System.getUriFor(Settings.System.BATTERY_LIGHT_ALLOW_ON_DND),
+                        false, this, UserHandle.USER_ALL);
+                resolver.registerContentObserver(
+                        Settings.Global.getUriFor(Settings.Global.ZEN_MODE),
+                        false, this, UserHandle.USER_ALL);
             }
 
             update();
@@ -1170,6 +1180,14 @@ public final class BatteryService extends SystemService {
             mLightOnlyFullyCharged = Settings.System.getIntForUser(resolver,
                     Settings.System.BATTERY_LIGHT_ONLY_FULLY_CHARGED, 0,
                     UserHandle.USER_CURRENT) != 0;
+            
+            // Battery light enabled on DND
+            mAllowBatteryLightOnDnd = Settings.System.getInt(resolver,
+                    Settings.System.BATTERY_LIGHT_ALLOW_ON_DND, 1) != 0;
+            mIsDndActive = Settings.Global.getInt(resolver,
+                    Settings.Global.ZEN_MODE, Settings.Global.ZEN_MODE_OFF)
+                    != Settings.Global.ZEN_MODE_OFF;
+
 
             // Light colors
             mBatteryLowARGB = Settings.System.getIntForUser(resolver,
