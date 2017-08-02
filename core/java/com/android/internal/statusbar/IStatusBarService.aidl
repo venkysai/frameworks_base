@@ -79,6 +79,7 @@ interface IStatusBarService
     void toggleOrientationListener(boolean enable);
     void startAssist(in Bundle args);
     void screenPinningStateChanged(boolean enabled);
+    void leftInLandscapeChanged(boolean isLeft);
 
     // SystemUI Restart API for masquerade
     void restartUI();
