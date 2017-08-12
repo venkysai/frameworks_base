@@ -80,6 +80,7 @@ interface IStatusBarService
     void startAssist(in Bundle args);
     void screenPinningStateChanged(boolean enabled);
     void leftInLandscapeChanged(boolean isLeft);
+    void toggleFlashlight();
 
     // SystemUI Restart API for masquerade
     void restartUI();

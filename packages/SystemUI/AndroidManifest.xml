@@ -193,12 +193,6 @@
 
     <protected-broadcast android:name="android.intent.action.SCREEN_STATE_SERVICE_UPDATE" />
 
-    <protected-broadcast android:name="action_handler_show_power_menu" />
-    <protected-broadcast android:name="action_handler_toggle_screenrecord" />
-    <protected-broadcast android:name="action_handler_screenshot" />
-    <protected-broadcast android:name="action_handler_region_screenshot" />
-    <protected-broadcast android:name="action_handler_toggle_flashlight" />
-
 
     <!-- OmniJaws -->
     <uses-permission android:name="org.omnirom.omnijaws.READ_WEATHER" />
