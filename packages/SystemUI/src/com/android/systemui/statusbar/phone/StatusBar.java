@@ -170,6 +170,8 @@ import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.statusbar.NotificationVisibility;
 import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.util.NotificationMessagingUtil;
+import com.android.internal.util.omni.OmniSwitchConstants;
+import com.android.internal.util.omni.TaskUtils;
 import com.android.internal.utils.du.ActionConstants;
 import com.android.internal.utils.du.DUActionUtils;
 import com.android.internal.utils.du.DUPackageMonitor;
@@ -1469,6 +1471,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                 setMediaPlaying();
             }
             mNavigationBar.setCurrentSysuiVisibility(mSystemUiVisibility);
+            mNavigationBar.setOmniSwitchEnabled(mOmniSwitchRecents);
         });
     }
 
@@ -1873,18 +1876,22 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
         int dockSide = WindowManagerProxy.getInstance().getDockSide();
         if (dockSide == WindowManager.DOCKED_INVALID) {
-            boolean isInLockTaskMode = false;
-            try {
-                IActivityManager activityManager = ActivityManagerNative.getDefault();
-                if (activityManager.isInLockTaskMode()) {
-                    isInLockTaskMode = true;
+            if (!mOmniSwitchRecents) {
+                boolean isInLockTaskMode = false;
+                try {
+                   IActivityManager activityManager = ActivityManagerNative.getDefault();
+                    if (activityManager.isInLockTaskMode()) {
+                        isInLockTaskMode = true;
+                   }
+                } catch (RemoteException e) {}
+                if (mSlimRecents != null && !isInLockTaskMode) {
+                    mSlimRecents.startMultiWindow();
+                } else {
+                    return mRecents.dockTopTask(NavigationBarGestureHelper.DRAG_MODE_NONE,
+                            ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT, null, metricsDockAction);
                 }
-            } catch (RemoteException e) {}
-            if (mSlimRecents != null && !isInLockTaskMode) {
-                mSlimRecents.startMultiWindow();
             } else {
-                return mRecents.dockTopTask(NavigationBarGestureHelper.DRAG_MODE_NONE,
-                        ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT, null, metricsDockAction);
+                TaskUtils.dockTopTask(mContext);
             }
         } else {
             Divider divider = getComponent(Divider.class);
@@ -6884,6 +6891,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     };
 
     private ScrewdSettingsObserver mScrewdSettingsObserver = new ScrewdSettingsObserver(mHandler);
+    private boolean mOmniSwitchRecents;
     private class ScrewdSettingsObserver extends ContentObserver {
         ScrewdSettingsObserver(Handler handler) {
             super(handler);
@@ -6957,6 +6965,10 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_DATE_SELECTION),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.RECENTS_OMNI_SWITCH_ENABLED),
+                    false, this, UserHandle.USER_ALL);
+            update();
         }
 
         @Override
@@ -7018,6 +7030,9 @@ public class StatusBar extends SystemUI implements DemoMode,
                     uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK_SELECTION)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_DATE_SELECTION))) {
                 updateKeyguardStatusSettings();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.RECENTS_OMNI_SWITCH_ENABLED))) {
+                updateOmniSwitch();
             }
         }
 
@@ -7033,6 +7048,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateBatterySettings();
             updateTickerAnimation();
             updateKeyguardStatusSettings();
+            updateOmniSwitch();
         }
     }
 
@@ -7074,6 +7090,14 @@ public class StatusBar extends SystemUI implements DemoMode,
         final String blackString = Settings.System.getString(mContext.getContentResolver(),
                     Settings.System.HEADS_UP_BLACKLIST_VALUES);
         splitAndAddToArrayList(mBlacklist, blackString, "\\|");
+    }
+
+    private void updateOmniSwitch() {
+        mOmniSwitchRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.RECENTS_OMNI_SWITCH_ENABLED, 0, mCurrentUserId) == 1;
+        if (mNavigationBar != null) {
+            mNavigationBar.setOmniSwitchEnabled(mOmniSwitchRecents);
+        }
     }
 
     private void setForceAmbient() {
