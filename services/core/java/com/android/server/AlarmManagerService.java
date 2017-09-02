@@ -79,6 +79,10 @@ import java.util.Random;
 import java.util.TimeZone;
 import java.util.TreeSet;
 
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Iterator;
+
 import static android.app.AlarmManager.RTC_WAKEUP;
 import static android.app.AlarmManager.RTC;
 import static android.app.AlarmManager.ELAPSED_REALTIME_WAKEUP;
@@ -114,7 +118,7 @@ class AlarmManagerService extends SystemService {
     private final Intent mBackgroundIntent
             = new Intent().addFlags(Intent.FLAG_FROM_BACKGROUND);
     static final IncreasingTimeOrder sIncreasingTimeOrder = new IncreasingTimeOrder();
-    
+
     static final boolean WAKEUP_STATS = false;
 
     private static final Intent NEXT_ALARM_CLOCK_CHANGED_INTENT =
@@ -158,6 +162,10 @@ class AlarmManagerService extends SystemService {
     long mLastTimeChangeRealtime;
     long mAllowWhileIdleMinTime;
     int mNumTimeChanged;
+
+    private Set<String> mSeenAlarms = new HashSet<String>();
+    private Set<String> mBlockedAlarms = new HashSet<String>();
+    private int mAlarmsBlockingEnabled;
 
     // Bookkeeping about the identity of the "System UI" package, determined at runtime.
 
@@ -268,6 +276,12 @@ class AlarmManagerService extends SystemService {
             mResolver = resolver;
             mResolver.registerContentObserver(Settings.Global.getUriFor(
                     Settings.Global.ALARM_MANAGER_CONSTANTS), false, this);
+            mResolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.ALARM_BLOCKING_ENABLED),
+                    false, this, UserHandle.USER_ALL);
+            mResolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.ALARM_BLOCKING_LIST),
+                    false, this, UserHandle.USER_ALL);
             updateConstants();
         }
 
@@ -313,10 +327,19 @@ class AlarmManagerService extends SystemService {
                 LISTENER_TIMEOUT = mParser.getLong(KEY_LISTENER_TIMEOUT,
                         DEFAULT_LISTENER_TIMEOUT);
 
+                mAlarmsBlockingEnabled = Settings.System.getIntForUser(mResolver,
+                        Settings.System.ALARM_BLOCKING_ENABLED, 0, UserHandle.USER_CURRENT);
+                String blockedAlarmList = Settings.System.getStringForUser(mResolver,
+                        Settings.System.ALARM_BLOCKING_LIST, UserHandle.USER_CURRENT);
+                setBlockedAlarms(blockedAlarmList);
+                Slog.d(TAG, "mAlarmsBlockingEnabled=" + mAlarmsBlockingEnabled
+                        + " blockedAlarmList=" + blockedAlarmList);
+
                 updateAllowWhileIdleMinTimeLocked();
                 updateAllowWhileIdleWhitelistDurationLocked();
             }
         }
+
 
         void dump(PrintWriter pw) {
             pw.println("  Settings:");
@@ -1016,14 +1039,14 @@ class AlarmManagerService extends SystemService {
                 | Intent.FLAG_RECEIVER_VISIBLE_TO_INSTANT_APPS);
         mDateChangeSender = PendingIntent.getBroadcastAsUser(getContext(), 0, intent,
                 Intent.FLAG_RECEIVER_REGISTERED_ONLY_BEFORE_BOOT, UserHandle.ALL);
-        
+
         // now that we have initied the driver schedule the alarm
         mClockReceiver = new ClockReceiver();
         mClockReceiver.scheduleTimeTickEvent();
         mClockReceiver.scheduleDateChangedEvent();
         mInteractiveStateReceiver = new InteractiveStateReceiver();
         mUninstallReceiver = new UninstallReceiver();
-        
+
         if (mNativeData != 0) {
             AlarmThread waitThread = new AlarmThread();
             waitThread.start();
@@ -1111,6 +1134,7 @@ class AlarmManagerService extends SystemService {
             PendingIntent operation, IAlarmListener directReceiver, String listenerTag,
             int flags, WorkSource workSource, AlarmManager.AlarmClockInfo alarmClock,
             int callingUid, String callingPackage) {
+
         // must be *either* PendingIntent or AlarmReceiver, but not both
         if ((operation == null && directReceiver == null)
                 || (operation != null && directReceiver != null)) {
@@ -1166,6 +1190,28 @@ class AlarmManagerService extends SystemService {
             maxElapsed = triggerElapsed + windowLength;
         }
 
+        boolean blockAlarm = false;
+        if(operation != null){
+            String tag = operation.getTag("");
+
+            if (type == AlarmManager.RTC_WAKEUP || type == AlarmManager.ELAPSED_REALTIME_WAKEUP){
+
+                Slog.e(TAG, "RTC Alarm: " + type + " " + listenerTag + " " + callingPackage + " " + tag);
+
+                if (!mSeenAlarms.contains(tag)) {
+                    mSeenAlarms.add(tag);
+                }
+                if (mAlarmsBlockingEnabled == 1 && mBlockedAlarms.contains(tag)) {
+                        if (type == AlarmManager.RTC_WAKEUP) {
+                            type = AlarmManager.RTC;
+                        } else {
+                            type = AlarmManager.ELAPSED_REALTIME;
+                        }
+                    blockAlarm = true;
+                    }
+                }
+            }
+
         synchronized (mLock) {
             if (DEBUG_BATCH) {
                 Slog.v(TAG, "set(" + operation + ") : type=" + type
@@ -1173,9 +1219,20 @@ class AlarmManagerService extends SystemService {
                         + " tElapsed=" + triggerElapsed + " maxElapsed=" + maxElapsed
                         + " interval=" + interval + " flags=0x" + Integer.toHexString(flags));
             }
+
             setImplLocked(type, triggerAtTime, triggerElapsed, windowLength, maxElapsed,
-                    interval, operation, directReceiver, listenerTag, flags, true, workSource,
-                    alarmClock, callingUid, callingPackage);
+                interval, operation, directReceiver, listenerTag, flags, true, workSource,
+                alarmClock, callingUid, callingPackage);
+        }
+    }
+
+    private void setBlockedAlarms(String AlarmTagsString) {
+        mBlockedAlarms = new HashSet<String>();
+        if (AlarmTagsString != null && AlarmTagsString.length() != 0) {
+            String[] parts = AlarmTagsString.split("\\|");
+            for (int i = 0; i < parts.length; i++) {
+                mBlockedAlarms.add(parts[i]);
+            }
         }
     }
 
@@ -1432,6 +1489,23 @@ class AlarmManagerService extends SystemService {
         @Override
         public long getNextWakeFromIdleTime() {
             return getNextWakeFromIdleTimeImpl();
+        }
+
+        @Override
+        public String getSeenAlarms() {
+            StringBuffer buffer = new StringBuffer();
+            Iterator<String> nextAlarm = mSeenAlarms.iterator();
+
+            while (nextAlarm.hasNext()) {
+                String alarmTag = nextAlarm.next();
+                buffer.append(alarmTag + "|");
+            }
+
+            if (buffer.length() > 0) {
+                buffer.deleteCharAt(buffer.length() - 1);
+            }
+
+            return buffer.toString();
         }
 
         @Override
@@ -2151,12 +2225,12 @@ class AlarmManagerService extends SystemService {
                 alarmSeconds = when / 1000;
                 alarmNanoseconds = (when % 1000) * 1000 * 1000;
             }
-            
+
             set(mNativeData, type, alarmSeconds, alarmNanoseconds);
         } else {
             Message msg = Message.obtain();
             msg.what = ALARM_EVENT;
-            
+
             mHandler.removeMessages(ALARM_EVENT);
             mHandler.sendMessageAtTime(msg, when);
         }
@@ -2325,7 +2399,7 @@ class AlarmManagerService extends SystemService {
             return 0;
         }
     }
-    
+
     private static class Alarm {
         public final int type;
         public final long origWhen;
@@ -2544,7 +2618,7 @@ class AlarmManagerService extends SystemService {
         {
             super("AlarmManager");
         }
-        
+
         public void run()
         {
             ArrayList<Alarm> triggerList = new ArrayList<Alarm>();
@@ -2709,10 +2783,10 @@ class AlarmManagerService extends SystemService {
         public static final int SEND_NEXT_ALARM_CLOCK_CHANGED = 2;
         public static final int LISTENER_TIMEOUT = 3;
         public static final int REPORT_ALARMS_ACTIVE = 4;
-        
+
         public AlarmHandler() {
         }
-        
+
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case ALARM_EVENT: {
@@ -2760,7 +2834,7 @@ class AlarmManagerService extends SystemService {
             }
         }
     }
-    
+
     class ClockReceiver extends BroadcastReceiver {
         public ClockReceiver() {
             IntentFilter filter = new IntentFilter();
@@ -2768,7 +2842,7 @@ class AlarmManagerService extends SystemService {
             filter.addAction(Intent.ACTION_DATE_CHANGED);
             getContext().registerReceiver(this, filter);
         }
-        
+
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_TIME_TICK)) {
@@ -2787,7 +2861,7 @@ class AlarmManagerService extends SystemService {
                 scheduleDateChangedEvent();
             }
         }
-        
+
         public void scheduleTimeTickEvent() {
             final long currentTime = System.currentTimeMillis();
             final long nextTime = 60000 * ((currentTime / 60000) + 1);
@@ -2817,7 +2891,7 @@ class AlarmManagerService extends SystemService {
                     Process.myUid(), "android");
         }
     }
-    
+
     class InteractiveStateReceiver extends BroadcastReceiver {
         public InteractiveStateReceiver() {
             IntentFilter filter = new IntentFilter();
@@ -2850,7 +2924,7 @@ class AlarmManagerService extends SystemService {
             sdFilter.addAction(Intent.ACTION_UID_REMOVED);
             getContext().registerReceiver(this, sdFilter);
         }
-        
+
         @Override
         public void onReceive(Context context, Intent intent) {
             synchronized (mLock) {
