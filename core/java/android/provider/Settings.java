@@ -4010,6 +4010,12 @@ public final class Settings {
          */
         public static final String SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
+       /**
+        * Whether to show Qs panel footer warnings like for active VPN
+        * @hide
+        */
+       public static final String QS_FOOTER_WARNINGS = "qs_footer_warnings";
+
         /**
          * Volume key controls ringtone or media sound stream
          * @hide
