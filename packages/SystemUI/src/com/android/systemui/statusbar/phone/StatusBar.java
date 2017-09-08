@@ -538,6 +538,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     private ArrayList<String> mBlacklist = new ArrayList<String>();
 
     private boolean mFpDismissNotifications;
+    boolean mLessBoringHeadsUp;
 
     // the tracker view
     int mTrackingPosition; // the position of the top of the tracking view.
@@ -6979,6 +6980,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.RECENTS_OMNI_SWITCH_ENABLED),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LESS_BORING_HEADS_UP),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -7044,7 +7048,13 @@ public class StatusBar extends SystemUI implements DemoMode,
                 unloadClocks();
                 updateClocks();
                 updateKeyguardStatusSettings();
-            }
+            }	else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.RECENTS_OMNI_SWITCH_ENABLED))) {
+                updateRecentsMode();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.LESS_BORING_HEADS_UP))) {
+                setUseLessBoringHeadsUp();
+           } 
         }
 
         public void update() {
@@ -7059,6 +7069,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateBatterySettings();
             updateTickerAnimation();
             updateKeyguardStatusSettings();
+            setUseLessBoringHeadsUp();
         }
     }
 
@@ -7153,6 +7164,12 @@ public class StatusBar extends SystemUI implements DemoMode,
             }
         }
     };
+
+    private void setUseLessBoringHeadsUp() {
+        mLessBoringHeadsUp = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LESS_BORING_HEADS_UP, 1,
+                UserHandle.USER_CURRENT) == 1;
+    }
 
     private void updateRecentsIconPack() {
         boolean slimRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
@@ -8816,12 +8833,28 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
     protected boolean shouldPeek(Entry entry, StatusBarNotification sbn) {
-        if (!mUseHeadsUp && !isDozing() || isDeviceInVrMode()) {
-            if (DEBUG) Log.d(TAG, "No peeking: no huns or vr mode");
+        boolean isImportantHeadsUp = false;
+        String notificationPackageName = sbn.getPackageName().toLowerCase();
+        isImportantHeadsUp = notificationPackageName.contains("dialer") ||
+                notificationPackageName.contains("messaging");
+        // get the info from the currently running task
+        List<ActivityManager.RunningTaskInfo> taskInfo = mAm.getRunningTasks(1);
+        if(taskInfo != null && !taskInfo.isEmpty()) {
+            ComponentName componentInfo = taskInfo.get(0).topActivity;
+            if(isPackageInStoplist(componentInfo.getPackageName())
+                && !isDialerApp(sbn.getPackageName())) {
+                return false;
+            }
+        }
+
+        if(isPackageBlacklisted(sbn.getPackageName())) {
             return false;
         }
 
-        if (isPackageInBlacklist(sbn.getPackageName())) {
+
+        if (!mUseHeadsUp || isDeviceInVrMode() || (!isDozing() && mLessBoringHeadsUp &&
+                !isImportantHeadsUp)) {
+            if (DEBUG) Log.d(TAG, "No peeking: no huns or vr mode or less boring headsup enabled");
             return false;
         }
 
