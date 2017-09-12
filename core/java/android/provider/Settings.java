@@ -4771,7 +4771,15 @@ public final class Settings {
          */
         public static final String SLIM_RECENTS_BLACKLIST_VALUES = "slim_recents_blacklist_values";
 
-        /** End of ABC system settings**/
+        /**
+         * Immersive recents options
+         *
+         * 0 = Default AOSP look
+         * 1 = Statusbar only
+         * 2 = Navbar only
+         * 3 = Fullscreen
+         */
+        public static final String IMMERSIVE_RECENTS = "immersive_recents";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
