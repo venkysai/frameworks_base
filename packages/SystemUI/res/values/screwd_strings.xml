@@ -136,4 +136,6 @@
     <string name="show_lte_fourgee_summary">Display either the 4G or LTE network icon in the statusbar/QS panel</string>
     <string name="statusbar_tuner_category_title">Hide items from statusbar</string>
 
+    <string name="recents_app_killed">App killed</string>
+
 </resources>
