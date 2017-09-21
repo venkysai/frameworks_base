@@ -178,4 +178,7 @@
   <java-symbol type="drawable" name="ic_shortcut_action_ring_vib_silent" />
   <java-symbol type="drawable" name="ic_shortcut_action_screenshot" />
   <java-symbol type="drawable" name="ic_shortcut_action_search" />
+
+   <java-symbol type="anim" name="du_app_in" />
+  <java-symbol type="anim" name="du_app_out" />
 </resources>
