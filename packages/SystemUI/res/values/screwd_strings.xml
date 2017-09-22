@@ -150,4 +150,7 @@
 
     <string name="recents_app_killed">App killed</string>
 
+    <string name="lockscreen_default">Default</string>
+    <string name="lockscreen_hidden">None</string>
+
 </resources>
