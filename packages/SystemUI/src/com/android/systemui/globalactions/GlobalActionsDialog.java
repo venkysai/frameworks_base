@@ -263,7 +263,8 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
         mDialog = createDialog();
         prepareDialog();
         WindowManager.LayoutParams attrs = mDialog.getWindow().getAttributes();
-            attrs.setTitle("ActionsDialog");
+        attrs.setTitle("ActionsDialog");
+        attrs.alpha = setPowerMenuAlpha();
 
         boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
         int powermenuAnimations = isPrimary ? getPowermenuAnimations() : 0;
@@ -310,7 +311,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
         if (powermenuAnimations == 10) {
                 attrs.windowAnimations = R.style.PowerMenuTranslucentAnimation;
                 attrs.gravity = Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL;
-        }            
+        }
         if (powermenuAnimations == 4) {
                 attrs.windowAnimations = R.style.PowerMenuXylonAnimation;
                 attrs.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
@@ -341,6 +342,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
         }
 
         mDialog.getWindow().setAttributes(attrs);
+        mDialog.getWindow().setDimAmount(setPowerMenuDialogDim());
         mDialog.show();
         mWindowManagerFuncs.onGlobalActionsShown();
         mDialog.getWindow().getDecorView().setSystemUiVisibility(View.STATUS_BAR_DISABLE_EXPAND);
@@ -349,6 +351,22 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
     private int getPowermenuAnimations() {
         return Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.POWER_MENU_ANIMATIONS, 0);
+    }
+
+    private float setPowerMenuAlpha() {
+        int mPowerMenuAlpha = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.TRANSPARENT_POWER_MENU, 100);
+        double dAlpha = mPowerMenuAlpha / 100.0;
+        float alpha = (float) dAlpha;
+        return alpha;
+    }
+
+    private float setPowerMenuDialogDim() {
+        int mPowerMenuDialogDim = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.TRANSPARENT_POWER_DIALOG_DIM, 50);
+        double dDim = mPowerMenuDialogDim / 100.0;
+        float dim = (float) dDim;
+        return dim;
     }
 
     /**
