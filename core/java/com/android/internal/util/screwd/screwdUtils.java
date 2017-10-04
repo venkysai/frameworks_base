@@ -304,4 +304,9 @@ public class screwdUtils {
         Vibrator vibrator = (Vibrator) ctx.getSystemService(Context.VIBRATOR_SERVICE);
         return vibrator.hasVibrator();
     }
+
+    // Check to see if device supports an alterative ambient display package
+    public static boolean hasAltAmbientDisplay(Context context) {
+        return context.getResources().getBoolean(com.android.internal.R.bool.config_alt_ambient_display);
+    }
 }
