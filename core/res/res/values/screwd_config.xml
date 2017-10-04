@@ -84,7 +84,4 @@
     <integer name="config_proximityCheckTimeout">250</integer>
     <bool name="config_proximityCheckOnWakeEnabledByDefault">false</bool>
 
-    <!-- Wheter to enable doze always on -->
-    <bool name="config_enableDozeAlwaysOn">false</bool>
-
 </resources>
