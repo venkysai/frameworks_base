@@ -51,7 +51,6 @@ import android.media.AudioManager;
 import android.os.BatteryManager;
 import android.os.CancellationSignal;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.IRemoteCallback;
 import android.os.Message;
 import android.os.RemoteException;
@@ -59,8 +58,6 @@ import android.os.SystemClock;
 import android.os.Trace;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.pocket.IPocketCallback;
-import android.pocket.PocketManager;
 import android.provider.Settings;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
@@ -136,9 +133,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
     private static final int MSG_SCREEN_TURNED_OFF = 332;
     private static final int MSG_DREAMING_STATE_CHANGED = 333;
     private static final int MSG_USER_UNLOCKED = 334;
-  
-    // Additional messages should be 600+
-    private static final int MSG_POCKET_STATE_CHANGED = 600;
 
     /** Fingerprint state: Not listening to fingerprint. */
     private static final int FINGERPRINT_STATE_STOPPED = 0;
@@ -209,27 +203,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
     private int mHardwareUnavailableRetryCount = 0;
     private static final int HW_UNAVAILABLE_TIMEOUT = 3000; // ms
     private static final int HW_UNAVAILABLE_RETRY_MAX = 3;
-
-    private PocketManager mPocketManager;
-    private boolean mIsDeviceInPocket;
-    private final IPocketCallback mPocketCallback = new IPocketCallback.Stub() {
-        @Override
-        public void onStateChanged(boolean isDeviceInPocket, int reason) {
-            boolean changed = false;
-            if (reason == PocketManager.REASON_SENSOR) {
-                if (isDeviceInPocket != mIsDeviceInPocket) {
-                    mIsDeviceInPocket = isDeviceInPocket;
-                    changed = true;
-                }
-            } else {
-                changed = isDeviceInPocket != mIsDeviceInPocket;
-                mIsDeviceInPocket = false;
-            }
-            if (changed) {
-                mHandler.sendEmptyMessage(MSG_POCKET_STATE_CHANGED);
-            }
-        }
-    };
 
     private final Handler mHandler = new Handler() {
         @Override
@@ -315,9 +288,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
                     break;
                 case MSG_USER_UNLOCKED:
                     handleUserUnlocked();
-                    break;
-                case MSG_POCKET_STATE_CHANGED:
-                    updateFingerprintListeningState();
                     break;
             }
         }
@@ -1144,11 +1114,6 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
         mLockPatternUtils = new LockPatternUtils(context);
         mLockPatternUtils.registerStrongAuthTracker(mStrongAuthTracker);
 
-        mPocketManager = (PocketManager) context.getSystemService(Context.POCKET_SERVICE);
-        if (mPocketManager != null) {
-            mPocketManager.addCallback(mPocketCallback);
-        }
-
         if (mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) {
             mFpm = (FingerprintManager) context.getSystemService(Context.FINGERPRINT_SERVICE);
         }
@@ -1174,7 +1139,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
     private boolean shouldListenForFingerprint() {
         return (mKeyguardIsVisible || !mDeviceInteractive ||
                     (mBouncer && !mKeyguardGoingAway) || mGoingToSleep)
-                && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser()) && !mIsDeviceInPocket;
+                && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser());
     }
 
     private void startListeningForFingerprint() {
