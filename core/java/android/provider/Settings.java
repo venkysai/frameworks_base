@@ -4212,6 +4212,14 @@ public final class Settings {
         public static final String QS_TILE_TITLE_VISIBILITY = "qs_tile_title_visibility";
 
         /**
+         * Whether to show the notification ticker on the status bar
+         * @hide
+         */
+        public static final String STATUS_BAR_SHOW_TICKER = "status_bar_show_ticker";
+
+        /** End of ABC system settings**/
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
