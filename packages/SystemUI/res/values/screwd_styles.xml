@@ -43,4 +43,8 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/status_bar_carrier_color</item>
     </style>
+
+    <!-- <style name="ContainerActivityTheme"
+        parent="@android:style/Theme.Translucent.NoTitleBar">
+    </style>-->
 </resources>
