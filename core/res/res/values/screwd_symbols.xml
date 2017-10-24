@@ -128,4 +128,14 @@
   <!-- Proximity check on screen on default -->
   <java-symbol type="bool" name="config_proximityCheckOnWakeEnabledByDefault" />
 
+  <!-- Power menu -->
+  <!--java-symbol type="array" name="shutdown_reboot_actions" /-->
+  <java-symbol type="string" name="global_actions" />
+  <!--java-symbol type="string" name="global_action_reboot" />
+  <java-symbol type="string" name="reboot_progress" />
+  <java-symbol type="string" name="reboot_to_recovery_title" />
+  <java-symbol type="string" name="reboot_recovery_progress" />
+  <java-symbol type="string" name="reboot_system" /-->
+  <java-symbol type="array" name="config_globalActionsList_custom" />
+
 </resources>
