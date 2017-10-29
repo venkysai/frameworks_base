@@ -4235,12 +4235,6 @@ public final class Settings {
         public static final String USE_SLIM_RECENTS = "use_slim_recents";
 
         /**
-         * Number of qs columns on landscape orientation
-         * @hide
-         */
-        public static final String QS_LAYOUT_COLUMNS_LANDSCAPE = "qs_layout_columns_landscape";
-
-        /**
          * Amount of apps to show in recents
          * @hide
          */
@@ -4340,11 +4334,6 @@ public final class Settings {
          * @hide
          */
         public static final String QS_QUICKBAR_SCROLL_ENABLED = "qs_quickbar_scroll_enabled";
-
-        /**
-         * @hide
-         */
-        public static final String OMNIJAWS_WEATHER_ICON_PACK = "omnijaws_weather_icon_pack";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
