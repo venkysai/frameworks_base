@@ -76,7 +76,7 @@
          -->
     <string-array translatable="false" name="config_globalActionsList_custom">
         <item>power</item>
-        <!--item>restart</item-->
+        <item>restart</item>
         <item>recovery</item>
         <item>airplane</item>
         <item>settings</item>
