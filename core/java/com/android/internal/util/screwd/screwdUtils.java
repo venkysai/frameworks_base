@@ -16,33 +16,51 @@
 
 package com.android.internal.util.screwd;
 
-import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningServiceInfo;
+import android.app.ActivityManager;
+import android.app.ActivityManagerNative;
+import android.bluetooth.BluetoothAdapter;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
-import android.hardware.input.InputManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
+import android.hardware.display.DisplayManager;
+import android.hardware.display.WifiDisplayStatus;
+import android.hardware.input.InputManager;
 import android.net.ConnectivityManager;
+import android.nfc.NfcAdapter;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.UserHandle;
 import android.os.PowerManager;
+import android.os.Process;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.os.SystemProperties;
+import android.os.UserHandle;
+import android.os.Vibrator;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.DisplayInfo;
 import android.view.InputDevice;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
-
+import android.view.WindowManager;
 import com.android.internal.statusbar.IStatusBarService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -239,9 +257,7 @@ public class screwdUtils {
     }
 
     private static boolean isSupportedFeature(Context context, String action) {
-        if (action.equals(ActionConstants.ACTION_TORCH)
-                        && !deviceSupportsTorch(context)
-                || action.equals(ActionConstants.ACTION_VIB)
+        if (action.equals(ActionConstants.ACTION_VIB)
                         && !deviceSupportsVibrator(context)
                 || action.equals(ActionConstants.ACTION_VIB_SILENT)
                         && !deviceSupportsVibrator(context)) {
@@ -253,5 +269,39 @@ public class screwdUtils {
     public static class FilteredDeviceFeaturesArray {
         public String[] entries;
         public String[] values;
+    }
+
+    public static boolean deviceSupportsUsbTether(Context context) {
+        ConnectivityManager cm =
+            (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return (cm.getTetherableUsbRegexs().length != 0);
+    }
+
+    public static boolean deviceSupportsMobileData(Context context) {
+        ConnectivityManager cm =
+            (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE);
+    }
+
+    public static boolean deviceSupportsBluetooth() {
+        return (BluetoothAdapter.getDefaultAdapter() != null);
+    }
+
+    public static boolean deviceSupportsNfc(Context context) {
+        return NfcAdapter.getDefaultAdapter(context) != null;
+    }
+
+
+    public static boolean deviceSupportsGps(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS);
+    }
+
+    public static boolean adbEnabled(ContentResolver resolver) {
+            return (Settings.Global.getInt(resolver, Settings.Global.ADB_ENABLED, 0)) == 1;
+    }
+
+    public static boolean deviceSupportsVibrator(Context ctx) {
+        Vibrator vibrator = (Vibrator) ctx.getSystemService(Context.VIBRATOR_SERVICE);
+        return vibrator.hasVibrator();
     }
 }
