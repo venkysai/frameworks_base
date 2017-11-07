@@ -31,6 +31,7 @@
 
     <!-- SystemUI Tuner Parts -->
     <string name="systemui_tuner_icon_manager_title">Icon manager</string>
+    <string name="systemui_tuner_lockscreen_bottom_shortcuts_title">Bottom shortcuts</string>
     
     <!-- Caffeine QS Tile -->
     <string name="quick_settings_caffeine_label">Caffeine</string>
