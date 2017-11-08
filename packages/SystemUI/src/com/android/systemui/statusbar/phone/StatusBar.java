@@ -1656,11 +1656,11 @@ public class StatusBar extends SystemUI implements DemoMode,
             } catch (RemoteException e) {}
             if (mSlimRecents != null && !isInLockTaskMode) {
                 mSlimRecents.startMultiWindow();
-            } else if (mOmniSwitchRecents) {
-                TaskUtils.dockTopTask(mContext);
-            } else {
+            } else if (!mOmniSwitchRecents) {
                 return mRecents.dockTopTask(NavigationBarGestureHelper.DRAG_MODE_NONE,
                         ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT, null, metricsDockAction);
+            } else {
+                TaskUtils.dockTopTask(mContext);
             }
         } else {
             Divider divider = getComponent(Divider.class);
