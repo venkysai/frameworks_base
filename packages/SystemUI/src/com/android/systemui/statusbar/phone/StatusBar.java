@@ -152,8 +152,6 @@ import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.statusbar.NotificationVisibility;
 import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.util.NotificationMessagingUtil;
-import com.android.internal.util.omni.OmniSwitchConstants;
-import com.android.internal.util.omni.TaskUtils;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.keyguard.KeyguardHostView.OnDismissAction;
 import com.android.keyguard.KeyguardStatusView;
@@ -828,8 +826,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     private View mNavigationBarView;
 
     private StatusBarHeaderMachine mStatusBarHeaderMachine;
-
-    private boolean mOmniSwitchRecents;
 
     @Override
     public void start() {
@@ -1656,11 +1652,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             } catch (RemoteException e) {}
             if (mSlimRecents != null && !isInLockTaskMode) {
                 mSlimRecents.startMultiWindow();
-            } else if (!mOmniSwitchRecents) {
+            } else {
                 return mRecents.dockTopTask(NavigationBarGestureHelper.DRAG_MODE_NONE,
                         ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT, null, metricsDockAction);
-            } else {
-                TaskUtils.dockTopTask(mContext);
             }
         } else {
             Divider divider = getComponent(Divider.class);
@@ -5800,9 +5794,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                   Settings.System.USE_SLIM_RECENTS),
                   false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.RECENTS_USE_OMNISWITCH),
-                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -5838,8 +5829,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
 
         public void update() {
-            mOmniSwitchRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.RECENTS_USE_OMNISWITCH, 0, UserHandle.USER_CURRENT) == 1;
             setDoubleTapNavbar();
             setStatusBarWindowViewOptions();
             setBrightnessSlider();

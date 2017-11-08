@@ -237,7 +237,6 @@ import com.android.internal.policy.IShortcutService;
 import com.android.internal.policy.PhoneWindow;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.util.ScreenShapeHelper;
-import com.android.internal.util.omni.OmniSwitchConstants;
 import com.android.internal.widget.PointerLocationView;
 import com.android.server.GestureLauncherService;
 import com.android.server.LocalServices;
@@ -269,7 +268,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     static final String TAG = "WindowManager";
     static final boolean DEBUG = false;
     static final boolean localLOGV = false;
-    static boolean DEBUG_INPUT = false;
+    static final boolean DEBUG_INPUT = false;
     static final boolean DEBUG_KEYGUARD = false;
     static final boolean DEBUG_LAYOUT = false;
     static final boolean DEBUG_SPLASH_SCREEN = false;
@@ -823,9 +822,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private boolean mGlobalActionsOnLockDisable;
 
-    // omniswitch
-    private boolean mOmniSwitchRecents;
-
     // Fallback actions by key code.
     private final SparseArray<KeyCharacterMap.FallbackAction> mFallbackActions =
             new SparseArray<KeyCharacterMap.FallbackAction>();
@@ -1022,9 +1018,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.LOCK_POWER_MENU_DISABLED), false, this,
                     UserHandle.USER_ALL);
-	    resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.RECENTS_USE_OMNISWITCH), false, this,
-                    UserHandle.USER_ALL);
+
             updateSettings();
         }
 
@@ -2060,9 +2054,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mHandleVolumeKeysInWM = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_handleVolumeKeysInWindowManager);
 
-        boolean debugInputOverride = SystemProperties.getBoolean("debug.inputEvent", false);
-        DEBUG_INPUT = DEBUG_INPUT || debugInputOverride;
-
         readConfigurationDependentBehaviors();
 
         mAccessibilityManager = (AccessibilityManager) context.getSystemService(
@@ -2469,9 +2460,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mGlobalActionsOnLockDisable = Settings.Secure.getIntForUser(resolver,
                     Settings.Secure.LOCK_POWER_MENU_DISABLED, 1,
                     UserHandle.USER_CURRENT) != 0;
-            mOmniSwitchRecents = Settings.System.getIntForUser(resolver,
-                    Settings.System.RECENTS_USE_OMNISWITCH, 0,
-                    UserHandle.USER_CURRENT) == 1;
         }
         synchronized (mWindowManagerFuncs.getWindowManagerLock()) {
             PolicyControl.reloadFromSetting(mContext);
@@ -3637,9 +3625,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             // Remember that home is pressed and handle special actions.
             if (repeatCount == 0) {
                 mHomePressed = true;
-                if (mOmniSwitchRecents) {
-                    OmniSwitchConstants.hideOmniSwitchRecents(mContext, UserHandle.CURRENT);
-                }
                 if (mHomeDoubleTapPending) {
                     mHomeDoubleTapPending = false;
                     mHandler.removeCallbacks(mHomeDoubleTapTimeoutRunnable);
@@ -4279,10 +4264,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void preloadRecentApps() {
-        if (mOmniSwitchRecents) {
-            OmniSwitchConstants.preloadOmniSwitchRecents(mContext, UserHandle.CURRENT);
-            return;
-        }
         mPreloadedRecentApps = true;
         StatusBarManagerInternal statusbar = getStatusBarManagerInternal();
         if (statusbar != null) {
@@ -4291,9 +4272,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void cancelPreloadRecentApps() {
-        if (mOmniSwitchRecents) {
-            return;
-        }
         if (mPreloadedRecentApps) {
             mPreloadedRecentApps = false;
             StatusBarManagerInternal statusbar = getStatusBarManagerInternal();
@@ -4304,14 +4282,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void toggleRecentApps() {
-        if (mOmniSwitchRecents) {
-            OmniSwitchConstants.toggleOmniSwitchRecents(mContext, UserHandle.CURRENT);
-        } else {
-            mPreloadedRecentApps = false; // preloading no longer needs to be canceled
-            StatusBarManagerInternal statusbar = getStatusBarManagerInternal();
-            if (statusbar != null) {
-                statusbar.toggleRecentApps();
-            }
+        mPreloadedRecentApps = false; // preloading no longer needs to be canceled
+        StatusBarManagerInternal statusbar = getStatusBarManagerInternal();
+        if (statusbar != null) {
+            statusbar.toggleRecentApps();
         }
     }
 
@@ -4322,18 +4296,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void showRecentApps(boolean triggeredFromAltTab, boolean fromHome) {
-        if (mOmniSwitchRecents) {
-            if (!fromHome) {
-                OmniSwitchConstants.restoreHomeStack(mContext, UserHandle.CURRENT);
-            } else {
-                OmniSwitchConstants.toggleOmniSwitchRecents(mContext, UserHandle.CURRENT);
-            }
-        } else {
-            mPreloadedRecentApps = false; // preloading no longer needs to be canceled
-            StatusBarManagerInternal statusbar = getStatusBarManagerInternal();
-            if (statusbar != null) {
-                statusbar.showRecentApps(triggeredFromAltTab, fromHome);
-            }
+        mPreloadedRecentApps = false; // preloading no longer needs to be canceled
+        StatusBarManagerInternal statusbar = getStatusBarManagerInternal();
+        if (statusbar != null) {
+            statusbar.showRecentApps(triggeredFromAltTab, fromHome);
         }
     }
 
