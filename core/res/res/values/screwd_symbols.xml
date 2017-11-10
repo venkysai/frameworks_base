@@ -116,10 +116,6 @@
   <!-- Whether notify fingerprint client of successful cancelled authentication -->
   <java-symbol type="bool" name="config_notifyClientOnFingerprintCancelSuccess" />
 
-  <!-- Device keyhandler -->
-  <java-symbol type="string" name="config_deviceKeyHandlerLib" />
-  <java-symbol type="string" name="config_deviceKeyHandlerClass" />
-
   <!-- Power menu -->
   <!--java-symbol type="array" name="shutdown_reboot_actions" /-->
   <java-symbol type="string" name="global_actions" />

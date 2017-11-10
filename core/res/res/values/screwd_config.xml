@@ -52,12 +52,6 @@
     <!-- Whether notify fingerprint client of successful cancelled authentication -->
     <bool name="config_notifyClientOnFingerprintCancelSuccess">false</bool>
 
-    <!-- Path to the library that contains a device specific key handler -->
-    <string name="config_deviceKeyHandlerLib" translatable="false"></string>
-
-    <!-- Name of that key handler class -->
-    <string name="config_deviceKeyHandlerClass" translatable="false"></string>
-
      <!-- Defines the default set of global actions. Actions may still be disabled or hidden based
          on the current state of the device.
          Each item must be one of the following strings:
