@@ -4071,42 +4071,6 @@ public final class Settings {
         public static final String VOLUME_KEYS_CONTROL_MEDIA_STREAM =
                 "volume_keys_control_media_stream";
 
-        /**
-        * Whether to show battery light when DND mode is active
-        * @hide
-        */
-       public static final String BATTERY_LIGHT_ALLOW_ON_DND = "battery_light_allow_on_dnd";
-
-        /**
-        * Whether to show blinking light when battery is low
-        * @hide
-        */
-       public static final String BATTERY_LIGHT_LOW_BLINKING = "battery_light_low_blinking";
-
-        /**
-        * Low battery charging color
-        * @hide
-        */
-       public static final String BATTERY_LIGHT_LOW_COLOR = "battery_light_low_color";
-
-        /**
-        * Medium battery charging color
-        * @hide
-        */
-       public static final String BATTERY_LIGHT_MEDIUM_COLOR = "battery_light_medium_color";
-
-        /**
-        * Full battery charging color
-        * @hide
-        */
-       public static final String BATTERY_LIGHT_FULL_COLOR = "battery_light_full_color";
-
-        /**
-        * Really full 100 battery charging color
-        * @hide
-        */
-       public static final String BATTERY_LIGHT_REALLYFULL_COLOR = "battery_light_reallyfull_color";
-
         /*
 	     * Double tap on lockscreen to sleep
          * @hide
@@ -4577,12 +4541,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(SHOW_BATTERY_PERCENT);
             PRIVATE_SETTINGS.add(SWAP_VOLUME_BUTTONS);
             PRIVATE_SETTINGS.add(VOLUME_KEYS_CONTROL_MEDIA_STREAM);
-            PRIVATE_SETTINGS.add(BATTERY_LIGHT_ALLOW_ON_DND);
-            PRIVATE_SETTINGS.add(BATTERY_LIGHT_LOW_COLOR);
-            PRIVATE_SETTINGS.add(BATTERY_LIGHT_MEDIUM_COLOR);
-            PRIVATE_SETTINGS.add(BATTERY_LIGHT_FULL_COLOR);
-            PRIVATE_SETTINGS.add(BATTERY_LIGHT_REALLYFULL_COLOR);
-            PRIVATE_SETTINGS.add(BATTERY_LIGHT_LOW_BLINKING);
             PRIVATE_SETTINGS.add(DOUBLE_TAP_SLEEP_LOCKSCREEN);
             PRIVATE_SETTINGS.add(STATUS_BAR_QUICK_QS_PULLDOWN);
             PRIVATE_SETTINGS.add(VOLUME_BUTTON_MUSIC_CONTROL);
