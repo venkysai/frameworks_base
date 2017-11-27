@@ -82,5 +82,4 @@ interface IStatusBarService
      * Screw'd
      */
     void toggleCameraFlash();
-    void toggleNavigationBar(boolean enable);
 }
