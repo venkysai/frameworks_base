@@ -181,6 +181,7 @@
   <java-symbol type="drawable" name="ic_shortcut_action_screenshot" />
   <java-symbol type="drawable" name="ic_shortcut_action_search" />
 
+   <!-- DUI -->
    <java-symbol type="anim" name="du_app_in" />
    <java-symbol type="anim" name="du_app_out" />
 
@@ -200,5 +201,9 @@
   <!-- On-The-Go -->
   <java-symbol type="string" name="global_action_onthego" />
   <java-symbol type="drawable" name="ic_lock_onthego" />
+
+  <!-- Button brightness -->
+  <java-symbol type="bool" name="config_button_brightness_support" />
+  <java-symbol type="integer" name="config_button_brightness_default" />
 
 </resources>
