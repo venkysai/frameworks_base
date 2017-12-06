@@ -56,7 +56,7 @@ public class NotificationSnoozeTest extends SysuiTestCase {
                 Settings.Global.NOTIFICATION_SNOOZE_OPTIONS, null);
         TestableResources resources = mContext.getOrCreateTestableResources();
         resources.addOverride(R.integer.config_notification_snooze_time_default, RES_DEFAULT);
-        resources.addOverride(R.array.config_notification_snooze_times, RES_OPTIONS);
+        resources.addOverride(R.array.custom_config_notification_snooze_times, RES_OPTIONS);
         mNotificationSnooze = new NotificationSnooze(mContext, null);
         mMockParser = mock(KeyValueListParser.class);
     }

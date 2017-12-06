@@ -235,7 +235,7 @@ public class NotificationSnooze extends LinearLayout
         final int defaultSnooze = mParser.getInt(KEY_DEFAULT_SNOOZE,
                 resources.getInteger(R.integer.config_notification_snooze_time_default));
         final int[] snoozeTimes = parseIntArray(KEY_OPTIONS,
-                resources.getIntArray(R.array.config_notification_snooze_times));
+                resources.getIntArray(R.array.custom_config_notification_snooze_times));
 
         for (int i = 0; i < snoozeTimes.length && i < sAccessibilityActions.length; i++) {
             int snoozeTime = snoozeTimes[i];
