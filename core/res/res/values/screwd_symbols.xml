@@ -231,4 +231,8 @@
   <java-symbol type="string" name="adb_active_generic_notification_message" />
 
   <java-symbol type="color" name="updater_snackbar_text_color" />
+
+  <!-- Toast text and bg colors -->
+  <java-symbol type="color" name="toast_bg_color" />
+  <java-symbol type="color" name="toast_text_color" />
 </resources>
