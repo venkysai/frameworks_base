@@ -4810,6 +4810,17 @@ public final class PowerManagerService extends SystemService
         }
     }
 
+    private void setBlockedWakeLocks(String wakeLockTagsString) {
+        mBlockedWakeLocks = new HashSet<String>();
+
+        if (wakeLockTagsString != null && wakeLockTagsString.length() != 0) {
+            String[] parts = wakeLockTagsString.split("\\|");
+            for (int i = 0; i < parts.length; i++) {
+                mBlockedWakeLocks.add(parts[i]);
+            }
+        }
+    }
+
     @VisibleForTesting
     int getLastShutdownReasonInternal(File lastRebootReason) {
         String line = "";
