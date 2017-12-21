@@ -6452,7 +6452,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
 
         public void update() {
-            setDoubleTapNavbar();
             setStatusBarWindowViewOptions();
             setBrightnessSlider();
             setHeadsUpBlacklist();
@@ -6462,12 +6461,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateRecentsMode();
             setQsPanelOptions();
             updateQsPanelResources();
-        }
-    }
-
-    private void setDoubleTapNavbar() {
-        if (mNavigationBar != null) {
-            mNavigationBar.setDoubleTapToSleep();
         }
     }
 

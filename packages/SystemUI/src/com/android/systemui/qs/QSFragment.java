@@ -87,7 +87,7 @@ public class QSFragment extends Fragment implements QS {
 
         mQSDetail.setQsPanel(mQSPanel, mHeader, (View) mFooter);
         mQSAnimator = new QSAnimator(this,
-                mHeader.findViewById(R.id.quick_qs_panel), mQSPanel);
+                mHeader.findViewById(R.id.quick_qs_panel), mQSPanel, mQuickQsPanelScroller);
         mQuickQsPanelScroller =
                 (HorizontalScrollView) mHeader.findViewById(R.id.quick_qs_panel_scroll);
 
