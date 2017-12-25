@@ -22,4 +22,8 @@
 
     <!-- Custom Carrier Label -->
     <color name="status_bar_carrier_color">#FFFFFFFF</color>
+
+    <color name="system_primary_color_dark">@*android:color/primary_material_dark</color>
+    <color name="system_primary_color">@*android:color/primary_material_light</color>
+    <color name="system_accent_color">@*android:color/material_deep_teal_700</color>
 </resources>
