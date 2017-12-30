@@ -4540,8 +4540,10 @@ public final class Settings {
         public static final String POWERMENU_AIRPLANE = "powermenu_airplane";
 
         /**
-         *
+         * Whether to display the power menu dialog while on the lockscreen
+         * @hide
          */
+        public static final String POWERMENU_LOCKSCREEN = "powermenu_lockscreen";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
