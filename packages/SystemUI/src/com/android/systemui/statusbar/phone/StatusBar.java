@@ -6378,9 +6378,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.RECENTS_ICON_PACK),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-<<<<<<< HEAD
-                  Settings.System.USE_SLIM_RECENTS),
-                  false, this, UserHandle.USER_ALL);
+                    Settings.System.USE_SLIM_RECENTS),
+                    false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_QUICKBAR_SCROLL_ENABLED),
                     false, this, UserHandle.USER_ALL);
