@@ -4509,12 +4509,6 @@ public final class Settings {
         */
         public static final String QS_FOOTER_WARNINGS = "qs_footer_warnings";
 
-         /**
-         * Whether to display qs tile titles in the qs panel
-         * @hide
-         */
-        public static final String QS_TILE_TITLE_VISIBILITY = "qs_tile_title_visibility";
-
         /**
          * Whether to display the reboot option in the power menu
          *
@@ -4965,7 +4959,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_ROWS_LANDSCAPE);
             PRIVATE_SETTINGS.add(QS_COLUMNS_PORTRAIT);
             PRIVATE_SETTINGS.add(QS_COLUMNS_LANDSCAPE);
-            PRIVATE_SETTINGS.add(QS_TILE_TITLE_VISIBILITY);
             PRIVATE_SETTINGS.add(TOAST_ICON);
         }
 

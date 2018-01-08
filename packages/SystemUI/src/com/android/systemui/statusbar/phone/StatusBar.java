@@ -6412,9 +6412,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.QS_FOOTER_WARNINGS),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                  Settings.System.QS_TILE_TITLE_VISIBILITY),
-                  false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SYSTEM_UI_THEME),
                     false, this, UserHandle.USER_ALL);
             update();
@@ -6456,9 +6453,8 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.QS_ROWS_PORTRAIT)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_ROWS_LANDSCAPE)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_PORTRAIT)) ||
-                    uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_LANDSCAPE)) ||
-                    uri.equals(Settings.System.getUriFor(Settings.System.QS_TILE_TITLE_VISIBILITY))) {
-                updateQsPanelResources();
+                    uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_LANDSCAPE))) {
+                setQsRowsColumns();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.QS_FOOTER_WARNINGS))) {
                 setQsPanelOptions();
@@ -6480,8 +6476,8 @@ public class StatusBar extends SystemUI implements DemoMode,
 
             updateRecentsIconPack();
             updateRecentsMode();
+            setQsRowsColumns();
             setQsPanelOptions();
-            updateQsPanelResources();
         }
     }
 
@@ -6550,15 +6546,15 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
     }
 
-    private void setQsPanelOptions() {
+     private void setQsRowsColumns() {
         if (mQSPanel != null) {
-            mQSPanel.updateSettings();
+            mQSPanel.updateResources();
         }
     }
 
-    private void updateQsPanelResources() {
+    private void setQsPanelOptions() {
         if (mQSPanel != null) {
-            mQSPanel.updateResources();
+            mQSPanel.updateSettings();
         }
     }
 
