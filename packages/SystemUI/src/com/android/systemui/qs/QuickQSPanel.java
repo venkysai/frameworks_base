@@ -326,10 +326,5 @@ public class QuickQSPanel extends QSPanel {
                 }
             }
         }
-
-        @Override
-        public boolean isShowTitles() {
-            return false;
-        }
     }
 }
