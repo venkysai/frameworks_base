@@ -6397,18 +6397,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.QS_QUICKBAR_SCROLL_ENABLED),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.QS_ROWS_PORTRAIT),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.QS_ROWS_LANDSCAPE),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.QS_COLUMNS_PORTRAIT),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.QS_COLUMNS_LANDSCAPE),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_FOOTER_WARNINGS),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -6450,11 +6438,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                 if (mQuickStatusBarHeader != null) {
                     mQuickStatusBarHeader.updateSettings();
                 }
-            } else if (uri.equals(Settings.System.getUriFor(Settings.System.QS_ROWS_PORTRAIT)) ||
-                    uri.equals(Settings.System.getUriFor(Settings.System.QS_ROWS_LANDSCAPE)) ||
-                    uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_PORTRAIT)) ||
-                    uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_LANDSCAPE))) {
-                setQsRowsColumns();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.QS_FOOTER_WARNINGS))) {
                 setQsPanelOptions();
@@ -6476,7 +6459,6 @@ public class StatusBar extends SystemUI implements DemoMode,
 
             updateRecentsIconPack();
             updateRecentsMode();
-            setQsRowsColumns();
             setQsPanelOptions();
         }
     }
@@ -6543,12 +6525,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     private void rebuildRecentsScreen() {
         if (mSlimRecents != null) {
             mSlimRecents.rebuildRecentsScreen();
-        }
-    }
-
-     private void setQsRowsColumns() {
-        if (mQSPanel != null) {
-            mQSPanel.updateResources();
         }
     }
 
