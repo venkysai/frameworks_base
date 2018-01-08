@@ -4472,13 +4472,6 @@ public final class Settings {
         public static final String SLIM_RECENTS_BLACKLIST_VALUES = "slim_recents_blacklist_values";
 
 
-
-        /**
-         * Whether to enable scrolling in the small quick settings
-         * @hide
-         */
-        public static final String QS_QUICKBAR_SCROLL_ENABLED = "qs_quickbar_scroll_enabled";
-
         /**
         * Whether to show Qs panel footer warnings like for active VPN
         * @hide
@@ -4930,7 +4923,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BATTERY_LIGHT_FULL_COLOR);
             PRIVATE_SETTINGS.add(BATTERY_LIGHT_REALLY_FULL_COLOR);
             PRIVATE_SETTINGS.add(STATUS_BAR_LOGO);
-            PRIVATE_SETTINGS.add(QS_QUICKBAR_SCROLL_ENABLED);
             PRIVATE_SETTINGS.add(TOAST_ICON);
         }
 
