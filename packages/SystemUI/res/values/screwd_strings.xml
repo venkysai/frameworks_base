@@ -127,6 +127,9 @@
     <!-- QS Show Labels -->
     <string name="qs_menu_item_titles">Show labels</string>
 
+    <!-- Battery saver tile -->
+    <string name="battery_saver_qs_tile_fully_charged">Fully Charged</string>
+
     <!-- QS Scroller -->
     <string name="qs_menu_item_scroll">Quickbar scroll</string>
 
