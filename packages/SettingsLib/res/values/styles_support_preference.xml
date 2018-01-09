@@ -34,11 +34,10 @@
     </style>
 
     <!-- Preference category -->
-    <style name="Preference.Category.SettingsBase">
+    <style name="Preference.Category.SettingsBase" parent="@style/Preference.Category.Material">
         <item name="allowDividerAbove">true</item>
         <item name="allowDividerBelow">true</item>
         <item name="android:layout">@layout/preference_category_material_settings</item>
-        <item name="iconSpaceReserved">true</item>
     </style>
 
     <!-- Preference screen -->
