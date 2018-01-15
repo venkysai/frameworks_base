@@ -6286,7 +6286,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     protected RecentsComponent mRecents;
 
-    protected RecentController mSlimRecents;
+    private RecentController mSlimRecents;
 
     protected int mZenMode;
 
@@ -6494,31 +6494,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                 Settings.System.RECENTS_ICON_PACK, mCurrentUserId);
             IconPackHelper.getInstance(mContext).updatePrefs(currentIconPack);
             mRecents.resetIconCache();
-        }
-    }
-
-    private void updateRecentsMode() {
-        boolean slimRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.USE_SLIM_RECENTS, 0, mCurrentUserId) == 1;
-        if (slimRecents) {
-            mRecents.evictAllCaches();
-            mRecents.removeSbCallbacks();
-            mSlimRecents = new RecentController(mContext);
-            rebuildRecentsScreen();
-            mSlimRecents.addSbCallbacks();
-        } else {
-            mRecents.addSbCallbacks();
-            if (mSlimRecents != null) {
-                mSlimRecents.evictAllCaches();
-                mSlimRecents.removeSbCallbacks();
-                mSlimRecents = null;
-            }
-        }
-    }
-
-    private void rebuildRecentsScreen() {
-        if (mSlimRecents != null) {
-            mSlimRecents.rebuildRecentsScreen();
         }
     }
 
@@ -8354,5 +8329,40 @@ public class StatusBar extends SystemUI implements DemoMode,
         lp.setTitle("GestureAnywhereView");
 
         return lp;
+    }
+
+    private void updateRecentsMode() {
+        boolean slimRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.USE_SLIM_RECENTS, 0, mCurrentUserId) == 1;
+
+        if (slimRecents) {
+            mRecents.evictAllCaches();
+            mRecents.removeSbCallbacks();
+            mSlimRecents = new RecentController(mContext);
+            rebuildRecentsScreen();
+            mSlimRecents.addSbCallbacks();
+        } else {
+            mRecents.addSbCallbacks();
+            if (mSlimRecents != null) {
+                mSlimRecents.evictAllCaches();
+                mSlimRecents.removeSbCallbacks();
+                mSlimRecents = null;
+            }
+        }
+    }
+
+    private void rebuildRecentsScreen() {
+        if (mSlimRecents != null) {
+            mSlimRecents.rebuildRecentsScreen();
+        }
+    }
+
+    private static void sendCloseSystemWindows(Context context, String reason) {
+        if (ActivityManagerNative.isSystemReady()) {
+            try {
+                ActivityManagerNative.getDefault().closeSystemDialogs(reason);
+            } catch (RemoteException e) {
+            }
+        }
     }
 }
