@@ -400,11 +400,11 @@ public class RecentsImpl implements ActivityOptions.OnAnimationFinishedListener 
             return;
         }
 
-        if (mUseSlimRecents) {
-            return;
-        }
         // Skip this toggle if we are already waiting to trigger recents via alt-tab
         if (mFastAltTabTrigger.isDozing()) {
+            return;
+        }
+        if (mUseSlimRecents) {
             return;
         }
 
@@ -480,15 +480,15 @@ public class RecentsImpl implements ActivityOptions.OnAnimationFinishedListener 
     }
 
     public void preloadRecents() {
+        if (mUseSlimRecents) {
+            return;
+        }
         // Skip preloading if the task is locked
         SystemServicesProxy ssp = Recents.getSystemServices();
         if (ssp.isScreenPinningActive()) {
             return;
         }
 
-        if (mUseSlimRecents) {
-            return;
-        }
         // Preload only the raw task list into a new load plan (which will be consumed by the
         // RecentsActivity) only if there is a task to animate to.  Post this to ensure that we
         // don't block the touch feedback on the nav bar button which triggers this.
