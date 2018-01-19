@@ -217,7 +217,6 @@ import com.android.systemui.recents.ScreenPinningRequest;
 import com.android.systemui.recents.events.EventBus;
 import com.android.systemui.recents.events.activity.AppTransitionFinishedEvent;
 import com.android.systemui.recents.events.activity.UndockingTaskEvent;
-import com.android.systemui.recents.misc.IconPackHelper;
 import com.android.systemui.recents.misc.SystemServicesProxy;
 import com.android.systemui.settings.BrightnessController;
 import com.android.systemui.stackdivider.Divider;
@@ -6370,9 +6369,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.STATUS_BAR_SHOW_TICKER),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.RECENTS_ICON_PACK),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_FOOTER_WARNINGS),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -6404,9 +6400,6 @@ public class StatusBar extends SystemUI implements DemoMode,
                 updateTickerSettings();
                 initTickerView();
             } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.RECENTS_ICON_PACK))) {
-                updateRecentsIconPack();
-            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.QS_FOOTER_WARNINGS))) {
                 setQsPanelOptions();
             } else if (uri.equals(Settings.System.getUriFor(
@@ -6425,7 +6418,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             setHeadsUpBlacklist();
             updateTickerSettings();
 
-            updateRecentsIconPack();
             setQsPanelOptions();
         }
     }
@@ -6457,13 +6449,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         mTickerEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.STATUS_BAR_SHOW_TICKER, 1,
                 UserHandle.USER_CURRENT);
-    }
-
-    private void updateRecentsIconPack() {
-        String currentIconPack = Settings.System.getStringForUser(mContext.getContentResolver(),
-            Settings.System.RECENTS_ICON_PACK, mCurrentUserId);
-        IconPackHelper.getInstance(mContext).updatePrefs(currentIconPack);
-        mRecents.resetIconCache();
     }
 
     private void setQsPanelOptions() {

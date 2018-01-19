@@ -4395,12 +4395,6 @@ public final class Settings {
         public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
         /**
-         * Whether to use icon pack for Recents
-         * @hide
-         */
-        public static final String RECENTS_ICON_PACK = "recents_icon_pack";
-
-        /**
         * Whether to show Qs panel footer warnings like for active VPN
         * @hide
         */
