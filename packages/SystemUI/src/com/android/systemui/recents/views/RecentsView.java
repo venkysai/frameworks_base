@@ -78,7 +78,6 @@ import com.android.systemui.recents.events.activity.LaunchTaskEvent;
 import com.android.systemui.recents.events.activity.MultiWindowStateChangedEvent;
 import com.android.systemui.recents.events.activity.ShowEmptyViewEvent;
 import com.android.systemui.recents.events.activity.ShowStackActionButtonEvent;
-import com.android.systemui.recents.events.activity.ToggleRecentsEvent;
 import com.android.systemui.recents.events.component.ExpandPipEvent;
 import com.android.systemui.recents.events.ui.AllTaskViewsDismissedEvent;
 import com.android.systemui.recents.events.ui.DismissAllTaskViewsEvent;
@@ -417,12 +416,6 @@ public class RecentsView extends FrameLayout {
         if (RecentsDebugFlags.Static.EnableStackActionButton) {
             mStackActionButton.bringToFront();
         }
-        setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EventBus.getDefault().send(new ToggleRecentsEvent());
-            }
-        });
     }
 
     /**
@@ -435,7 +428,6 @@ public class RecentsView extends FrameLayout {
         if (RecentsDebugFlags.Static.EnableStackActionButton) {
             mStackActionButton.bringToFront();
         }
-        setOnClickListener(null);
     }
 
     /**
@@ -641,11 +633,7 @@ public class RecentsView extends FrameLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (mTouchHandler.onTouchEvent(ev)) {
-            return true;
-        } else {
-            return super.onTouchEvent(ev);
-        }
+        return mTouchHandler.onTouchEvent(ev);
     }
 
     @Override
