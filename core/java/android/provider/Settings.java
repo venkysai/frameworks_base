@@ -4438,14 +4438,6 @@ public final class Settings {
         public static final String POWERMENU_LOCKSCREEN = "powermenu_lockscreen";
 
         /**
-         * 0 - wallpaper based
-         * 1 - force light
-         * 2 - force dark
-         * @hide
-         */
-        public static final String SYSTEM_UI_THEME = "system_ui_theme";
-
-        /**
          * Transparent volume dialog
          * @hide
          */
