@@ -1386,7 +1386,7 @@ public class VolumeDialogImpl implements VolumeDialog, TunerService.Tunable,
 
         final GradientDrawable volumeDialogGd = new GradientDrawable();
         int userThemeSetting = Settings.System.getIntForUser(
-                mContext.getContentResolver(), Settings.System.SYSTEM_UI_THEME, 0,
+                mContext.getContentResolver(), Settings.System.SYSTEM_THEME_STYLE, 0,
                 UserHandle.USER_CURRENT);
 
         boolean useDarkTheme = false;
