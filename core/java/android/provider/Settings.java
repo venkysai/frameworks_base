@@ -5061,6 +5061,11 @@ public final class Settings {
          */
         public static final String NOTIFICATION_GUTS_KILL_APP_BUTTON =
                 "notification_guts_kill_app_button";
+ 
+        /**
+         * @hide
+         */
+        public static final String SHOW_USB_MODE_DIALOG = "show_usb_mode_dialog";
 
         /**
          * Ticker animation
