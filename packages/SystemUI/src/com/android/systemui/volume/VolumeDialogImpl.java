@@ -1396,8 +1396,8 @@ public class VolumeDialogImpl implements VolumeDialog, TunerService.Tunable,
                     .getWallpaperColors(WallpaperManager.FLAG_SYSTEM);
             useDarkTheme = systemColors != null
                     && (systemColors.getColorHints() & WallpaperColors.HINT_SUPPORTS_DARK_THEME) != 0;
-        } else {
-            useDarkTheme = userThemeSetting == 2;
+        } else if ((userThemeSetting == 2) || (userThemeSetting == 3)) { //if you're dark or black...racism??
+            useDarkTheme = true;
         }
 
         final int mVolumeDialogColor = mContext.getResources().getColor(useDarkTheme ?
