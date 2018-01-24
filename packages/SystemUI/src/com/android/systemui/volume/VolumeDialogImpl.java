@@ -1390,18 +1390,27 @@ public class VolumeDialogImpl implements VolumeDialog, TunerService.Tunable,
                 UserHandle.USER_CURRENT);
 
         boolean useDarkTheme = false;
+        boolean useBlackTheme = false;
         if (userThemeSetting == 0) {
             // The system wallpaper defines if QS should be light or dark.
             WallpaperColors systemColors = mColorExtractor
                     .getWallpaperColors(WallpaperManager.FLAG_SYSTEM);
             useDarkTheme = systemColors != null
                     && (systemColors.getColorHints() & WallpaperColors.HINT_SUPPORTS_DARK_THEME) != 0;
-        } else if ((userThemeSetting == 2) || (userThemeSetting == 3)) { //if you're dark or black...racism??
+        } else if (userThemeSetting == 2) {
             useDarkTheme = true;
+        } else if (userThemeSetting == 3) {
+            useBlackTheme = true;
         }
 
-        final int mVolumeDialogColor = mContext.getResources().getColor(useDarkTheme ?
-                R.color.system_primary_color_dark : R.color.system_primary_color);
+        final int mVolumeDialogColor;
+
+        if (useBlackTheme) {
+            mVolumeDialogColor = mContext.getResources().getColor(R.color.system_primary_color_black);
+        } else {
+            mVolumeDialogColor = mContext.getResources().getColor(useDarkTheme ?
+                    R.color.system_primary_color_dark : R.color.system_primary_color);
+        }
 
         if (mVolumeDialogStroke == 0) { // Disable by setting border thickness to 0
             volumeDialogGd.setColor(mVolumeDialogColor);
