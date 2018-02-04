@@ -6549,7 +6549,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             setStatusBarWindowViewOptions();
             setBrightnessSlider();
             setHeadsUpBlacklist();
-            updateTickerSettings();
             updateRecentsMode();
             updateRecentsIconPack();
             setQsPanelOptions();
