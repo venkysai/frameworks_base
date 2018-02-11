@@ -420,7 +420,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
                 mItems.add(new PowerAction());
             } else if (GLOBAL_ACTION_KEY_AIRPLANE.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.POWERMENU_AIRPLANE, 0) != 0) {
+                        Settings.System.POWERMENU_AIRPLANE, 0) != 0 && !isInLockTaskMode()) {
                     mItems.add(mAirplaneModeOn);
                 }
             } else if (GLOBAL_ACTION_KEY_BUGREPORT.equals(actionKey)) {
@@ -452,22 +452,22 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
             } else if (GLOBAL_ACTION_KEY_ADVANCED.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
                         Settings.System.POWERMENU_REBOOT, 1) == 1 && Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.POWERMENU_ADVANCED_REBOOT, 0) != 0) {
+                        Settings.System.POWERMENU_ADVANCED_REBOOT, 0) != 0 && !isInLockTaskMode()) {
                     mItems.add(mShowAdvancedToggles);
                 }
             } else if (GLOBAL_ACTION_KEY_SCREENSHOT.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.POWERMENU_SCREENSHOT, 0) != 0) {
+                        Settings.System.POWERMENU_SCREENSHOT, 0) != 0 && !isInLockTaskMode()) {
                     mItems.add(getScreenshotAction());
                 }
             } else if (GLOBAL_ACTION_KEY_ONTHEGO.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.GLOBAL_ACTIONS_ONTHEGO, 0) == 1) {
+                        Settings.System.GLOBAL_ACTIONS_ONTHEGO, 0) == 1 && !isInLockTaskMode()) {
                     mItems.add(getOnTheGoAction());
                 }
             } else if (GLOBAL_ACTION_KEY_SCREENRECORD.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.POWERMENU_SCREENRECORD, 0) == 1) {
+                        Settings.System.POWERMENU_SCREENRECORD, 0) == 1 && !isInLockTaskMode()) {
                     mItems.add(getScreenrecordAction());
                 }
             } else {
@@ -1802,6 +1802,14 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
             }
         } catch (RemoteException e) {
             Log.e(TAG, "failure trying to perform hot reboot", e);
+        }
+    }
+
+    private boolean isInLockTaskMode() {
+        try {
+            return ActivityManagerNative.getDefault().isInLockTaskMode();
+        } catch (RemoteException e) {
+            return false;
         }
     }
 }
