@@ -86,6 +86,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private TickerObserver mTickerObserver;
     private View mTickerViewFromStub;
     private LinearLayout mCenterClockLayout;
+    private View mLeftClock;
+    private int mClockStyle;
 
     private class ScrewdSettingsObserver extends ContentObserver {
         ScrewdSettingsObserver(Handler handler) {
@@ -101,6 +103,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     false, this, UserHandle.USER_ALL);
             getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_CARRIER),
+                    false, this, UserHandle.USER_ALL);
+            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUSBAR_CLOCK_STYLE),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -177,6 +182,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mSystemIconArea = mStatusBar.findViewById(R.id.system_icon_area);
         mSignalClusterView = mStatusBar.findViewById(R.id.signal_cluster);
         mCenterClockLayout = (LinearLayout) mStatusBar.findViewById(R.id.center_clock_layout);
+        mLeftClock = mStatusBar.findViewById(R.id.left_clock);
         Dependency.get(DarkIconDispatcher.class).addDarkReceiver(mSignalClusterView);
         mScrewdLogo = (ImageView) mStatusBar.findViewById(R.id.status_bar_logo);
         Dependency.get(DarkIconDispatcher.class).addDarkReceiver(mScrewdLogo);
@@ -258,9 +264,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             if ((state1 & DISABLE_NOTIFICATION_ICONS) != 0) {
                 hideNotificationIconArea(animate);
                 hideCarrierName(animate);
+                hideLeftClock(animate);
             } else {
                 showNotificationIconArea(animate);
                 showCarrierName(animate);
+                showLeftClock(animate);
             }
         }
     }
@@ -335,6 +343,16 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         if (mCustomCarrierLabel != null) {
             setCarrierLabel(animate);
         }
+    }
+
+    public void hideLeftClock(boolean animate) {
+        if (mLeftClock != null) {
+            animateHide(mLeftClock, animate, false);
+        }
+    }
+
+    public void showLeftClock(boolean animate) {
+        updateClockStyle(animate);
     }
 
     /**
@@ -430,11 +448,28 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         setCarrierLabel(animate);
     }
 
+    public void updateSettings(boolean animate) {
+        mShowCarrierLabel = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.STATUS_BAR_SHOW_CARRIER, 1, UserHandle.USER_CURRENT);
+        setCarrierLabel(animate);
+        mClockStyle = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.STATUSBAR_CLOCK_STYLE, 0, UserHandle.USER_CURRENT);
+        updateClockStyle(animate);
+    }
+
     private void setCarrierLabel(boolean animate) {
         if (mShowCarrierLabel == 2 || mShowCarrierLabel == 3) {
             animateShow(mCustomCarrierLabel, animate);
         } else {
             animateHide(mCustomCarrierLabel, animate, false);
+        }
+    }
+
+    private void updateClockStyle(boolean animate) {
+        if (mClockStyle == 0 || mClockStyle == 1) {
+            animateHide(mLeftClock, animate, false);
+        } else {
+            animateShow(mLeftClock, animate);
         }
     }
 
