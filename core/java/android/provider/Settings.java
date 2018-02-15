@@ -4835,6 +4835,13 @@ public final class Settings {
 
 
         /**
+         * Select various accents to go along with system themes
+         *
+         * @hide
+         */
+        public static final String ACCENT_PICKER = "accent_picker";
+
+        /**
          * Current theme overlay
          * @hide
          */
