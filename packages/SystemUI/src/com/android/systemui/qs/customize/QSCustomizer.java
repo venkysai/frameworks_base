@@ -137,6 +137,12 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
         MenuItem qsTitlesMenuItem = mToolbar.getMenu().findItem(R.id.menu_item_titles);
         qsTitlesMenuItem.setChecked(qsTitlesValue == 1);
 
+        int qsVibrateValue = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                Settings.Secure.QUICK_SETTINGS_TILES_VIBRATE, 0,
+                UserHandle.USER_CURRENT);
+        MenuItem qsVibrateMenuItem = mToolbar.getMenu().findItem(R.id.menu_item_qs_vibrate);
+        qsVibrateMenuItem.setChecked(qsVibrateValue == 1);
+
         int qsScrollValue = Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.QS_QUICKBAR_SCROLL_ENABLED, QuickQSPanel.NUM_QUICK_TILES_DEFAULT,
                 UserHandle.USER_CURRENT);
@@ -328,6 +334,12 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
                 item.setChecked(!item.isChecked());
                 Settings.System.putIntForUser(mContext.getContentResolver(),
                         Settings.System.QS_TILE_TITLE_VISIBILITY, item.isChecked() ? 1 : 0,
+                        UserHandle.USER_CURRENT);
+                break;
+            case R.id.menu_item_qs_vibrate:
+                item.setChecked(!item.isChecked());
+                Settings.Secure.putIntForUser(mContext.getContentResolver(),
+                        Settings.Secure.QUICK_SETTINGS_TILES_VIBRATE, item.isChecked() ? 1 : 0,
                         UserHandle.USER_CURRENT);
                 break;
             case R.id.menu_item_rows_one:

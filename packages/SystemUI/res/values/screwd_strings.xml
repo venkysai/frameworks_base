@@ -143,6 +143,9 @@
     <!-- QS Scroller -->
     <string name="qs_menu_item_scroll">Quickbar scroll</string>
 
+    <!-- QS Haptic Feedback -->
+    <string name="qs_menu_item_vibrate">Vibrate on touch</string>
+
     <!-- Show lte/4g switch -->
     <string name="show_lte_fourgee_title">4G/LTE network icon</string>
     <string name="show_lte_fourgee_summary">Display either the 4G or LTE network icon in the statusbar/QS panel</string>
