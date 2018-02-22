@@ -30,5 +30,10 @@
         <item>720</item>
     </integer-array>
 
+     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
+    <string name="quick_settings_tiles_stock" translatable="false">
+        wifi,cell,battery,dnd,flashlight,rotation,bt,airplane,location,hotspot,inversion,saver,work,cast,night,caffeine,reboot,pip,sound,heads_up,weather,screenshot,nfc,screenrecord,,navigation,adb_network,assist,google,voiceassist,theme
+    </string>
+
 </resources>
 
