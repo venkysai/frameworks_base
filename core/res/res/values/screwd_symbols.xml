@@ -221,4 +221,7 @@
   <java-symbol type="id" name="pocket_hint_container" />
   <java-symbol type="id" name="pocket_hint_image" />
   <java-symbol type="id" name="pocket_hint_message" />
+
+  <!-- Notification info -->
+  <java-symbol type="color" name="notification_info_button_text" />
 </resources>
