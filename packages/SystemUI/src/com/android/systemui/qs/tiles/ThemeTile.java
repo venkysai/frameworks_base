@@ -116,6 +116,8 @@ public class ThemeTile extends QSTileImpl<BooleanState> {
                 R.string.systemui_theme_style_dark, Settings.System.SYSTEM_THEME_STYLE));
         sStyleItems.add(new ThemeTileItem(3, -1,
                 R.string.systemui_theme_style_black, Settings.System.SYSTEM_THEME_STYLE));
+        sStyleItems.add(new ThemeTileItem(4, -1,
+                R.string.systemui_theme_style_extended, Settings.System.SYSTEM_THEME_STYLE));
     }
 
     private enum Mode {
@@ -286,7 +288,7 @@ public class ThemeTile extends QSTileImpl<BooleanState> {
     }
 
     private ThemeTileItem getThemeItemForStyleMode() {
-        boolean isDark = isUsingDarkTheme() || isUsingBlackTheme();
+        boolean isDark = isUsingDarkTheme() || isUsingBlackTheme() || isUsingExtendedTheme();
         if (isDark) {
             return new ThemeTileItem(20, R.color.quick_settings_theme_tile_white,
                     R.string.quick_settings_theme_tile_color_white);
@@ -313,6 +315,18 @@ public class ThemeTile extends QSTileImpl<BooleanState> {
         OverlayInfo themeInfo = null;
         try {
             themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.black",
+                    UserHandle.USER_CURRENT);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return themeInfo != null && themeInfo.isEnabled();
+    }
+
+    // Check for the extended theme overlay
+    private boolean isUsingExtendedTheme() {
+        OverlayInfo themeInfo = null;
+        try {
+            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.extended",
                     UserHandle.USER_CURRENT);
         } catch (RemoteException e) {
             e.printStackTrace();
