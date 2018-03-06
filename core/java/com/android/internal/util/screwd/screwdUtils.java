@@ -125,11 +125,23 @@ public class screwdUtils {
     public static boolean isLeanTrolling(Context context) {
         final ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (service.service.getClassName().equals(LEAN_PACKAGE_NAME + ".services.LDTrollService")) {
+            if (service.service.getClassName().equals(LEAN_PACKAGE_NAME + ".services.TrollService")) {
                 return true;
             }
         }
         return false;
+    }
+
+    public static boolean isLeanUpToDate(Context context) {
+        boolean updated = false;
+        PackageManager pm = context.getPackageManager();
+        try {
+            PackageInfo pi = pm.getPackageInfo(LEAN_PACKAGE_NAME,PackageManager.GET_META_DATA);
+            updated = pi.versionCode >= 2;
+        } catch (PackageManager.NameNotFoundException e) {
+
+        }
+        return updated;
     }
 
 	public static void switchScreenOff(Context ctx) {
