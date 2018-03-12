@@ -5061,7 +5061,7 @@ public final class Settings {
          */
         public static final String NOTIFICATION_GUTS_KILL_APP_BUTTON =
                 "notification_guts_kill_app_button";
- 
+
         /**
          * @hide
          */
@@ -8665,13 +8665,6 @@ public final class Settings {
          * @hide
          */
         public static final String QS_AUTO_ADDED_TILES = "qs_auto_tiles";
-
-        /**
-         * Disable power menu on secure lock screens
-         *
-         * @hide
-         */
-        public static final String LOCK_POWER_MENU_DISABLED = "lockscreen_power_menu_disabled";
 
         /**
          * Display style of the status bar battery information
