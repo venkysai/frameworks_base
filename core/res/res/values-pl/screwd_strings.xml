@@ -48,4 +48,7 @@
   <string name="global_action_onthego">Tryb On-The-Go</string>
   <!-- Pocket Lock -->
   <string name="pocket_lock_message_long_press">Naciśnij i przytrzymaj przycisk zasilania do interakcji</string>
+  <!-- ADB over network notification -->
+  <!-- ADB over USB and network notification -->
+  <!-- ADB notification message-->
 </resources>

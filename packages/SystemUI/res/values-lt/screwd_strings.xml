@@ -23,6 +23,7 @@
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
   <!-- SystemUI Tuner Parts -->
   <!-- Caffeine QS Tile -->
+  <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
   <!-- Screenshot QS Tile -->
   <!-- Reboot/Recovery QS Tile -->
   <!-- PiP Tile -->
@@ -45,4 +46,6 @@
   <!-- Show lte/4g switch -->
   <!-- Screenshot Crop & Share -->
   <!-- Navigation bar Tile -->
+  <!-- Kill button in notification guts -->
+  <!-- ADB network tile -->
 </resources>

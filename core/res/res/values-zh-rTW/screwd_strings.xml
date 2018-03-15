@@ -24,4 +24,7 @@
   <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
   <!-- On-The-Go -->
   <!-- Pocket Lock -->
+  <!-- ADB over network notification -->
+  <!-- ADB over USB and network notification -->
+  <!-- ADB notification message-->
 </resources>

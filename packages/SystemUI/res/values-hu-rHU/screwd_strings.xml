@@ -19,30 +19,140 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Power menu -->
+  <string name="global_action_restart_advanced">Haladó</string>
+  <string name="global_action_restart_recovery">Recovery</string>
+  <string name="global_action_restart_bootloader">Bootloader</string>
+  <string name="global_action_restart_ui">SystemUI</string>
+  <string name="global_action_restart_hot">Gyors</string>
+  <string name="global_action_screenshot">Képernyőkép</string>
+  <string name="global_action_screenrecord">Képernyő felvétel</string>
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Dash töltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> a teljes töltöttségig)</string>
+  <string name="keyguard_plugged_in_dash_charging">Dash töltés</string>
   <!-- SystemUI Tuner Parts -->
+  <string name="systemui_tuner_icon_manager_title">Ikon kezelő</string>
+  <string name="systemui_tuner_lockscreen_bottom_shortcuts_title">Alsó parancsikonok</string>
+  <string name="systemui_tuner_navbar_title">Gyári beállítások</string>
   <!-- Caffeine QS Tile -->
+  <string name="quick_settings_caffeine_label">Caffeine</string>
+  <string name="accessibility_quick_settings_caffeine_off">Caffeine ki</string>
+  <string name="accessibility_quick_settings_caffeine_on">Caffeine be</string>
+  <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
   <!-- Screenshot QS Tile -->
+  <string name="quick_settings_screenshot_label">Képernyőkép</string>
   <!-- Reboot/Recovery QS Tile -->
+  <string name="quick_settings_reboot_label">Újraindítás</string>
+  <string name="quick_settings_reboot_recovery_label">Recovery</string>
   <!-- PiP Tile -->
+  <string name="quick_settings_pip_label">PiP</string>
   <!-- Sound QS Tile -->
+  <string name="quick_settings_sound_label">Hang</string>
+  <string name="quick_settings_sound_ring">Csengés</string>
+  <string name="quick_settings_sound_vibrate">Rezgés</string>
+  <string name="quick_settings_sound_dnd">Ne zavarjanak</string>
   <!-- Heads Up QS Tile -->
+  <string name="quick_settings_heads_up_label">Lebegő értesítés</string>
+  <string name="accessibility_quick_settings_heads_up_off">Lebegő értesítés ki.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Lebegő értesítés be.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Lebegő értesítések kikapcsolva.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Lebegő értesítések bekapcsolva.</string>
   <!-- Screenrecord Notification Ticker -->
+  <string name="screenrecord_notif_ticker">Képernyő felvétel folyamatban</string>
+  <string name="screenrecord_notif_final_ticker">Képernyő felvétel sikeres</string>
   <!-- Screenrecord notification title -->
+  <string name="screenrecord_notif_title">Képernyő felvétel</string>
   <!-- Screenrecord notification action: Stop -->
+  <string name="screenrecord_notif_stop">Leállítás</string>
+  <string name="screenrecord_notif_completed">Képernyő felvétel sikeres</string>
+  <string name="screenrecord_notif_duration">Összesen:</string>
   <!-- Screenrecord notification action: show/hide pointer -->
+  <string name="screenrecord_notif_pointer_on">Mutató megjelenítése</string>
+  <string name="screenrecord_notif_pointer_off">Mutató elrejtése</string>
   <!-- Screen record notification error title -->
+  <string name="screenrecord_notif_error">Képernyő felvétel nem lehetséges</string>
+  <string name="notification_channel_screenrecord">Képernyő felvételek</string>
+  <string name="screenrecord_hide_hint">Tipp elrejtése</string>
+  <string name="screenrecord_show_hint">Tipp mutatása</string>
   <!-- Screenshot QS tile -->
+  <string name="quick_settings_screenrecord_label">Képernyő felvétel</string>
+  <string name="quick_settings_screenrecord_lq_label">Képernyő felvétel 480p</string>
+  <string name="quick_settings_screenrecord_mq_label">Képernyő felvétel 720p</string>
+  <string name="quick_settings_screenrecord_hq_label">Képernyő felvétel 720p+</string>
   <!-- QS OmniJaws -->
+  <string name="omnijaws_service_error">Hiba</string>
+  <string name="omnijaws_service_unkown">Nincs időjárási adat</string>
+  <string name="omnijaws_service_error_long">Hiba az időjárási adatok betöltésekor</string>
+  <string name="omnijaws_service_disabled">Szolgáltatás le van tiltva</string>
+  <string name="omnijaws_detail_header">Időjárás</string>
+  <string name="omnijaws_label_default">Időjárás</string>
+  <string name="omnijaws_current_text">Most</string>
+  <string name="omnijaws_package_not_available">OmniJaws nem elérhető</string>
+  <string name="omnijaws_service_last_update">Utolsó frissítés:</string>
   <!-- Weather string format in expanded statusbar header -->
+  <string name="status_bar_weather_format"><xliff:g id="temp">%1$s</xliff:g></string>
   <!-- On The Go -->
+  <string name="onthego_notif_ticker">On-The-Go aktíválva</string>
+  <string name="onthego_notif_title">On-The-Go aktív</string>
+  <string name="onthego_notif_stop">Leállítás</string>
+  <string name="onthego_notif_options">Beállítások</string>
+  <string name="onthego_notif_error">Nem sikerült elindítani az On-The-Go-t</string>
+  <string name="onthego_notif_restart">On-The-Go újraindítása</string>
+  <string name="onthego_notif_camera_changed">Kamera mód megváltozott</string>
+  <string name="onthego_transparency">Áttetszőség</string>
+  <string name="onthego_front_camera">Előlapi kamera használata</string>
+  <string name="onthego_service_toggle">Automatikusan indítsa újra a szolgáltatást</string>
   <!-- QS Colums -->
+  <string name="qs_menu_item_columns">Oszlopok</string>
+  <string name="qs_menu_item_columns_landscape">Oszlopok (fekvő)</string>
+  <string name="qs_menu_item_columns_three">3</string>
+  <string name="qs_menu_item_columns_four">4</string>
+  <string name="qs_menu_item_columns_five">5</string>
+  <string name="qs_menu_item_columns_six">6</string>
+  <string name="qs_menu_item_columns_seven">7</string>
+  <string name="qs_menu_item_columns_eight">8</string>
+  <string name="qs_menu_item_columns_nine">9</string>
+  <string name="qs_menu_item_reset">Visszaállít</string>
+  <string name="qs_menu_item_rows">Sor</string>
+  <string name="qs_menu_item_rows_one">1</string>
+  <string name="qs_menu_item_rows_two">2</string>
+  <string name="qs_menu_item_rows_three">3</string>
+  <string name="qs_menu_item_rows_four">4</string>
   <!-- QS Show Labels -->
+  <string name="qs_menu_item_titles">Címkék megjelenítése</string>
   <!-- Battery saver tile -->
+  <string name="battery_saver_qs_tile_fully_charged">Teljesen feltöltve</string>
   <!-- QS Scroller -->
+  <string name="qs_menu_item_scroll">Gyorsbeállítások sáv görgetése</string>
   <!-- QS Haptic Feedback -->
+  <string name="qs_menu_item_vibrate">Érintésre rezeg</string>
   <!-- Show lte/4g switch -->
+  <string name="show_lte_fourgee_title">4G/LTE hálózat ikon</string>
+  <string name="show_lte_fourgee_summary">Vagy 4G vagy LTE hálózati ikon megjelenítése az állapotsorban/Gyorsbeállításokban</string>
+  <string name="statusbar_tuner_category_title">Állaptsori elemek rejtése</string>
+  <string name="recents_app_killed">Alkalmazás leállítva</string>
+  <string name="lockscreen_default">Alapértelmezett</string>
+  <string name="lockscreen_hidden">Semmi</string>
   <!-- Screenshot Crop & Share -->
+  <string name="action_delete_success">Törölve</string>
+  <string name="action_delete_fault">Törlés sikertelen volt</string>
+  <string name="action_save_success">Mentve</string>
+  <string name="action_save_fault">Mentés sikertelen volt</string>
+  <string name="pref_action_color_title">Akciógombok színe</string>
+  <string name="pref_action_color_summary">Válassza ki a kedvenc színét az akciógombokhoz</string>
+  <string name="pref_category_main">Fő beállítások</string>
+  <string name="pref_category_user">Felhasználói beállítások</string>
+  <string name="pref_crop_behavior_title">Vágási viselkedés</string>
+  <string name="pref_crop_behavior_summary">A körülvágott kép használata, még akkor is, ha az eredeti nem került körbevágásra a vágás művelettel</string>
+  <string name="action_ok">OK</string>
+  <string name="action_edit">Szerkesztés</string>
   <!-- Navigation bar Tile -->
+  <string name="quick_settings_navigation_bar">Navigációs sáv</string>
+  <string name="quick_settings_smartbar">SmartBar</string>
+  <string name="quick_settings_fling">Fling</string>
+  <string name="quick_settings_navigation_default">Gyári</string>
+  <string name="quick_settings_navigation_disabled">Letiltva</string>
+  <!-- Kill button in notification guts -->
+  <!-- ADB network tile -->
 </resources>
