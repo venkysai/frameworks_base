@@ -197,7 +197,7 @@ public class NotificationPanelView extends PanelView implements
     private boolean mQsExpandImmediate;
     private boolean mTwoFingerQsExpandPossible;
 
-    private boolean mOneFingerQuickSettingsIntercept;
+    private int mOneFingerQuickSettingsIntercept;
     private int mQsSmartPullDown;
 
     /**
@@ -991,8 +991,12 @@ public class NotificationPanelView extends PanelView implements
         float region = w * 1.f / 3.f; // TODO overlay region fraction?
         boolean showQsOverride = false;
 
-        if (mOneFingerQuickSettingsIntercept) {
+        if (mOneFingerQuickSettingsIntercept == 1) { // qs quick pulldown from right
                 showQsOverride = isLayoutRtl() ? x < region : w - region < x;
+        } else if (mOneFingerQuickSettingsIntercept == 2) { // qs quick pulldown from left
+                showQsOverride = isLayoutRtl() ? w - region < x : x < region;
+        } else if (mOneFingerQuickSettingsIntercept == 3) { // qs quick pulldown always
+                showQsOverride = true;
         }
         showQsOverride &= mStatusBarState == StatusBarState.SHADE;
 
@@ -2784,8 +2788,8 @@ public class NotificationPanelView extends PanelView implements
         return mKeyguardBottomArea.getLockIcon();
     }
 
-    public void setQsQuickPulldown(boolean isQsQuickPulldown) {
-        mOneFingerQuickSettingsIntercept = isQsQuickPulldown;
+    public void setQsQuickPulldown(int valueQsQuickPulldown) {
+        mOneFingerQuickSettingsIntercept = valueQsQuickPulldown;
     }
 
     public void updateDoubleTapToSleep(boolean doubleTapToSleepEnabled) {
