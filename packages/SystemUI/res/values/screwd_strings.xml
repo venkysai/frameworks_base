@@ -277,4 +277,7 @@
     <string name="quick_settings_music_play">Play</string>
     <string name="quick_settings_music_pause">Pause</string> 
     
+    <!-- The contents of the Ambient Weather bottom view -->
+    <string name="ambient_weather_info">%1$s &amp; %2$s</string>
+    
 </resources>

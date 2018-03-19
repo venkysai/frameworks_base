@@ -5370,6 +5370,15 @@ public final class Settings {
          * @hide
          */
         public static final String MUSIC_TILE_TITLE = "music_tile_title";
+        
+        /** 
+        *  Whether to show info battery percent on ambient bottom
+        * 0 disabled_print_services
+        * 1 battery percentage
+        * 2 weather temp + condition
+        * @hide
+        */
+        public static final String AMBIENT_BOTTOM_DISPLAY = "ambient_bottom_display";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
