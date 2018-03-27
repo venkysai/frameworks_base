@@ -155,4 +155,6 @@
   <string name="quick_settings_navigation_disabled">Nieaktywne</string>
   <!-- Kill button in notification guts -->
   <!-- ADB network tile -->
+  <!-- Assist/Google Tiles -->
+  <!-- QS Mini mode -->
 </resources>

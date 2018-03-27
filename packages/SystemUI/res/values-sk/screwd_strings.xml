@@ -19,33 +19,152 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Power menu -->
+  <string name="global_action_restart_advanced">Rozšírené</string>
+  <string name="global_action_restart_recovery">Recovery</string>
+  <string name="global_action_restart_bootloader">Bootloader</string>
+  <string name="global_action_restart_ui">SystemUI</string>
+  <string name="global_action_restart_hot">Rýchly reštart</string>
+  <string name="global_action_screenshot">Snímka obrazovky</string>
+  <string name="global_action_screenrecord">Záznam obrazovky</string>
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Dash nabíjanie (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> do úplného nabitia)</string>
+  <string name="keyguard_plugged_in_dash_charging">Dash nabíjanie</string>
   <!-- SystemUI Tuner Parts -->
+  <string name="systemui_tuner_icon_manager_title">Správca ikon</string>
+  <string name="systemui_tuner_lockscreen_bottom_shortcuts_title">Dolné odkazy</string>
+  <string name="systemui_tuner_navbar_title">Predvolené nastavenia</string>
   <!-- Caffeine QS Tile -->
+  <string name="quick_settings_caffeine_label">Kofeín</string>
+  <string name="accessibility_quick_settings_caffeine_off">Kofeín vyp.</string>
+  <string name="accessibility_quick_settings_caffeine_on">Kofeín zap.</string>
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_running_services">Otvoriť obrazovku Spustené služby.</string>
   <!-- Screenshot QS Tile -->
+  <string name="quick_settings_screenshot_label">Snímka obrazovky</string>
   <!-- Reboot/Recovery QS Tile -->
+  <string name="quick_settings_reboot_label">Reštartovať</string>
+  <string name="quick_settings_reboot_recovery_label">Recovery</string>
   <!-- PiP Tile -->
+  <string name="quick_settings_pip_label">PiP</string>
   <!-- Sound QS Tile -->
+  <string name="quick_settings_sound_label">Zvuk</string>
+  <string name="quick_settings_sound_ring">Zvonenie</string>
+  <string name="quick_settings_sound_vibrate">Vibrácie</string>
+  <string name="quick_settings_sound_dnd">Nerušiť</string>
   <!-- Heads Up QS Tile -->
+  <string name="quick_settings_heads_up_label">Plávajúce upozornenia</string>
+  <string name="accessibility_quick_settings_heads_up_off">Plávajúce upozornenia vyp.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Plávajúce upozornenia zap.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Plávajúce upozornenia vyp.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Plávajúce upozornenia zap.</string>
   <!-- Screenrecord Notification Ticker -->
+  <string name="screenrecord_notif_ticker">Obrazovka sa nahráva</string>
+  <string name="screenrecord_notif_final_ticker">Obrazovka bola úspešne zaznamenaná</string>
   <!-- Screenrecord notification title -->
+  <string name="screenrecord_notif_title">Nahrávanie obrazovky</string>
   <!-- Screenrecord notification action: Stop -->
+  <string name="screenrecord_notif_stop">Zastaviť</string>
+  <string name="screenrecord_notif_completed">Obrazovka bola úspešne zaznamenaná</string>
+  <string name="screenrecord_notif_duration">Celkom:</string>
   <!-- Screenrecord notification action: show/hide pointer -->
+  <string name="screenrecord_notif_pointer_on">Zobraziť ukazovateľ</string>
+  <string name="screenrecord_notif_pointer_off">Skryť ukazovateľ</string>
   <!-- Screen record notification error title -->
+  <string name="screenrecord_notif_error">Nie je možné nahrávať obrazovku</string>
+  <string name="notification_channel_screenrecord">Záznamy obrazovky</string>
+  <string name="screenrecord_hide_hint">Skryť nápovedu</string>
+  <string name="screenrecord_show_hint">Zobraziť nápovedu</string>
   <!-- Screenshot QS tile -->
+  <string name="quick_settings_screenrecord_label">Záznam obrazovky</string>
+  <string name="quick_settings_screenrecord_lq_label">Záznam obrazovky 480p</string>
+  <string name="quick_settings_screenrecord_mq_label">Záznam obrazovky 720p</string>
+  <string name="quick_settings_screenrecord_hq_label">Záznam obrazovky 720p+</string>
   <!-- QS OmniJaws -->
+  <string name="omnijaws_service_error">Chyba</string>
+  <string name="omnijaws_service_unkown">Žiadne údaje o počasí</string>
+  <string name="omnijaws_service_error_long">Chyba pri načítavaní údajov o počasí</string>
+  <string name="omnijaws_service_disabled">Služba je vypnutá</string>
+  <string name="omnijaws_detail_header">Počasie</string>
+  <string name="omnijaws_label_default">Počasie</string>
+  <string name="omnijaws_current_text">Teraz</string>
+  <string name="omnijaws_package_not_available">OmniJaws nie je dostupný</string>
+  <string name="omnijaws_service_last_update">Posledná aktualizácia:</string>
   <!-- Weather string format in expanded statusbar header -->
+  <string name="status_bar_weather_format"><xliff:g id="temp">%1$s</xliff:g></string>
   <!-- On The Go -->
+  <string name="onthego_notif_ticker">On-The-Go aktivovaný</string>
+  <string name="onthego_notif_title">On-The-Go je aktívny</string>
+  <string name="onthego_notif_stop">Zastaviť</string>
+  <string name="onthego_notif_options">Možnosti</string>
+  <string name="onthego_notif_error">Nepodarilo sa spustiť On-The-Go</string>
+  <string name="onthego_notif_restart">Reštartujte On-The-Go</string>
+  <string name="onthego_notif_camera_changed">Režim fotoaparátu sa zmenil</string>
+  <string name="onthego_transparency">Priehľadnosť</string>
+  <string name="onthego_front_camera">Použiť predný fotoaparát</string>
+  <string name="onthego_service_toggle">Automaticky reštartovať službu</string>
+  <string name="onthego_channel_name">Hlavné</string>
   <!-- QS Colums -->
+  <string name="qs_menu_item_columns">Stĺpce</string>
+  <string name="qs_menu_item_columns_landscape">Stĺpce na šírku</string>
+  <string name="qs_menu_item_columns_three">3</string>
+  <string name="qs_menu_item_columns_four">4</string>
+  <string name="qs_menu_item_columns_five">5</string>
+  <string name="qs_menu_item_columns_six">6</string>
+  <string name="qs_menu_item_columns_seven">7</string>
+  <string name="qs_menu_item_columns_eight">8</string>
+  <string name="qs_menu_item_columns_nine">9</string>
+  <string name="qs_menu_item_reset">Resetovať</string>
+  <string name="qs_menu_item_rows">Riadky</string>
+  <string name="qs_menu_item_rows_one">1</string>
+  <string name="qs_menu_item_rows_two">2</string>
+  <string name="qs_menu_item_rows_three">3</string>
+  <string name="qs_menu_item_rows_four">4</string>
   <!-- QS Show Labels -->
+  <string name="qs_menu_item_titles">Zobraziť názvy</string>
   <!-- Battery saver tile -->
+  <string name="battery_saver_qs_tile_fully_charged">Úplne nabitá</string>
   <!-- QS Scroller -->
+  <string name="qs_menu_item_scroll">Posuvník rýchleho menu</string>
   <!-- QS Haptic Feedback -->
+  <string name="qs_menu_item_vibrate">Vibrovanie pri dotyku</string>
   <!-- Show lte/4g switch -->
+  <string name="show_lte_fourgee_title">Ikona siete 4G/LTE</string>
+  <string name="show_lte_fourgee_summary">Zobraziť ikonu 4G alebo LTE v stavovom riadku / paneli rýchl. nastavení</string>
+  <string name="statusbar_tuner_category_title">Skryť položky v stavovom riadku</string>
+  <string name="recents_app_killed">Aplikácia ukončená</string>
+  <string name="lockscreen_default">Predvolené</string>
+  <string name="lockscreen_hidden">Žiadne</string>
   <!-- Screenshot Crop & Share -->
+  <string name="action_delete_success">Vymazané</string>
+  <string name="action_delete_fault">Vymazanie zlyhalo</string>
+  <string name="action_save_success">Uložené</string>
+  <string name="action_save_fault">Ukladanie zlyhalo</string>
+  <string name="pref_action_color_title">Farba akčných tlačidiel</string>
+  <string name="pref_action_color_summary">Vyberte si obľubenú farbu pre tlačidlá akcií</string>
+  <string name="pref_category_main">Hlavné nastavenia</string>
+  <string name="pref_category_user">Používateľské nastavenia</string>
+  <string name="pref_crop_behavior_title">Voľby orezania</string>
+  <string name="pref_crop_behavior_summary">Použiť orezaný obrázok aj v prípade, že pôvodný obrázok bol predtým upravený touto funkciou</string>
+  <string name="action_ok">OK</string>
+  <string name="action_edit">Editovať</string>
   <!-- Navigation bar Tile -->
+  <string name="quick_settings_navigation_bar">Navigačný panel</string>
+  <string name="quick_settings_smartbar">SmartBar</string>
+  <string name="quick_settings_fling">Fling</string>
+  <string name="quick_settings_navigation_default">Stock</string>
+  <string name="quick_settings_navigation_disabled">Vypnuté</string>
   <!-- Kill button in notification guts -->
+  <string name="force_stop_dlg_title">Vynútiť zastavenie?</string>
+  <string name="force_stop_dlg_text">Ak vynútite zastavenie aplikácie, môže sa správať zvláštne.</string>
+  <string name="dlg_ok">@android:string/ok</string>
+  <string name="dlg_cancel">@android:string/cancel</string>
+  <string name="kill">Ukončiť aplikáciu</string>
   <!-- ADB network tile -->
+  <string name="quick_settings_adb_network">ADB sieť</string>
+  <string name="quick_settings_network_adb_enabled_label">ADB cez sieť</string>
+  <string name="quick_settings_network_adb_disabled_label">ADB cez sieť</string>
+  <!-- Assist/Google Tiles -->
+  <!-- QS Mini mode -->
 </resources>
