@@ -12,7 +12,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
+    <!-- Settings icon tint color -->
+    <color name="settings_icon_tint_color">#737373</color>
     <!-- Notification sender text color -->
     <color name="sender_text_color">@android:color/black</color>
 
