@@ -717,6 +717,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             tickTrackInfo(mMediaController);
             mNoMan.setMediaPlaying(true);
             final String currentPkg = mMediaController.getPackageName().toLowerCase();
+            if (mSlimRecents != null) {
+                mSlimRecents.setMediaPlaying(true, currentPkg);
+            }
             for (String packageName : mNavMediaArrowsExcludeList) {
                 if (currentPkg.contains(packageName)) {
                     return;
