@@ -1545,12 +1545,12 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     @Override
     public void onOverlayChanged() {
-        reinflateViews();
         updateNotificationsOnOverlayChanged();
         mStackScroller.onOverlayChanged();
         mNotificationShelf.onOverlayChanged();
         mNotificationPanel.onOverlayChanged();
         Dependency.get(DarkIconDispatcher.class).onOverlayChanged(mContext);
+        reinflateViews();
     }
 
     private void reinflateViews() {
@@ -2005,10 +2005,10 @@ public class StatusBar extends SystemUI implements DemoMode,
         entry.row.setLowPriorityStateUpdated(false);
 
         if (mEntryToRefresh == entry) {
+            final Notification n = entry.notification.getNotification();
+            final int[] colors = {n.backgroundColor, n.foregroundColor,
+                    n.primaryTextColor, n.secondaryTextColor};
             if (mNavigationBar != null) {
-                Notification n = entry.notification.getNotification();
-                int[] colors = {n.backgroundColor, n.foregroundColor,
-                        n.primaryTextColor, n.secondaryTextColor};
                 mNavigationBar.setPulseColors(n.isColorizedMedia(), colors);
             }
             if (mSlimRecents != null) {
