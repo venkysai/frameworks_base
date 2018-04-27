@@ -19,23 +19,73 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Power menu -->
+  <string name="global_action_restart_advanced">Avanzato</string>
+  <string name="global_action_restart_recovery">Recovery</string>
+  <string name="global_action_restart_bootloader">Bootloader</string>
+  <string name="global_action_restart_ui">SystemUI</string>
+  <string name="global_action_restart_hot">Rapido</string>
+  <string name="global_action_screenshot">Cattura schermata</string>
+  <string name="global_action_screenrecord">Registra schermo</string>
   <!-- Content description of the data connection type HSPA+ for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+  <string name="accessibility_data_connection_hspap">HSPA+</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+  <string name="keyguard_indication_dash_charging_time">Ricarica rapida (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> fino al completamento)</string>
+  <string name="keyguard_plugged_in_dash_charging">Ricarica rapida</string>
   <!-- SystemUI Tuner Parts -->
+  <string name="systemui_tuner_icon_manager_title">Gestore icone</string>
+  <string name="systemui_tuner_lockscreen_bottom_shortcuts_title">Scorciatoie in basso</string>
+  <string name="systemui_tuner_navbar_title">Impostazioni predefinite</string>
   <!-- Caffeine QS Tile -->
+  <string name="quick_settings_caffeine_label">Caffeina</string>
+  <string name="accessibility_quick_settings_caffeine_off">Caffeina disattivata</string>
+  <string name="accessibility_quick_settings_caffeine_on">Caffeina attivata</string>
   <!-- accessibility label for button to open running apps prefscreen [CHAR LIMIT=NONE] -->
+  <string name="accessibility_quick_settings_running_services">Apri schermata servizi in esecuzione.</string>
   <!-- Screenshot QS Tile -->
+  <string name="quick_settings_screenshot_label">Cattura schermata</string>
   <!-- Reboot/Recovery QS Tile -->
+  <string name="quick_settings_reboot_label">Riavvia</string>
+  <string name="quick_settings_reboot_recovery_label">Recovery</string>
   <!-- PiP Tile -->
+  <string name="quick_settings_pip_label">PiP</string>
   <!-- Sound QS Tile -->
+  <string name="quick_settings_sound_label">Suono</string>
+  <string name="quick_settings_sound_ring">Suoneria</string>
+  <string name="quick_settings_sound_vibrate">Vibrazione</string>
+  <string name="quick_settings_sound_dnd">Non disturbare</string>
   <!-- Heads Up QS Tile -->
+  <string name="quick_settings_heads_up_label">Notifiche fluttuanti</string>
+  <string name="accessibility_quick_settings_heads_up_off">Notifiche fluttuanti spente.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Notifiche fluttuanti accese.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Notifiche fluttuanti disattivate.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Notifiche fluttuanti attivate.</string>
   <!-- Screenrecord Notification Ticker -->
+  <string name="screenrecord_notif_ticker">Lo schermo è in fase di registrazione</string>
+  <string name="screenrecord_notif_final_ticker">Schermo registrato con successo</string>
   <!-- Screenrecord notification title -->
+  <string name="screenrecord_notif_title">Registrazione schermo</string>
   <!-- Screenrecord notification action: Stop -->
+  <string name="screenrecord_notif_stop">Ferma</string>
+  <string name="screenrecord_notif_completed">Schermo registrato con successo</string>
+  <string name="screenrecord_notif_duration">Totale:</string>
   <!-- Screenrecord notification action: show/hide pointer -->
+  <string name="screenrecord_notif_pointer_on">Mostra puntatore</string>
+  <string name="screenrecord_notif_pointer_off">Nascondi puntatore</string>
   <!-- Screen record notification error title -->
+  <string name="screenrecord_notif_error">Impossibile registrare lo schermo</string>
+  <string name="notification_channel_screenrecord">Registrazione dello schermo</string>
+  <string name="screenrecord_hide_hint">Nascondi i suggerimenti</string>
+  <string name="screenrecord_show_hint">Mostra suggerimento</string>
   <!-- Screenshot QS tile -->
+  <string name="quick_settings_screenrecord_label">Registra schermo</string>
+  <string name="quick_settings_screenrecord_lq_label">Registra schermo 480p</string>
+  <string name="quick_settings_screenrecord_mq_label">Registra schermo 720p</string>
+  <string name="quick_settings_screenrecord_hq_label">Registra schermo 720p+</string>
   <!-- QS OmniJaws -->
+  <string name="omnijaws_service_error">Errore</string>
+  <string name="omnijaws_service_unkown">Nessun dato meteo</string>
+  <string name="omnijaws_service_error_long">Errore durante il caricamento dei dati meteo</string>
+  <string name="omnijaws_service_disabled">Servizio disabilitato</string>
   <!-- Weather string format in expanded statusbar header -->
   <!-- On The Go -->
   <!-- QS Colums -->
@@ -45,10 +95,62 @@
   <!-- QS Haptic Feedback -->
   <!-- Show lte/4g switch -->
   <!-- Screenshot Crop & Share -->
+  <string name="pref_crop_behavior_title">Comportamento ritaglio</string>
+  <string name="pref_crop_behavior_summary">Usa l\'immagine ritagliata anche se attualmente quella originale non è stata ritagliata con l\'azione di ritaglio</string>
+  <string name="action_ok">OK</string>
+  <string name="action_edit">Modifica</string>
   <!-- Navigation bar Tile -->
+  <string name="quick_settings_navigation_bar">Barra di navigazione</string>
+  <string name="quick_settings_smartbar">SmartBar</string>
+  <string name="quick_settings_fling">Fling</string>
+  <string name="quick_settings_navigation_default">Predefinito</string>
+  <string name="quick_settings_navigation_disabled">Disabilitato</string>
   <!-- Kill button in notification guts -->
+  <string name="force_stop_dlg_title">Forzare l\'interruzione?</string>
+  <string name="force_stop_dlg_text">Se forzi l\'interruzione di un\'applicazione, tale applicazione potrebbe funzionare in modo anomalo.</string>
+  <string name="dlg_ok">@android:string/ok</string>
+  <string name="dlg_cancel">@android:string/cancel</string>
+  <string name="kill">Termina app</string>
   <!-- ADB network tile -->
+  <string name="quick_settings_adb_network">ADB tramite rete</string>
+  <string name="quick_settings_network_adb_enabled_label">Adb sulla rete</string>
+  <string name="quick_settings_network_adb_disabled_label">Adb sulla rete</string>
   <!-- Assist/Google Tiles -->
+  <string name="quick_settings_google_assist_label">Assistente</string>
+  <string name="quick_settings_google_voice_assist_label">Assistente vocale</string>
+  <string name="quick_settings_google_now_label">Google</string>
   <!-- QS Mini mode -->
+  <string name="qs_show_mini">Modalità mini</string>
+  <string name="qs_header">Intestazione</string>
   <!-- Theme tile -->
+  <string name="systemui_theme_style_title">Stile</string>
+  <string name="systemui_theme_style_auto">Automatico</string>
+  <string name="systemui_theme_style_light">Chiaro</string>
+  <string name="systemui_theme_style_dark">Scuro</string>
+  <string name="systemui_theme_style_black">Nero</string>
+  <string name="quick_settings_theme_tile_title">Primario</string>
+  <string name="quick_settings_theme_tile_accent_detail_title">Selezionare il colore</string>
+  <string name="quick_settings_theme_tile_style_detail_title">Seleziona lo stile</string>
+  <string name="quick_settings_theme_tile_color_default">Predefinito</string>
+  <string name="quick_settings_theme_tile_color_red">Rosso</string>
+  <string name="quick_settings_theme_tile_color_pink">Rosa</string>
+  <string name="quick_settings_theme_tile_color_purple">Viola</string>
+  <string name="quick_settings_theme_tile_color_deep_purple">Viola intenso</string>
+  <string name="quick_settings_theme_tile_color_indigo">Indaco</string>
+  <string name="quick_settings_theme_tile_color_blue">Blu</string>
+  <string name="quick_settings_theme_tile_color_light_blue">Azzurro</string>
+  <string name="quick_settings_theme_tile_color_cyan">Ciano</string>
+  <string name="quick_settings_theme_tile_color_teal">Verde acqua</string>
+  <string name="quick_settings_theme_tile_color_green">Verde</string>
+  <string name="quick_settings_theme_tile_color_light_green">Verde chiaro</string>
+  <string name="quick_settings_theme_tile_color_lime">Limetta</string>
+  <string name="quick_settings_theme_tile_color_yellow">Giallo</string>
+  <string name="quick_settings_theme_tile_color_amber">Ambra</string>
+  <string name="quick_settings_theme_tile_color_orange">Arancione</string>
+  <string name="quick_settings_theme_tile_color_deep_orange">Arancione intenso</string>
+  <string name="quick_settings_theme_tile_color_brown">Marrone</string>
+  <string name="quick_settings_theme_tile_color_grey">Grigio</string>
+  <string name="quick_settings_theme_tile_color_blue_grey">Grigio blu</string>
+  <!-- SmartPixels QS Tile -->
+  <!-- Compass QS Tile -->
 </resources>

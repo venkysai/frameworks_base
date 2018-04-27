@@ -55,5 +55,7 @@
   <!-- ADB notification message-->
   <string name="adb_active_generic_notification_message">Dotykem zakažte ladění.</string>
   <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permlab_accessFontManager">přístup ke správci písem</string>
   <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+  <string name="permdesc_accessFontManager">Umožňuje aplikaci přístup ke správci písem.</string>
 </resources>
