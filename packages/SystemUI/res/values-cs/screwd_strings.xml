@@ -206,5 +206,22 @@
   <string name="theme_info_title">Co to je?</string>
   <string name="theme_info_message">Dlaždice motivů je unikátní, ale snadno použitelná dlaždice, která umožňuje uživateli změnit vedlejší barvu nebo styl systému.\n\nPro změnu vedlejší barvy a stylu dlouze stiskněte dlaždici a potom ji opět stiskněte pro výběr nabízených možností.</string>
   <!-- SmartPixels QS Tile -->
+  <string name="quick_settings_smart_pixels">Smart Pixels</string>
+  <string name="quick_settings_smart_pixels_on_power_save">Automaticky povolit Smart Pixels</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Kompas</string>
+  <string name="quick_settings_compass_value"><xliff:g id="degrees">%1$.0f</xliff:g>\u00b0 <xliff:g id="direction">%2$s</xliff:g></string>
+  <string name="quick_settings_compass_init">Inicializace\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Kompas vyp.</string>
+  <string name="accessibility_quick_settings_compass_on">Kompas zap.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Kompas je vypnutý.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Kompas je zapnutý.</string>
+  <string name="quick_settings_compass_N">S</string>
+  <string name="quick_settings_compass_NE">SV</string>
+  <string name="quick_settings_compass_E">V</string>
+  <string name="quick_settings_compass_SE">JV</string>
+  <string name="quick_settings_compass_S">J</string>
+  <string name="quick_settings_compass_SW">JZ</string>
+  <string name="quick_settings_compass_W">Z</string>
+  <string name="quick_settings_compass_NW">SZ</string>
 </resources>

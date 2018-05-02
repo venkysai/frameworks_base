@@ -86,10 +86,42 @@
   <string name="omnijaws_service_unkown">Nessun dato meteo</string>
   <string name="omnijaws_service_error_long">Errore durante il caricamento dei dati meteo</string>
   <string name="omnijaws_service_disabled">Servizio disabilitato</string>
+  <string name="omnijaws_detail_header">Meteo</string>
+  <string name="omnijaws_label_default">Meteo</string>
+  <string name="omnijaws_current_text">Adesso</string>
+  <string name="omnijaws_package_not_available">OmniJaws non disponibile</string>
+  <string name="omnijaws_service_last_update">Ultimo aggiornamento:</string>
   <!-- Weather string format in expanded statusbar header -->
+  <string name="status_bar_weather_format"><xliff:g id="temp">%1$s</xliff:g></string>
   <!-- On The Go -->
+  <string name="onthego_notif_ticker">On-The-Go attivato</string>
+  <string name="onthego_notif_stop">Ferma</string>
+  <string name="onthego_notif_options">Opzioni</string>
+  <string name="onthego_notif_error">Impossibile avviare On-The-Go</string>
+  <string name="onthego_notif_restart">Riavvia On-The-Go</string>
+  <string name="onthego_notif_camera_changed">Modalità fotocamera cambiata</string>
+  <string name="onthego_transparency">Trasparenza</string>
+  <string name="onthego_front_camera">Utilizza fotocamera frontale</string>
+  <string name="onthego_service_toggle">Riavvio automatico del servizio</string>
+  <string name="onthego_channel_name">Principale</string>
   <!-- QS Colums -->
+  <string name="qs_menu_item_columns">Colonne</string>
+  <string name="qs_menu_item_columns_landscape">Colonne in modalità orizzontale</string>
+  <string name="qs_menu_item_columns_three">3</string>
+  <string name="qs_menu_item_columns_four">4</string>
+  <string name="qs_menu_item_columns_five">5</string>
+  <string name="qs_menu_item_columns_six">6</string>
+  <string name="qs_menu_item_columns_seven">7</string>
+  <string name="qs_menu_item_columns_eight">8</string>
+  <string name="qs_menu_item_columns_nine">9</string>
+  <string name="qs_menu_item_reset">Ripristina</string>
+  <string name="qs_menu_item_rows">Righe</string>
+  <string name="qs_menu_item_rows_one">1</string>
+  <string name="qs_menu_item_rows_two">2</string>
+  <string name="qs_menu_item_rows_three">3</string>
+  <string name="qs_menu_item_rows_four">4</string>
   <!-- QS Show Labels -->
+  <string name="qs_menu_item_titles">Mostra etichette</string>
   <!-- Battery saver tile -->
   <!-- QS Scroller -->
   <!-- QS Haptic Feedback -->
@@ -152,5 +184,22 @@
   <string name="quick_settings_theme_tile_color_grey">Grigio</string>
   <string name="quick_settings_theme_tile_color_blue_grey">Grigio blu</string>
   <!-- SmartPixels QS Tile -->
+  <string name="quick_settings_smart_pixels">Smart pixel</string>
+  <string name="quick_settings_smart_pixels_on_power_save">Abilita automaticamente Smart Pixel</string>
   <!-- Compass QS Tile -->
+  <string name="quick_settings_compass_label">Bussola</string>
+  <string name="quick_settings_compass_value"><xliff:g id="degrees">%1$.0f</xliff:g>\u00b0 <xliff:g id="direction">%2$s</xliff:g></string>
+  <string name="quick_settings_compass_init">Inizializzazione\u2026</string>
+  <string name="accessibility_quick_settings_compass_off">Bussola spenta.</string>
+  <string name="accessibility_quick_settings_compass_on">Bussola attiva.</string>
+  <string name="accessibility_quick_settings_compass_changed_off">Bussola disattivata.</string>
+  <string name="accessibility_quick_settings_compass_changed_on">Bussola attivata.</string>
+  <string name="quick_settings_compass_N">N</string>
+  <string name="quick_settings_compass_NE">NE</string>
+  <string name="quick_settings_compass_E">E</string>
+  <string name="quick_settings_compass_SE">SE</string>
+  <string name="quick_settings_compass_S">S</string>
+  <string name="quick_settings_compass_SW">SW</string>
+  <string name="quick_settings_compass_W">W</string>
+  <string name="quick_settings_compass_NW">NW</string>
 </resources>
