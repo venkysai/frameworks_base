@@ -9033,7 +9033,11 @@ public class StatusBar extends SystemUI implements DemoMode,
         return lp;
     }
 
-		private static final String[] getClocks(Context ctx) {
+    public void stopBrightnessControl() {
+        mHandler.removeCallbacks(mLongPressBrightnessChange);
+    }
+		
+    private static final String[] getClocks(Context ctx) {
         final String list = ctx.getResources().getString(com.android.internal.R.string.custom_clock_styles);
         return list.split(",");
     }
@@ -9067,5 +9071,4 @@ public class StatusBar extends SystemUI implements DemoMode,
             }
         }
     }
-
 }

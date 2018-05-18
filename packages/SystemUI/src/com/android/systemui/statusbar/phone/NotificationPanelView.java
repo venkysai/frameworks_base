@@ -275,13 +275,13 @@ public class NotificationPanelView extends PanelView implements
         setWillNotDraw(!DEBUG);
         mLockPatternUtils = new LockPatternUtils(context);
         mFalsingManager = FalsingManager.getInstance(context);
-
         mPowerManager = context.getSystemService(PowerManager.class);
         mSettingsObserver = new SettingsObserver(mHandler);
         mDoubleTapToSleepGesture = new GestureDetector(context,
                 new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
+                mStatusBar.stopBrightnessControl();
                 screwdUtils.switchScreenOff(context);
                 return true;
             }
