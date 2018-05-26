@@ -56,7 +56,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
-
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.widget.LockPatternUtils;
 //import com.android.systemui.ChargingView;
@@ -274,8 +273,8 @@ public class KeyguardStatusView extends GridLayout implements
             mClockView.setFormat12Hour(Patterns.clockView12);
             mClockView.setFormat24Hour(Patterns.clockView24);
         } else if (mClockSelection == 1) {
-            mClockView.setFormat12Hour(Html.fromHtml("<strong>h</strong>mm"));
-            mClockView.setFormat24Hour(Html.fromHtml("<strong>kk</strong>mm"));
+						mClockView.setFormat12Hour(Html.fromHtml("<font color='red'><strong>hh</strong></font>mm"));
+            mClockView.setFormat24Hour(Html.fromHtml("<font color='red'><strong>kk</strong></font>mm"));            
         } else if (mClockSelection == 3) {
             mClockView.setFormat12Hour(Html.fromHtml("<strong>hh</strong><br>mm"));
             mClockView.setFormat24Hour(Html.fromHtml("<strong>kk</strong><br>mm"));
