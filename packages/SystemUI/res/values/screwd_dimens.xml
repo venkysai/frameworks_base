@@ -72,4 +72,7 @@
     <!-- QS detail view scrolling -->
    <dimen name="qs_detail_item_height_twoline">72dp</dimen>
 
+    <!-- Big clock dozing -->
+    <dimen name="dozing_big_clock_padding" format="float">0.38</dimen>
+
 </resources>
