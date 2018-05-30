@@ -28,6 +28,9 @@
     <color name="system_primary_color">@*android:color/primary_material_light</color>
     <color name="system_accent_color">@*android:color/material_deep_teal_700</color>
 
+    <!-- Power menu wallpaper tint off color -->
+    <color name="power_menu_wallpaper_tint_off_color">#80202020</color>
+
     <!-- Floating action button -->
     <color name="fab_color">@*android:color/material_deep_teal_500</color>
     <color name="floating_action_button_icon_color">#ffffff</color>
