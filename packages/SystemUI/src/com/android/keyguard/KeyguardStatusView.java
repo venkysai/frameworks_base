@@ -412,13 +412,13 @@ public class KeyguardStatusView extends GridLayout implements
                         mWeatherClient.getWeatherConditionImage(mWeatherData.conditionCode));
                     mWeatherCurrentTemp.setText(mWeatherData.temp + mWeatherData.tempUnits);
                     mWeatherConditionText.setText(mWeatherData.condition);
-                    updateSettings(false);
+                    updateSettings();
                 } else {
                     mWeatherCity.setText(null);
                     mWeatherConditionImage.setImageDrawable(null);
                     mWeatherCurrentTemp.setText(null);
                     mWeatherConditionText.setText(mContext.getResources().getString(R.string.weather_info_not_available));
-                    updateSettings(false);
+                    updateSettings();
                 }
           } catch(Exception e) {
             // Do nothing
