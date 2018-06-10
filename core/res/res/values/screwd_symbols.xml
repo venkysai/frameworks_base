@@ -270,12 +270,6 @@
   <java-symbol type="color" name="analog_clock_hand_hour_color" />
   <java-symbol type="color" name="analog_clock_hand_minute_color" />
 
-  <!-- DeadPool Analog clock -->
-  <java-symbol type="drawable" name="deadpool_clock_dial" />
-  <java-symbol type="drawable" name="deadpool_clock_dial_ambient" />
-  <java-symbol type="drawable" name="deadpool_clock_hand_hour" />
-  <java-symbol type="drawable" name="deadpool_clock_hand_minute" />
-
   <!-- OmniSwitch -->
   <java-symbol type="anim" name="last_app_in" />
   <java-symbol type="anim" name="last_app_out" />
