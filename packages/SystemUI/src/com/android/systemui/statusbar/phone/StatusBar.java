@@ -904,6 +904,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     private BatteryController mBatteryController;
     protected boolean mPanelExpanded;
     private IOverlayManager mOverlayManager;
+    private int mCurrentTheme;
     private boolean mKeyguardRequested;
     private boolean mIsKeyguard;
     private LogMaker mStatusBarStateLog;
@@ -1191,6 +1192,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         updateDisplaySize(); // populates mDisplayMetrics
         updateResources();
+        getCurrentThemeSetting();
         updateTheme();
 
         inflateStatusBarWindow(context);
@@ -3257,6 +3259,10 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     public boolean isUsingExtendedTheme() {
         return ThemeAccentUtils.isUsingExtendedTheme(mOverlayManager, mCurrentUserId);
+    }
+
+    public boolean isUsingChocolateTheme() {
+        return ThemeAccentUtils.isUsingChocolateTheme(mOverlayManager, mCurrentUserId);
     }
 
     // Unloads the stock dark theme
@@ -5377,6 +5383,11 @@ public class StatusBar extends SystemUI implements DemoMode,
         Trace.endSection();
     }
 
+    private void getCurrentThemeSetting() {
+        mCurrentTheme = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.SYSTEM_THEME_STYLE, 0, mCurrentUserId);
+    }
+
     /**
      * Switches theme from light to dark and vice-versa.
      */
@@ -5385,12 +5396,11 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         haltTicker();
 
-        int userThemeSetting = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.SYSTEM_THEME_STYLE, 0, mCurrentUserId);
+        boolean useChocolateTheme = false;
         boolean useExtendedTheme = false;
         boolean useBlackTheme = false;
         boolean useDarkTheme = false;
-        if (userThemeSetting == 0) {
+        if (mCurrentTheme == 0) {
             // The system wallpaper defines if QS should be light or dark.
             WallpaperColors systemColors = mColorExtractor
                     .getWallpaperColors(WallpaperManager.FLAG_SYSTEM);
@@ -5400,9 +5410,12 @@ public class StatusBar extends SystemUI implements DemoMode,
             // with white on white or black on black
             unfuckBlackWhiteAccent();
         } else {
-            useDarkTheme = userThemeSetting == 2;
-            useBlackTheme = userThemeSetting == 3;
-            useExtendedTheme = userThemeSetting == 4;
+            useDarkTheme = mCurrentTheme == 2;
+            useBlackTheme = mCurrentTheme == 3;
+            useExtendedTheme = mCurrentTheme == 4;
+            useChocolateTheme = mCurrentTheme == 5;
+        }
+        if (isUsingDarkTheme() != useDarkTheme) {
             // Check for black and white accent so we don't end up
             // with white on white or black on black
             unfuckBlackWhiteAccent();
@@ -5418,6 +5431,13 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         if (isUsingExtendedTheme() != useExtendedTheme) {
             ThemeAccentUtils.setLightExtendedTheme(mOverlayManager, mCurrentUserId, useExtendedTheme);
+        }
+
+        if (isUsingChocolateTheme() != useChocolateTheme) {
+            // Check for black and white accent so we don't end up
+            // with white on white or black on black
+            unfuckBlackWhiteAccent();
+            ThemeAccentUtils.setLightChocolateTheme(mOverlayManager, mCurrentUserId, useChocolateTheme);
         }
 
         // Lock wallpaper defines the color of the majority of the views, hence we'll use it
@@ -6774,6 +6794,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.SYSTEM_THEME_STYLE)) || uri.equals(Settings.System.getUriFor(
                     Settings.System.SYSTEM_THEME_CURRENT_OVERLAY))) {
+        		getCurrentThemeSetting();
                 updateThemeAndReinflate();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.ACCENT_PICKER))) {
