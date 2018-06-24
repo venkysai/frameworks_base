@@ -67,10 +67,10 @@ import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.NextAlarmController.NextAlarmChangeCallback;
 import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.UserInfoController.OnUserInfoChangedListener;
-import com.android.systemui.tuner.TunerService;
-import com.android.systemui.tuner.TunerService.Tunable;
+//import com.android.systemui.tuner.TunerService;
+//import com.android.systemui.tuner.TunerService.Tunable;
 
-public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
+public class QSFooterImpl extends FrameLayout implements QSFooter,
         NextAlarmChangeCallback, OnClickListener, OnLongClickListener, OnUserInfoChangedListener, EmergencyListener,
         SignalCallback {
     private static final float EXPAND_INDICATOR_THRESHOLD = .93f;
@@ -167,8 +167,8 @@ public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        Dependency.get(TunerService.class).addTunable(this, QS_FOOTER_SHOW_SETTINGS);
-        Dependency.get(TunerService.class).addTunable(this, QS_FOOTER_SHOW_SERVICES);
+        //Dependency.get(TunerService.class).addTunable(this, QS_FOOTER_SHOW_SETTINGS);
+        //Dependency.get(TunerService.class).addTunable(this, QS_FOOTER_SHOW_SERVICES);
     }
 
     public void onTuningChanged(String key, String newValue) {
@@ -314,7 +314,7 @@ public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
     @VisibleForTesting
     public void onDetachedFromWindow() {
         setListening(false);
-        Dependency.get(TunerService.class).removeTunable(this);
+        //Dependency.get(TunerService.class).removeTunable(this);
         super.onDetachedFromWindow();
     }
 
@@ -345,8 +345,8 @@ public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
 
     private void updateVisibilities() {
         updateAlarmVisibilities();
-        mSettingsContainer.findViewById(R.id.tuner_icon).setVisibility(
-                TunerService.isTunerEnabled(mContext) ? View.VISIBLE : View.INVISIBLE);
+        //mSettingsContainer.findViewById(R.id.tuner_icon).setVisibility(
+        //        TunerService.isTunerEnabled(mContext) ? View.VISIBLE : View.INVISIBLE);
         final boolean isDemo = UserManager.isDeviceInDemoMode(mContext);
 
         mServicesButtonVisible = Settings.System.getInt(
@@ -403,7 +403,7 @@ public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
             MetricsLogger.action(mContext,
                     mExpanded ? MetricsProto.MetricsEvent.ACTION_QS_EXPANDED_SETTINGS_LAUNCH
                             : MetricsProto.MetricsEvent.ACTION_QS_COLLAPSED_SETTINGS_LAUNCH);
-            if (mSettingsButton.isTunerClick()) {
+            /*if (mSettingsButton.isTunerClick()) {
                 Dependency.get(ActivityStarter.class).postQSRunnableDismissingKeyguard(() -> {
                     if (TunerService.isTunerEnabled(mContext)) {
                         TunerService.showResetRequest(mContext, () -> {
@@ -420,7 +420,8 @@ public class QSFooterImpl extends FrameLayout implements Tunable, QSFooter,
                 });
             } else {
                 startSettingsActivity();
-            }
+            }*/
+            startSettingsActivity();
         } else if (v == mDateTimeGroup) {
             Dependency.get(MetricsLogger.class).action(ACTION_QS_DATE,
                     mNextAlarm != null);
