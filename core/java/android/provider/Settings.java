@@ -816,6 +816,19 @@ public final class Settings {
 
     /**
      * @hide
+     * Activity Action: Show the "app ops" details screen.
+     * <p>
+     * Input: The Intent's data URI specifies the application package name
+     * to be shown, with the "package" scheme.  That is "package:com.my.app".
+     * <p>
+     * Output: Nothing.
+     */
+    @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
+    public static final String ACTION_APP_OPS_DETAILS_SETTINGS =
+            "android.settings.APP_OPS_DETAILS_SETTINGS";
+
+    /**
+     * @hide
      * Activity Action: Show the "app ops" settings screen.
      * <p>
      * Input: Nothing.
@@ -1725,6 +1738,10 @@ public final class Settings {
         public static Uri getUriFor(Uri uri, String name) {
             return Uri.withAppendedPath(uri, name);
         }
+
+	public static Uri getUriForLOS(Uri uri, String name) {
+            return Uri.withAppendedPath(uri, name);
+        }
     }
 
     private static final class GenerationTracker {
@@ -2296,6 +2313,16 @@ public final class Settings {
             }
             return getUriFor(CONTENT_URI, name);
         }
+
+	/**
+         * Construct the content URI for a particular name/value pair,
+         * useful for monitoring changes with a ContentObserver. (LOS)
+         * @param name to look up in the table
+         * @return the corresponding content URI
+         */
+	public static Uri getUriForLOS(String name) {
+	    return NameValueTable.getUriForLOS(CONTENT_URI, name);
+	}
 
         /**
          * Convenience function for retrieving a single system settings value
@@ -6473,6 +6500,16 @@ public final class Settings {
             return getUriFor(CONTENT_URI, name);
         }
 
+	/**
+         * Construct the content URI for a particular name/value pair,
+         * useful for monitoring changes with a ContentObserver. (LOS)
+         * @param name to look up in the table
+         * @return the corresponding content URI
+         */
+	public static Uri getUriForLOS(String name) {
+	    return NameValueTable.getUriForLOS(CONTENT_URI, name);
+	}
+
         /**
          * Convenience function for retrieving a single secure settings value
          * as an integer.  Note that internally setting values are always
@@ -7051,6 +7088,18 @@ public final class Settings {
          * @hide
          */
         public static final String NAVIGATION_BAR_MODE = "navigation_bar_mode";
+
+	/**
+         * Whether newly installed apps should run with privacy guard by default
+         * @hide
+         */
+        public static final String PRIVACY_GUARD_DEFAULT = "privacy_guard_default";
+
+        /**
+         * Whether a notification should be shown if privacy guard is enabled
+         * @hide
+         */
+        public static final String PRIVACY_GUARD_NOTIFICATION = "privacy_guard_notification";
 
         /**
          * Fling actions
@@ -12540,6 +12589,16 @@ public final class Settings {
         public static Uri getUriFor(String name) {
             return getUriFor(CONTENT_URI, name);
         }
+
+	/**
+         * Construct the content URI for a particular name/value pair,
+         * useful for monitoring changes with a ContentObserver. (LOS)
+         * @param name to look up in the table
+         * @return the corresponding content URI
+         */
+	public static Uri getUriForLOS(String name) {
+	    return NameValueTable.getUriForLOS(CONTENT_URI, name);
+	}
 
         /**
          * Convenience function for retrieving a single secure settings value
