@@ -50,8 +50,8 @@ public class ThemeAccentUtils {
         "com.accents.extendedgreen", //22
         "com.accents.paleblue", //23
         "com.accents.jadegreen", //24
-        "com.accents.black", // 25
-        "com.accents.white", // 26
+        // "com.accents.black", // 25
+        // "com.accents.white", // 26
     };
 
     private static final String[] DARK_THEMES = {
@@ -129,7 +129,7 @@ public class ThemeAccentUtils {
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change theme", e);
             }
-        } else if (accentSetting == 25) {
+         } /* else if (accentSetting == 25) {
             try {
                 // If using a dark, black or extendedUI theme we use the white accent, otherwise use the black accent
                 if (isUsingDarkTheme(om, userId) || isUsingBlackTheme(om, userId) || isUsingExtendedTheme(om, userId) || isUsingChocolateTheme(om, userId)) {
@@ -142,7 +142,7 @@ public class ThemeAccentUtils {
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change theme", e);
             }
-        }
+        } */
     }
 
     // Unload all the theme accents
@@ -212,7 +212,7 @@ public class ThemeAccentUtils {
             try {
                 om.setEnabled(theme,
                         useDarkTheme, userId);
-                unfuckBlackWhiteAccent(om, userId);
+              //  unfuckBlackWhiteAccent(om, userId);
                 if (useDarkTheme) {
                     unloadStockDarkTheme(om, userId);
                 }
@@ -227,7 +227,7 @@ public class ThemeAccentUtils {
             try {
                 om.setEnabled(theme,
                         useBlackTheme, userId);
-                unfuckBlackWhiteAccent(om, userId);
+              //  unfuckBlackWhiteAccent(om, userId);
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change theme", e);
             }
@@ -239,7 +239,7 @@ public class ThemeAccentUtils {
             try {
                 om.setEnabled(theme,
                         useExtendedTheme, userId);
-                unfuckBlackWhiteAccent(om, userId);
+              //  unfuckBlackWhiteAccent(om, userId);
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change theme", e);
             }
@@ -251,7 +251,7 @@ public class ThemeAccentUtils {
             try {
                 om.setEnabled(theme,
                         useChocolateTheme, userId);
-                unfuckBlackWhiteAccent(om, userId);
+              //  unfuckBlackWhiteAccent(om, userId);
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change theme", e);
             }
@@ -259,7 +259,7 @@ public class ThemeAccentUtils {
     }
 
     // Check for black and white accent overlays
-    public static void unfuckBlackWhiteAccent(IOverlayManager om, int userId) {
+/*    public static void unfuckBlackWhiteAccent(IOverlayManager om, int userId) {
         OverlayInfo themeInfo = null;
         try {
             if (isUsingDarkTheme(om, userId) || isUsingBlackTheme(om, userId) || isUsingExtendedTheme(om, userId) || isUsingChocolateTheme(om, userId)) {
@@ -267,7 +267,7 @@ public class ThemeAccentUtils {
                         userId);
                 if (themeInfo != null && themeInfo.isEnabled()) {
                     om.setEnabled(ACCENTS[25],
-                            false /*disable*/, userId);
+                            false /*disable*//*, userId);
                     om.setEnabled(ACCENTS[26],
                             true, userId);
                 }
@@ -276,7 +276,7 @@ public class ThemeAccentUtils {
                         userId);
                 if (themeInfo != null && themeInfo.isEnabled()) {
                     om.setEnabled(ACCENTS[26],
-                            false /*disable*/, userId);
+                            false /*disable*//*, userId);
                     om.setEnabled(ACCENTS[25],
                             true, userId);
                 }
@@ -284,7 +284,7 @@ public class ThemeAccentUtils {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-    }
+    } */
 
     // Unloads the stock dark theme
     public static void unloadStockDarkTheme(IOverlayManager om, int userId) {
@@ -300,4 +300,16 @@ public class ThemeAccentUtils {
             e.printStackTrace();
         }
     }
+
+    // Check for the white accent overlay
+/*    public static boolean isUsingWhiteAccent(IOverlayManager om, int userId) {
+        OverlayInfo themeInfo = null;
+        try {
+            themeInfo = om.getOverlayInfo(ACCENTS[26],
+                    userId);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return themeInfo != null && themeInfo.isEnabled();
+    }*/
 }
