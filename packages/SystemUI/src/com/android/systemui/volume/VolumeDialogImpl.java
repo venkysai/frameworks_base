@@ -228,7 +228,9 @@ public class VolumeDialogImpl implements VolumeDialog, TunerService.Tunable,
                 | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                 | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                 | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
+                | WindowManager.LayoutParams.FLAG_DIM_BEHIND
                 | WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+        mDialog.getWindow().setDimAmount(setVolumeDialogDim());
         mDialog.setCanceledOnTouchOutside(true);
         final Resources res = mContext.getResources();
         final WindowManager.LayoutParams lp = mWindow.getAttributes();
@@ -309,6 +311,14 @@ public class VolumeDialogImpl implements VolumeDialog, TunerService.Tunable,
         mZenPanel = (TunerZenModePanel) mDialog.findViewById(R.id.tuner_zen_mode_panel);
         mZenPanel.init(mZenModeController);
         mZenPanel.setCallback(mZenPanelCallback);
+    }
+
+    private float setVolumeDialogDim() {
+        int mVolumeDialogDim = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.TRANSPARENT_VOLUME_DIALOG_DIM, 50);
+        double dDim = mVolumeDialogDim / 100.0;
+        float dim = (float) dDim;
+        return dim;
     }
 
     @Override
@@ -508,6 +518,7 @@ public class VolumeDialogImpl implements VolumeDialog, TunerService.Tunable,
 
     public void dismiss(int reason) {
         mHandler.obtainMessage(H.DISMISS, reason, 0).sendToTarget();
+        mDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
     }
 
     private void showH(int reason) {
