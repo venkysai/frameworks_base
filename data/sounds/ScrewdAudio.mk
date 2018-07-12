@@ -20,3 +20,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)screwd/ringtones/DrankUpInMyCup.ogg:system/media/audio/ringtones/DrankUpInMyCup.ogg \
     $(LOCAL_PATH)screwd/ringtones/Mann.ogg:system/media/audio/ringtones/Mann.ogg \
     $(LOCAL_PATH)screwd/ringtones/SittinSideways.ogg:system/media/audio/ringtones/SittinSideways.ogg \
+    $(LOCAL_PATH)screwd/ringtones/hello.ogg:system/media/audio/ringtones/hello.ogg \
