@@ -6764,7 +6764,6 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG),
                     false, this, UserHandle.USER_ALL);
-            update();
         }
 
         @Override
@@ -6837,13 +6836,20 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.LESS_BORING_HEADS_UP))) {
                 setUseLessBoringHeadsUp();
-           } 
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG))) {
+                setLockScreenMaxNotifications();
+            }
         }
 
-        public void update() {
+        private void setLockScreenMaxNotifications()
+        {
             ContentResolver resolver = mContext.getContentResolver();
             mMaxKeyguardNotifConfig = Settings.System.getIntForUser(resolver,
                     Settings.System.LOCKSCREEN_MAX_NOTIF_CONFIG, 5, mCurrentUserId);
+        }
+
+        public void update() {
             setStatusBarWindowViewOptions();
             setBrightnessSlider();
             setHeadsUpBlacklist();
@@ -6856,6 +6862,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateTickerAnimation();
             updateKeyguardStatusSettings();
             setUseLessBoringHeadsUp();
+            setLockScreenMaxNotifications();
         }
     }
 
