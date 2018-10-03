@@ -3271,9 +3271,9 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
     // Check for black and white accent overlays
-/*    public void unfuckBlackWhiteAccent() {
+    public void unfuckBlackWhiteAccent() {
         ThemeAccentUtils.unfuckBlackWhiteAccent(mOverlayManager, mCurrentUserId);
-    }*/
+    }
 
     @Nullable
     public View getAmbientIndicationContainer() {
@@ -5408,7 +5408,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                     && (systemColors.getColorHints() & WallpaperColors.HINT_SUPPORTS_DARK_THEME) != 0;
             // Check for black and white accent so we don't end up
             // with white on white or black on black
-            // unfuckBlackWhiteAccent();
+            unfuckBlackWhiteAccent();
         } else {
             useDarkTheme = mCurrentTheme == 2;
             useBlackTheme = mCurrentTheme == 3;
@@ -5418,28 +5418,25 @@ public class StatusBar extends SystemUI implements DemoMode,
         if (isUsingDarkTheme() != useDarkTheme) {
             // Check for black and white accent so we don't end up
             // with white on white or black on black
-            //unfuckBlackWhiteAccent();
+            unfuckBlackWhiteAccent();
+        }
+
+        if (isUsingDarkTheme() != useDarkTheme) {
             ThemeAccentUtils.setLightDarkTheme(mOverlayManager, mCurrentUserId, useDarkTheme);
         }
 
         if (isUsingBlackTheme() != useBlackTheme) {
-            // Check for black and white accent so we don't end up
-            // with white on white or black on black
-            //unfuckBlackWhiteAccent();
             ThemeAccentUtils.setLightBlackTheme(mOverlayManager, mCurrentUserId, useBlackTheme);
         }
 
         if (isUsingExtendedTheme() != useExtendedTheme) {
-            // Check for black and white accent so we don't end up
-            // with white on white or black on black
-            //unfuckBlackWhiteAccent();
             ThemeAccentUtils.setLightExtendedTheme(mOverlayManager, mCurrentUserId, useExtendedTheme);
         }
 
         if (isUsingChocolateTheme() != useChocolateTheme) {
             // Check for black and white accent so we don't end up
             // with white on white or black on black
-            //unfuckBlackWhiteAccent();
+            unfuckBlackWhiteAccent();
             ThemeAccentUtils.setLightChocolateTheme(mOverlayManager, mCurrentUserId, useChocolateTheme);
         }
 

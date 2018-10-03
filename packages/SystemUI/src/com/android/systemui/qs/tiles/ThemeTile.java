@@ -251,14 +251,14 @@ public class ThemeTile extends QSTileImpl<BooleanState> {
                 item.line1 = themeTileItem.getLabel(mContext);
                 items.add(item);
             }
-          /*  Item lastItem = new Item();
+            Item lastItem = new Item();
             ThemeTileItem lastThemeTileItem = getThemeItemForStyleMode();
             lastItem.tag = lastThemeTileItem;
             lastItem.doDisableTint = true;
             lastItem.doDisableFocus = true;
             lastItem.iconDrawable = lastThemeTileItem.getIcon(mContext);
             lastItem.line1 = lastThemeTileItem.getLabel(mContext);
-            items.add(lastItem); */
+            items.add(lastItem);
             return items;
         }
 
@@ -300,16 +300,16 @@ public class ThemeTile extends QSTileImpl<BooleanState> {
         }
     }
 
- /*   private ThemeTileItem getThemeItemForStyleMode() {
-        if (ThemeAccentUtils.isUsingDarkTheme(mOverlayManager, mCurrentUserId) || ThemeAccentUtils.isUsingBlackTheme(mOverlayManager, mCurrentUserId) || ThemeAccentUtils.isUsingExtendedTheme(mOverlayManager, mCurrentUserId) || ThemeAccentUtils.isUsingChocolateTheme(mOverlayManager, mCurrentUserId)) {
-
+    private ThemeTileItem getThemeItemForStyleMode() {
+        boolean isDark = isUsingDarkTheme() || isUsingBlackTheme() || isUsingExtendedTheme() || isUsingChocolateTheme();
+        if (isDark) {
             return new ThemeTileItem(25, R.color.quick_settings_theme_tile_white,
                     R.string.quick_settings_theme_tile_color_white);
         } else {
             return new ThemeTileItem(25, R.color.quick_settings_theme_tile_black,
                     R.string.quick_settings_theme_tile_color_black);
         }
-    } */
+    }
 
     // Check for the dark theme overlay
     private boolean isUsingDarkTheme() {
